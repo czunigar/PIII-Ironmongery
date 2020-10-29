@@ -13,13 +13,13 @@ namespace EntityLayer
         public string Username { get; set; }
         public string Password { get; set; }
         public string Type { get; set; }
-        public bool Admin { get; set; }
+        public bool? Admin { get; set; }
 
         public EUser()
         {
         }
 
-        public EUser(int id, string code, string username, string password, string type, bool admin)
+        public EUser(int id, string code, string username, string password, string type, bool? admin)
         {
             Id = id;
             Code = code;
