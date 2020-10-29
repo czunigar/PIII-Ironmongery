@@ -1,0 +1,1031 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IRONMONGERYModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DELIVERY">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipmentID" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="60" />
+          <Property Name="Contact" Type="nvarchar" MaxLength="30" />
+          <Property Name="Time_Pickup" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="INVOICES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Local_Date" Type="date" />
+          <Property Name="ShipmentId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Price_Unit" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="Total" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="Total_bef_tax" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="Total_aft_tax" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="Taxes" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="Paid" Type="bit" />
+        </EntityType>
+        <EntityType Name="LOGISTICS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Vehicle_Number" Type="smallint" />
+          <Property Name="DriverID" Type="int" />
+          <Property Name="Active" Type="bit" />
+        </EntityType>
+        <EntityType Name="NOTICES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ShipmentID" Type="int" />
+          <Property Name="Local_Time" Type="time" Precision="7" />
+          <Property Name="ProductId" Type="int" />
+        </EntityType>
+        <EntityType Name="ORDERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cid" Type="nvarchar" MaxLength="9" />
+          <Property Name="Client_Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Date" Type="date" />
+          <Property Name="Status" Type="nvarchar" MaxLength="9" />
+        </EntityType>
+        <EntityType Name="PRODUCT_ORDERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="Units" Type="smallint" />
+        </EntityType>
+        <EntityType Name="PRODUCTS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Product_Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Category" Type="nvarchar" MaxLength="20" />
+          <Property Name="Product_Description" Type="nvarchar" MaxLength="80" />
+          <Property Name="Price" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="Units" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="SERVICE_ORDERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="ServiceID" Type="int" />
+        </EntityType>
+        <EntityType Name="SERVICES">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Service_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Category" Type="nvarchar" MaxLength="20" />
+          <Property Name="Service_Description" Type="nvarchar" MaxLength="80" />
+          <Property Name="Price" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="SHIPMENTS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SellerID" Type="int" />
+          <Property Name="Product_Order" Type="int" />
+          <Property Name="Service_Order" Type="int" />
+          <Property Name="TruckID" Type="int" />
+          <Property Name="Order_Time" Type="time" Precision="7" />
+          <Property Name="Status" Type="nvarchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="TRUCK">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="6" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="TruckID" Type="int" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="Observations" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="USERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="6" />
+          <Property Name="Username" Type="nvarchar" MaxLength="30" />
+          <Property Name="Password" Type="nvarchar" MaxLength="35" />
+          <Property Name="Type" Type="nvarchar" MaxLength="15" />
+          <Property Name="Admin" Type="bit" />
+        </EntityType>
+        <EntityType Name="WAREHOUSE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EntryTime" Type="time" Precision="7" />
+          <Property Name="TruckId" Type="int" />
+          <Property Name="ExitTime" Type="time" Precision="7" />
+        </EntityType>
+        <Association Name="fk_driver_id">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="LOGISTICS" Type="Self.LOGISTICS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LOGISTICS">
+              <PropertyRef Name="DriverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_inv_prod">
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_inv_shipm">
+          <End Role="SHIPMENTS" Type="Self.SHIPMENTS" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SHIPMENTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ShipmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nprod_id">
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="0..1" />
+          <End Role="NOTICES" Type="Self.NOTICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTICES">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nshipm_id">
+          <End Role="SHIPMENTS" Type="Self.SHIPMENTS" Multiplicity="0..1" />
+          <End Role="NOTICES" Type="Self.NOTICES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SHIPMENTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTICES">
+              <PropertyRef Name="ShipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_number">
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="0..1" />
+          <End Role="TRUCK" Type="Self.TRUCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRUCK">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pdorder_id">
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="0..1" />
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PRODUCT_ORDERS">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_porder_id">
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="0..1" />
+          <End Role="SHIPMENTS" Type="Self.SHIPMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHIPMENTS">
+              <PropertyRef Name="Product_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_prod_id">
+          <End Role="PRODUCTS" Type="Self.PRODUCTS" Multiplicity="0..1" />
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PRODUCT_ORDERS">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_seller_id">
+          <End Role="USERS" Type="Self.USERS" Multiplicity="0..1" />
+          <End Role="SHIPMENTS" Type="Self.SHIPMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHIPMENTS">
+              <PropertyRef Name="SellerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_serv_id">
+          <End Role="SERVICES" Type="Self.SERVICES" Multiplicity="0..1" />
+          <End Role="SERVICE_ORDERS" Type="Self.SERVICE_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SERVICE_ORDERS">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_shipm_id">
+          <End Role="SHIPMENTS" Type="Self.SHIPMENTS" Multiplicity="0..1" />
+          <End Role="DELIVERY" Type="Self.DELIVERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SHIPMENTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DELIVERY">
+              <PropertyRef Name="ShipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sorder_id">
+          <End Role="SERVICE_ORDERS" Type="Self.SERVICE_ORDERS" Multiplicity="0..1" />
+          <End Role="SHIPMENTS" Type="Self.SHIPMENTS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHIPMENTS">
+              <PropertyRef Name="Service_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_svorder_id">
+          <End Role="ORDERS" Type="Self.ORDERS" Multiplicity="0..1" />
+          <End Role="SERVICE_ORDERS" Type="Self.SERVICE_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SERVICE_ORDERS">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_truck_number">
+          <End Role="LOGISTICS" Type="Self.LOGISTICS" Multiplicity="0..1" />
+          <End Role="TRUCK" Type="Self.TRUCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOGISTICS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRUCK">
+              <PropertyRef Name="TruckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_war_truck">
+          <End Role="LOGISTICS" Type="Self.LOGISTICS" Multiplicity="0..1" />
+          <End Role="WAREHOUSE" Type="Self.WAREHOUSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOGISTICS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WAREHOUSE">
+              <PropertyRef Name="TruckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IRONMONGERYModelStoreContainer">
+          <EntitySet Name="DELIVERY" EntityType="Self.DELIVERY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INVOICES" EntityType="Self.INVOICES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOGISTICS" EntityType="Self.LOGISTICS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NOTICES" EntityType="Self.NOTICES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCT_ORDERS" EntityType="Self.PRODUCT_ORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICE_ORDERS" EntityType="Self.SERVICE_ORDERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SERVICES" EntityType="Self.SERVICES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SHIPMENTS" EntityType="Self.SHIPMENTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TRUCK" EntityType="Self.TRUCK" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USERS" EntityType="Self.USERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WAREHOUSE" EntityType="Self.WAREHOUSE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_driver_id" Association="Self.fk_driver_id">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="LOGISTICS" EntitySet="LOGISTICS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_inv_prod" Association="Self.fk_inv_prod">
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="fk_inv_shipm" Association="Self.fk_inv_shipm">
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nprod_id" Association="Self.fk_nprod_id">
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+            <End Role="NOTICES" EntitySet="NOTICES" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nshipm_id" Association="Self.fk_nshipm_id">
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+            <End Role="NOTICES" EntitySet="NOTICES" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_number" Association="Self.fk_order_number">
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+            <End Role="TRUCK" EntitySet="TRUCK" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pdorder_id" Association="Self.fk_pdorder_id">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_porder_id" Association="Self.fk_porder_id">
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_prod_id" Association="Self.fk_prod_id">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_seller_id" Association="Self.fk_seller_id">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_serv_id" Association="Self.fk_serv_id">
+            <End Role="SERVICES" EntitySet="SERVICES" />
+            <End Role="SERVICE_ORDERS" EntitySet="SERVICE_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_shipm_id" Association="Self.fk_shipm_id">
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+            <End Role="DELIVERY" EntitySet="DELIVERY" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sorder_id" Association="Self.fk_sorder_id">
+            <End Role="SERVICE_ORDERS" EntitySet="SERVICE_ORDERS" />
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_svorder_id" Association="Self.fk_svorder_id">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="SERVICE_ORDERS" EntitySet="SERVICE_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_truck_number" Association="Self.fk_truck_number">
+            <End Role="LOGISTICS" EntitySet="LOGISTICS" />
+            <End Role="TRUCK" EntitySet="TRUCK" />
+          </AssociationSet>
+          <AssociationSet Name="fk_war_truck" Association="Self.fk_war_truck">
+            <End Role="LOGISTICS" EntitySet="LOGISTICS" />
+            <End Role="WAREHOUSE" EntitySet="WAREHOUSE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IRONMONGERYModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DELIVERY">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShipmentID" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Contact" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Time_Pickup" Type="Time" Precision="7" />
+          <NavigationProperty Name="SHIPMENT" Relationship="Self.fk_shipm_id" FromRole="DELIVERY" ToRole="SHIPMENTS" />
+        </EntityType>
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Local_Date" Type="DateTime" Precision="0" />
+          <Property Name="ShipmentId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Price_Unit" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Total" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Total_bef_tax" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Total_aft_tax" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Taxes" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Paid" Type="Boolean" />
+          <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_inv_prod" FromRole="INVOICES" ToRole="PRODUCT_ORDERS" />
+          <NavigationProperty Name="SHIPMENT" Relationship="Self.fk_inv_shipm" FromRole="INVOICES" ToRole="SHIPMENTS" />
+        </EntityType>
+        <EntityType Name="LOGISTIC">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Vehicle_Number" Type="Int16" />
+          <Property Name="DriverID" Type="Int32" />
+          <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="USER" Relationship="Self.fk_driver_id" FromRole="LOGISTICS" ToRole="USERS" />
+          <NavigationProperty Name="TRUCKs" Relationship="Self.fk_truck_number" FromRole="LOGISTICS" ToRole="TRUCK" />
+          <NavigationProperty Name="WAREHOUSEs" Relationship="Self.fk_war_truck" FromRole="LOGISTICS" ToRole="WAREHOUSE" />
+        </EntityType>
+        <EntityType Name="NOTICE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ShipmentID" Type="Int32" />
+          <Property Name="Local_Time" Type="Time" Precision="7" />
+          <Property Name="ProductId" Type="Int32" />
+          <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_nprod_id" FromRole="NOTICES" ToRole="PRODUCT_ORDERS" />
+          <NavigationProperty Name="SHIPMENT" Relationship="Self.fk_nshipm_id" FromRole="NOTICES" ToRole="SHIPMENTS" />
+        </EntityType>
+        <EntityType Name="ORDER">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cid" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Client_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+          <Property Name="Status" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_pdorder_id" FromRole="ORDERS" ToRole="PRODUCT_ORDERS" />
+          <NavigationProperty Name="SERVICE_ORDERS" Relationship="Self.fk_svorder_id" FromRole="ORDERS" ToRole="SERVICE_ORDERS" />
+        </EntityType>
+        <EntityType Name="PRODUCT_ORDERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="Units" Type="Int16" />
+          <NavigationProperty Name="INVOICES" Relationship="Self.fk_inv_prod" FromRole="PRODUCT_ORDERS" ToRole="INVOICES" />
+          <NavigationProperty Name="NOTICES" Relationship="Self.fk_nprod_id" FromRole="PRODUCT_ORDERS" ToRole="NOTICES" />
+          <NavigationProperty Name="ORDER" Relationship="Self.fk_pdorder_id" FromRole="PRODUCT_ORDERS" ToRole="ORDERS" />
+          <NavigationProperty Name="TRUCKs" Relationship="Self.fk_order_number" FromRole="PRODUCT_ORDERS" ToRole="TRUCK" />
+          <NavigationProperty Name="SHIPMENTS" Relationship="Self.fk_porder_id" FromRole="PRODUCT_ORDERS" ToRole="SHIPMENTS" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.fk_prod_id" FromRole="PRODUCT_ORDERS" ToRole="PRODUCTS" />
+        </EntityType>
+        <EntityType Name="PRODUCT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Description" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Units" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_prod_id" FromRole="PRODUCTS" ToRole="PRODUCT_ORDERS" />
+        </EntityType>
+        <EntityType Name="SERVICE_ORDERS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="ServiceID" Type="Int32" />
+          <NavigationProperty Name="ORDER" Relationship="Self.fk_svorder_id" FromRole="SERVICE_ORDERS" ToRole="ORDERS" />
+          <NavigationProperty Name="SERVICE" Relationship="Self.fk_serv_id" FromRole="SERVICE_ORDERS" ToRole="SERVICES" />
+          <NavigationProperty Name="SHIPMENTS" Relationship="Self.fk_sorder_id" FromRole="SERVICE_ORDERS" ToRole="SHIPMENTS" />
+        </EntityType>
+        <EntityType Name="SERVICE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Service_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Service_Description" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="SERVICE_ORDERS" Relationship="Self.fk_serv_id" FromRole="SERVICES" ToRole="SERVICE_ORDERS" />
+        </EntityType>
+        <EntityType Name="SHIPMENT">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SellerID" Type="Int32" />
+          <Property Name="Product_Order" Type="Int32" />
+          <Property Name="Service_Order" Type="Int32" />
+          <Property Name="TruckID" Type="Int32" />
+          <Property Name="Order_Time" Type="Time" Precision="7" />
+          <Property Name="Status" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DELIVERies" Relationship="Self.fk_shipm_id" FromRole="SHIPMENTS" ToRole="DELIVERY" />
+          <NavigationProperty Name="INVOICES" Relationship="Self.fk_inv_shipm" FromRole="SHIPMENTS" ToRole="INVOICES" />
+          <NavigationProperty Name="NOTICES" Relationship="Self.fk_nshipm_id" FromRole="SHIPMENTS" ToRole="NOTICES" />
+          <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_porder_id" FromRole="SHIPMENTS" ToRole="PRODUCT_ORDERS" />
+          <NavigationProperty Name="SERVICE_ORDERS" Relationship="Self.fk_sorder_id" FromRole="SHIPMENTS" ToRole="SERVICE_ORDERS" />
+          <NavigationProperty Name="USER" Relationship="Self.fk_seller_id" FromRole="SHIPMENTS" ToRole="USERS" />
+        </EntityType>
+        <EntityType Name="TRUCK">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="TruckID" Type="Int32" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="Observations" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LOGISTIC" Relationship="Self.fk_truck_number" FromRole="TRUCK" ToRole="LOGISTICS" />
+          <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_order_number" FromRole="TRUCK" ToRole="PRODUCT_ORDERS" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
+          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Admin" Type="Boolean" />
+          <NavigationProperty Name="LOGISTICS" Relationship="Self.fk_driver_id" FromRole="USERS" ToRole="LOGISTICS" />
+          <NavigationProperty Name="SHIPMENTS" Relationship="Self.fk_seller_id" FromRole="USERS" ToRole="SHIPMENTS" />
+        </EntityType>
+        <EntityType Name="WAREHOUSE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EntryTime" Type="Time" Precision="7" />
+          <Property Name="TruckId" Type="Int32" />
+          <Property Name="ExitTime" Type="Time" Precision="7" />
+          <NavigationProperty Name="LOGISTIC" Relationship="Self.fk_war_truck" FromRole="WAREHOUSE" ToRole="LOGISTICS" />
+        </EntityType>
+        <Association Name="fk_shipm_id">
+          <End Role="SHIPMENTS" Type="Self.SHIPMENT" Multiplicity="0..1" />
+          <End Role="DELIVERY" Type="Self.DELIVERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SHIPMENTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DELIVERY">
+              <PropertyRef Name="ShipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_inv_prod">
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_inv_shipm">
+          <End Role="SHIPMENTS" Type="Self.SHIPMENT" Multiplicity="0..1" />
+          <End Role="INVOICES" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SHIPMENTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="INVOICES">
+              <PropertyRef Name="ShipmentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_driver_id">
+          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="LOGISTICS" Type="Self.LOGISTIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LOGISTICS">
+              <PropertyRef Name="DriverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_truck_number">
+          <End Role="LOGISTICS" Type="Self.LOGISTIC" Multiplicity="0..1" />
+          <End Role="TRUCK" Type="Self.TRUCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOGISTICS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRUCK">
+              <PropertyRef Name="TruckID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_war_truck">
+          <End Role="LOGISTICS" Type="Self.LOGISTIC" Multiplicity="0..1" />
+          <End Role="WAREHOUSE" Type="Self.WAREHOUSE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LOGISTICS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WAREHOUSE">
+              <PropertyRef Name="TruckId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nprod_id">
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="0..1" />
+          <End Role="NOTICES" Type="Self.NOTICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTICES">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_nshipm_id">
+          <End Role="SHIPMENTS" Type="Self.SHIPMENT" Multiplicity="0..1" />
+          <End Role="NOTICES" Type="Self.NOTICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SHIPMENTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NOTICES">
+              <PropertyRef Name="ShipmentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_pdorder_id">
+          <End Role="ORDERS" Type="Self.ORDER" Multiplicity="0..1" />
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PRODUCT_ORDERS">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_svorder_id">
+          <End Role="ORDERS" Type="Self.ORDER" Multiplicity="0..1" />
+          <End Role="SERVICE_ORDERS" Type="Self.SERVICE_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SERVICE_ORDERS">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_number">
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="0..1" />
+          <End Role="TRUCK" Type="Self.TRUCK" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TRUCK">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_porder_id">
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="0..1" />
+          <End Role="SHIPMENTS" Type="Self.SHIPMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHIPMENTS">
+              <PropertyRef Name="Product_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_prod_id">
+          <End Role="PRODUCTS" Type="Self.PRODUCT" Multiplicity="0..1" />
+          <End Role="PRODUCT_ORDERS" Type="Self.PRODUCT_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCTS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PRODUCT_ORDERS">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_serv_id">
+          <End Role="SERVICES" Type="Self.SERVICE" Multiplicity="0..1" />
+          <End Role="SERVICE_ORDERS" Type="Self.SERVICE_ORDERS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICES">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SERVICE_ORDERS">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_sorder_id">
+          <End Role="SERVICE_ORDERS" Type="Self.SERVICE_ORDERS" Multiplicity="0..1" />
+          <End Role="SHIPMENTS" Type="Self.SHIPMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICE_ORDERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHIPMENTS">
+              <PropertyRef Name="Service_Order" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_seller_id">
+          <End Role="USERS" Type="Self.USER" Multiplicity="0..1" />
+          <End Role="SHIPMENTS" Type="Self.SHIPMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SHIPMENTS">
+              <PropertyRef Name="SellerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="IRONMONGERYEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DELIVERies" EntityType="Self.DELIVERY" />
+          <EntitySet Name="INVOICES" EntityType="Self.INVOICE" />
+          <EntitySet Name="LOGISTICS" EntityType="Self.LOGISTIC" />
+          <EntitySet Name="NOTICES" EntityType="Self.NOTICE" />
+          <EntitySet Name="ORDERS" EntityType="Self.ORDER" />
+          <EntitySet Name="PRODUCT_ORDERS" EntityType="Self.PRODUCT_ORDERS" />
+          <EntitySet Name="PRODUCTS" EntityType="Self.PRODUCT" />
+          <EntitySet Name="SERVICE_ORDERS" EntityType="Self.SERVICE_ORDERS" />
+          <EntitySet Name="SERVICES" EntityType="Self.SERVICE" />
+          <EntitySet Name="SHIPMENTS" EntityType="Self.SHIPMENT" />
+          <EntitySet Name="TRUCKs" EntityType="Self.TRUCK" />
+          <EntitySet Name="USERS" EntityType="Self.USER" />
+          <EntitySet Name="WAREHOUSEs" EntityType="Self.WAREHOUSE" />
+          <AssociationSet Name="fk_shipm_id" Association="Self.fk_shipm_id">
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+            <End Role="DELIVERY" EntitySet="DELIVERies" />
+          </AssociationSet>
+          <AssociationSet Name="fk_inv_prod" Association="Self.fk_inv_prod">
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="fk_inv_shipm" Association="Self.fk_inv_shipm">
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+            <End Role="INVOICES" EntitySet="INVOICES" />
+          </AssociationSet>
+          <AssociationSet Name="fk_driver_id" Association="Self.fk_driver_id">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="LOGISTICS" EntitySet="LOGISTICS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_truck_number" Association="Self.fk_truck_number">
+            <End Role="LOGISTICS" EntitySet="LOGISTICS" />
+            <End Role="TRUCK" EntitySet="TRUCKs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_war_truck" Association="Self.fk_war_truck">
+            <End Role="LOGISTICS" EntitySet="LOGISTICS" />
+            <End Role="WAREHOUSE" EntitySet="WAREHOUSEs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nprod_id" Association="Self.fk_nprod_id">
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+            <End Role="NOTICES" EntitySet="NOTICES" />
+          </AssociationSet>
+          <AssociationSet Name="fk_nshipm_id" Association="Self.fk_nshipm_id">
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+            <End Role="NOTICES" EntitySet="NOTICES" />
+          </AssociationSet>
+          <AssociationSet Name="fk_pdorder_id" Association="Self.fk_pdorder_id">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_svorder_id" Association="Self.fk_svorder_id">
+            <End Role="ORDERS" EntitySet="ORDERS" />
+            <End Role="SERVICE_ORDERS" EntitySet="SERVICE_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_number" Association="Self.fk_order_number">
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+            <End Role="TRUCK" EntitySet="TRUCKs" />
+          </AssociationSet>
+          <AssociationSet Name="fk_porder_id" Association="Self.fk_porder_id">
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_prod_id" Association="Self.fk_prod_id">
+            <End Role="PRODUCTS" EntitySet="PRODUCTS" />
+            <End Role="PRODUCT_ORDERS" EntitySet="PRODUCT_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_serv_id" Association="Self.fk_serv_id">
+            <End Role="SERVICES" EntitySet="SERVICES" />
+            <End Role="SERVICE_ORDERS" EntitySet="SERVICE_ORDERS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_sorder_id" Association="Self.fk_sorder_id">
+            <End Role="SERVICE_ORDERS" EntitySet="SERVICE_ORDERS" />
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+          </AssociationSet>
+          <AssociationSet Name="fk_seller_id" Association="Self.fk_seller_id">
+            <End Role="USERS" EntitySet="USERS" />
+            <End Role="SHIPMENTS" EntitySet="SHIPMENTS" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IRONMONGERYModelStoreContainer" CdmEntityContainer="IRONMONGERYEntities">
+          <EntitySetMapping Name="DELIVERies">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.DELIVERY">
+              <MappingFragment StoreEntitySet="DELIVERY">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Time_Pickup" ColumnName="Time_Pickup" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVOICES">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.INVOICE">
+              <MappingFragment StoreEntitySet="INVOICES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Local_Date" ColumnName="Local_Date" />
+                <ScalarProperty Name="ShipmentId" ColumnName="ShipmentId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Price_Unit" ColumnName="Price_Unit" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Total_bef_tax" ColumnName="Total_bef_tax" />
+                <ScalarProperty Name="Total_aft_tax" ColumnName="Total_aft_tax" />
+                <ScalarProperty Name="Taxes" ColumnName="Taxes" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LOGISTICS">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.LOGISTIC">
+              <MappingFragment StoreEntitySet="LOGISTICS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
+                <ScalarProperty Name="DriverID" ColumnName="DriverID" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NOTICES">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.NOTICE">
+              <MappingFragment StoreEntitySet="NOTICES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ShipmentID" ColumnName="ShipmentID" />
+                <ScalarProperty Name="Local_Time" ColumnName="Local_Time" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ORDERS">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.ORDER">
+              <MappingFragment StoreEntitySet="ORDERS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
+                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCT_ORDERS">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.PRODUCT_ORDERS">
+              <MappingFragment StoreEntitySet="PRODUCT_ORDERS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PRODUCTS">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.PRODUCT">
+              <MappingFragment StoreEntitySet="PRODUCTS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Units" ColumnName="Units" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICE_ORDERS">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.SERVICE_ORDERS">
+              <MappingFragment StoreEntitySet="SERVICE_ORDERS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SERVICES">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.SERVICE">
+              <MappingFragment StoreEntitySet="SERVICES">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Service_Name" ColumnName="Service_Name" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Service_Description" ColumnName="Service_Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SHIPMENTS">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.SHIPMENT">
+              <MappingFragment StoreEntitySet="SHIPMENTS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+                <ScalarProperty Name="Product_Order" ColumnName="Product_Order" />
+                <ScalarProperty Name="Service_Order" ColumnName="Service_Order" />
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+                <ScalarProperty Name="Order_Time" ColumnName="Order_Time" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRUCKs">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.TRUCK">
+              <MappingFragment StoreEntitySet="TRUCK">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TruckID" ColumnName="TruckID" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Observations" ColumnName="Observations" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERS">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.USER">
+              <MappingFragment StoreEntitySet="USERS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Admin" ColumnName="Admin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WAREHOUSEs">
+            <EntityTypeMapping TypeName="IRONMONGERYModel.WAREHOUSE">
+              <MappingFragment StoreEntitySet="WAREHOUSE">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+                <ScalarProperty Name="TruckId" ColumnName="TruckId" />
+                <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

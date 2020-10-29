@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b43f2a38fcaa487b91a0935a96ffeed3" Name="Diagram1">
+        <EntityTypeShape EntityType="IRONMONGERYModel.DELIVERY" Width="1.5" PointX="13.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.INVOICE" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.LOGISTIC" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.NOTICE" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.ORDER" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.PRODUCT_ORDERS" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.PRODUCT" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.SERVICE_ORDERS" Width="1.5" PointX="6" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.SERVICE" Width="1.5" PointX="3.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.SHIPMENT" Width="1.5" PointX="11.25" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.TRUCK" Width="1.5" PointX="5.25" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.USER" Width="1.5" PointX="9" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="IRONMONGERYModel.WAREHOUSE" Width="1.5" PointX="5.25" PointY="17" IsExpanded="true" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_shipm_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_inv_prod" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_inv_shipm" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_driver_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_truck_number" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_war_truck" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_nprod_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_nshipm_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_pdorder_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_svorder_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_order_number" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_porder_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_prod_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_serv_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_sorder_id" ManuallyRouted="false" />
+        <AssociationConnector Association="IRONMONGERYModel.fk_seller_id" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
