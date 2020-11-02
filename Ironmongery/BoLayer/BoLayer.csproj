@@ -51,10 +51,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeliveryBO.cs" />
     <Compile Include="LogisticBO.cs" />
-    <Compile Include="ProductBo.cs" />
+    <Compile Include="OrderBO.cs" />
+    <Compile Include="ProductBO.cs" />
+    <Compile Include="ProductOrderBO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBO.cs" />
+    <Compile Include="ServiceOrderBO.cs" />
+    <Compile Include="ShipmentBO.cs" />
     <Compile Include="UserBO.cs" />
   </ItemGroup>
   <ItemGroup>
