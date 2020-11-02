@@ -49,7 +49,7 @@ namespace DataLayer
                 SqlCommand cmd = new SqlCommand(query);
                 cmd.Connection = connect.BeginConnection();
                 cmd.Parameters.AddWithValue("@Product_Name", product.Name);
-                cmd.Parameters.AddWithValue("@Category", product.Categoty);
+                cmd.Parameters.AddWithValue("@Category", product.Category);
                 cmd.Parameters.AddWithValue("@Product_Description", product.Description);
                 cmd.Parameters.AddWithValue("@Price", product.Price);
                 cmd.Parameters.AddWithValue("@Units", product.Units);
@@ -76,7 +76,7 @@ namespace DataLayer
                 cmd.Connection = connect.BeginConnection();
                 cmd.Parameters.AddWithValue("@Id", product.Id);
                 cmd.Parameters.AddWithValue("@Product_Name", product.Name);
-                cmd.Parameters.AddWithValue("@Category", product.Categoty);
+                cmd.Parameters.AddWithValue("@Category", product.Category);
                 cmd.Parameters.AddWithValue("@Product_Description", product.Description);
                 cmd.Parameters.AddWithValue("@Price", product.Price);
                 cmd.Parameters.AddWithValue("@Units", product.Units);
@@ -122,7 +122,7 @@ namespace DataLayer
             {
                 product.Id = rd.GetInt32(1);
                 product.Name = rd.GetString(2);
-                product.Categoty = rd.GetString(3);
+                product.Category = rd.GetString(3);
                 product.Description = rd.GetString(4);
                 product.Price = rd.GetDouble(5);
                 product.Units = rd.GetInt32(6);

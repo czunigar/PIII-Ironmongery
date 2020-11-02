@@ -10,20 +10,20 @@ namespace EntityLayer
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Categoty { get; set; }
+        public string Category { get; set; }
         public string Description { get; set; }
-        public double Price { get; set; }
-        public int Units { get; set; }
+        public decimal? Price { get; set; }
+        public decimal? Units { get; set; }
 
         public EProduct()
         {
         }
 
-        public EProduct(int id, string name, string categoty, string description, double price, int units)
+        public EProduct(int id, string name, string categoty, string description, decimal? price, decimal? units)
         {
             Id = id;
             Name = name;
-            Categoty = categoty;
+            Category = categoty;
             Description = description;
             Price = price;
             Units = units;

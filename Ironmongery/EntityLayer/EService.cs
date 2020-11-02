@@ -9,9 +9,9 @@ namespace EntityLayer
     public class EService
     {
         public int Id { get; set; }
-        public string ServiceName { get; set; }
+        public string Name { get; set; }
         public string Category { get; set; }
-        public string ServiceDescription { get; set; }
+        public string Description { get; set; }
         public decimal? Price { get; set; }
 
         public EService()
@@ -21,9 +21,9 @@ namespace EntityLayer
         public EService(int id, string serviceName, string category, string serviceDescription, decimal? price)
         {
             Id = id;
-            ServiceName = serviceName;
+            Name = serviceName;
             Category = category;
-            ServiceDescription = serviceDescription;
+            Description = serviceDescription;
             Price = price;
         }
     }
