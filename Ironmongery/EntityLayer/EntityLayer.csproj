@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EDelivery.cs" />
+    <Compile Include="ENotice.cs" />
     <Compile Include="EProduct.cs" />
     <Compile Include="ELogistic.cs" />
     <Compile Include="EOrder.cs" />

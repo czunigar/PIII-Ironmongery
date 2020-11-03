@@ -16,24 +16,18 @@ namespace BoLayer
             EUser user = new EUser();
             using(IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
-                var users = from u in db.USERS.ToList()
-                            select new EUser
-                            {
-                                Id = u.Id,
-                                Code = u.Code,
-                                Username = u.Username,
-                                Password = u.Password,
-                                Type = u.Type,
-                                Admin = u.Admin
-                            };
-
-                users = users.Where(u => u.Id == id);
-
-                foreach (var usr in users)
+                USER u = null;
+                if (id > 0)
                 {
-                    user = new EUser(usr.Id, usr.Code, usr.Username, usr.Password,
-                        usr.Type, usr.Admin);
+                    u = db.USERS.Find(id);
                 }
+
+                user.Id = u.Id;
+                user.Code = u.Code;
+                user.Username = u.Username;
+                user.Password = u.Password;
+                user.Type = u.Type;
+                user.Admin = u.Admin;                
 
                 return user;
             }

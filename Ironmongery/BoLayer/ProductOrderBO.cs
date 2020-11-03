@@ -19,23 +19,17 @@ namespace BoLayer
             EProductOrder pdOrder = new EProductOrder();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
-                var orders = from o in db.PRODUCT_ORDERS.ToList()
-                             select new EProductOrder
-                             {
-                                 Id = o.Id,
-                                 OrderID = o.OrderID,
-                                 Order = obo.GetOrderById(o.OrderID.Value),
-                                 ProductID = o.ProductID,
-                                 Units = o.Units
-                             };
-
-                orders = orders.Where(o => o.Id == id);
-
-                foreach (var ord in orders)
+                PRODUCT_ORDERS u = null;
+                if (id > 0)
                 {
-                    pdOrder = new EProductOrder(ord.Id, ord.OrderID, ord.Order, ord.ProductID,
-                        ord.Units);
+                    u = db.PRODUCT_ORDERS.Find(id);
                 }
+
+                pdOrder.Id = u.Id;
+                pdOrder.OrderID = u.OrderID;
+                pdOrder.Order = obo.GetOrderById(u.OrderID.Value);
+                pdOrder.ProductID = u.ProductID;
+                pdOrder.Units = u.Units;
 
                 return pdOrder;
             }

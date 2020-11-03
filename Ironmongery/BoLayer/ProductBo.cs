@@ -16,24 +16,18 @@ namespace BoLayer
             EProduct product = new EProduct();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
-                var products = from p in db.PRODUCTS.ToList()
-                               select new EProduct
-                               {
-                                   Id = p.Id,
-                                   Name = p.Product_Name,
-                                   Category = p.Category,
-                                   Description = p.Product_Description,
-                                   Price = p.Price,
-                                   Units = p.Units                        
-                            };
-
-                products = products.Where(p => p.Id == id);
-
-                foreach (var pd in products)
+                PRODUCT p = null;
+                if (id > 0)
                 {
-                    product = new EProduct(pd.Id, pd.Name, pd.Category, pd.Description,
-                        pd.Price, pd.Units);
+                    p = db.PRODUCTS.Find(id);
                 }
+
+                product.Id = p.Id;
+                product.Name = p.Product_Name;
+                product.Category = p.Category;
+                product.Description = p.Product_Description;
+                product.Price = p.Price;
+                product.Units = p.Units;
 
                 return product;
             }
