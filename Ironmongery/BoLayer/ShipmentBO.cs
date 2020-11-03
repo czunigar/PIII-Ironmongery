@@ -25,30 +25,23 @@ namespace BoLayer
             EShipment shipment = new EShipment();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
-                var shipments = from o in db.SHIPMENTS.ToList()
-                             select new EShipment
-                             {
-                                 Id = o.Id,
-                                 SellerID = o.SellerID,
-                                 Seller = ubo.GetUserById(o.SellerID.Value),
-                                 ProductOrder = o.Product_Order,
-                                 POrder = pobo.GetProdOrderById(o.Product_Order.Value),
-                                 ServiceOrder = o.Service_Order,
-                                 SOrder = sorbo.GetServOrderById(o.Service_Order.Value),
-                                 TruckID = o.TruckID,
-                                 Truck = lbo.GetTruck(o.TruckID.Value),
-                                 OrderTime = o.Order_Time,
-                                 Status = o.Status
-                             };
-
-                shipments = shipments.Where(o => o.Id == id);
-
-                foreach (var sp in shipments)
+                SHIPMENT ship = null;
+                if (id > 0)
                 {
-                    shipment = new EShipment(sp.Id, sp.SellerID, sp.Seller, sp.ProductOrder,
-                        sp.POrder, sp.ServiceOrder, sp.SOrder, sp.TruckID, sp.Truck,
-                        sp.OrderTime, sp.Status);
+                    ship = db.SHIPMENTS.Find(id);
                 }
+
+                shipment.Id = ship.Id;
+                shipment.SellerID = ship.SellerID;
+                shipment.Seller = ubo.GetUserById(ship.SellerID.Value);
+                shipment.ProductOrder = ship.Product_Order;
+                shipment.POrder = pobo.GetProdOrderById(ship.Product_Order.Value);
+                shipment.ServiceOrder = ship.Service_Order;
+                shipment.SOrder = sorbo.GetServOrderById(ship.Service_Order.Value);
+                shipment.TruckID = ship.TruckID;
+                shipment.Truck = lbo.GetTruck(ship.TruckID.Value);
+                shipment.OrderTime = ship.Order_Time;
+                shipment.Status = ship.Status;
 
                 return shipment;
             }

@@ -19,6 +19,7 @@ namespace BoLayer
             ubo = new UserBO();
             using(IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
+
                 var myList = from t in db.LOGISTICS.ToList()
                              select new ELogistic
                              {
@@ -50,24 +51,18 @@ namespace BoLayer
             ubo = new UserBO();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
-                var myList = from t in db.LOGISTICS.ToList()
-                             select new ELogistic
-                             {
-                                 Id = t.Id,
-                                 VehicleNumber = t.Vehicle_Number,
-                                 DriverId = t.DriverID.Value,
-                                 Driver = ubo.GetUserById(t.DriverID.Value),
-                                 Active = t.Active
-                             };
-
-                myList = myList.Where(t => t.VehicleNumber.Equals(id));
-
-                foreach (var trav in myList)
+                LOGISTIC lg = null;
+                if (id > 0)
                 {
-                    travel = new ELogistic(trav.Id, trav.VehicleNumber, trav.DriverId,
-                        trav.Driver, trav.Active);
+                    lg = db.LOGISTICS.Find(id);
                 }
 
+                travel.Id = lg.Id;
+                travel.VehicleNumber = lg.Vehicle_Number;
+                travel.DriverId = lg.DriverID.Value;
+                travel.Driver = ubo.GetUserById(lg.DriverID.Value);
+                travel.Active = lg.Active;
+                
                 return travel;
             }
         }

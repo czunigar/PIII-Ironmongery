@@ -16,23 +16,17 @@ namespace BoLayer
             EOrder order = new EOrder();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
-                var orders = from o in db.ORDERS.ToList()
-                               select new EOrder
-                               {
-                                   Id = o.Id,
-                                   Cid = o.Cid,
-                                   ClientName = o.Client_Name,
-                                   Date = o.Date,
-                                   Status = o.Status
-                               };
-
-                orders = orders.Where(o => o.Id == id);
-
-                foreach (var ord in orders)
+                ORDER o = null;
+                if (id > 0)
                 {
-                    order = new EOrder(ord.Id, ord.Cid, ord.ClientName, ord.Date,
-                        ord.Status);
+                    o = db.ORDERS.Find(id);
                 }
+
+                order.Id = o.Id;
+                order.Cid = o.Cid;
+                order.ClientName = o.Client_Name;
+                order.Date = o.Date;
+                order.Status = o.Status;
 
                 return order;
             }

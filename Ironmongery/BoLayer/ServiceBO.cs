@@ -46,23 +46,17 @@ namespace BoLayer
             EService service = new EService();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
-                var services = from s in db.SERVICES.ToList()
-                               select new EService
-                               {
-                                   Id = s.Id,
-                                   Name = s.Service_Name,
-                                   Category = s.Category,
-                                   Description = s.Service_Description,
-                                   Price = s.Price,
-                               };
-
-                services = services.Where(p => p.Id == id);
-
-                foreach (var sv in services)
+                SERVICE nt = null;
+                if (id > 0)
                 {
-                    service = new EService(sv.Id, sv.Name, sv.Category, sv.Description,
-                        sv.Price);
+                    nt = db.SERVICES.Find(id);
                 }
+
+                service.Id = nt.Id;
+                service.Name = nt.Service_Name;
+                service.Category = nt.Category;
+                service.Description = nt.Service_Description;
+                service.Price = nt.Price;
 
                 return service;
             }

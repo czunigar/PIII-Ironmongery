@@ -19,21 +19,16 @@ namespace BoLayer
             EServiceOrder svOrder = new EServiceOrder();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
-                var orders = from o in db.SERVICE_ORDERS.ToList()
-                             select new EServiceOrder
-                             {
-                                 Id = o.Id,
-                                 OrderID = o.OrderID,
-                                 Order = obo.GetOrderById(o.OrderID.Value),
-                                 ServiceID = o.ServiceID
-                             };
-
-                orders = orders.Where(o => o.Id == id);
-
-                foreach (var ord in orders)
+                SERVICE_ORDERS sor = null;
+                if (id > 0)
                 {
-                    svOrder = new EServiceOrder(ord.Id, ord.OrderID, ord.Order, ord.ServiceID);
+                    sor = db.SERVICE_ORDERS.Find(id);
                 }
+
+                svOrder.Id = sor.Id;
+                svOrder.OrderID = sor.OrderID;
+                svOrder.Order = obo.GetOrderById(sor.OrderID.Value);
+                svOrder.ServiceID = sor.ServiceID;
 
                 return svOrder;
             }

@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="DeliveryBO.cs" />
     <Compile Include="LogisticBO.cs" />
+    <Compile Include="NoticeBO.cs" />
     <Compile Include="OrderBO.cs" />
     <Compile Include="ProductBO.cs" />
     <Compile Include="ProductOrderBO.cs" />

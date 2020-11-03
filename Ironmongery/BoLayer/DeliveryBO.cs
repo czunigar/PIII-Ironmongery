@@ -10,34 +10,27 @@ namespace BoLayer
 {
     public class DeliveryBO
     {
-        ShipmentBO smbo; 
+        ShipmentBO smbo = new ShipmentBO();
 
         /*Method to search a delivery in the database*/
         public EDelivery GetDeliveryById(int id)
         {
-            smbo = new ShipmentBO();
 
             EDelivery delivery = new EDelivery();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
-                var deliveries = from o in db.DELIVERies.ToList()
-                                select new EDelivery
-                                {
-                                    Id = o.Id,
-                                    ShipmentID = o.ShipmentID,
-                                    Shipment = smbo.GetShipmentById(o.ShipmentID.Value),
-                                    Address = o.Address,
-                                    Contact = o.Contact,
-                                    TimePickup = o.Time_Pickup
-                                };
-
-                deliveries = deliveries.Where(o => o.Id == id);
-
-                foreach (var dl in deliveries)
+                DELIVERY dl = null;
+                if (id > 0)
                 {
-                    delivery = new EDelivery(dl.Id, dl.ShipmentID, dl.Shipment, dl.Address,
-                        dl.Contact, dl.TimePickup);
+                    dl = db.DELIVERies.Find(id);
                 }
+
+                delivery.Id = dl.Id;
+                delivery.ShipmentID = dl.ShipmentID;
+                delivery.Shipment = smbo.GetShipmentById(dl.ShipmentID.Value);
+                delivery.Address = dl.Address;
+                delivery.Contact = dl.Contact;
+                delivery.TimePickup = dl.Time_Pickup;
 
                 return delivery;
             }
