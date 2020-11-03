@@ -14,126 +14,126 @@ namespace DataLayer
 {
     public class ProductDAO
     {
-        Util util = new Util();
-        private Connection connect = new Connection();
-        private SqlDataReader read;
-        EProduct product = new EProduct();
+        //Util util = new Util();
+        //private Connection connect = new Connection();
+        //private SqlDataReader read;
+        //EProduct product = new EProduct();
 
-        public DataTable tableProducts()
-        {
-            DataTable dt = new DataTable();
-            try
-            {
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = connect.BeginConnection();
-                cmd.CommandText = "EXEC GETPRODUCTS";
-                read = cmd.ExecuteReader();
-                dt.Load(read);
-                read.Close();
-                connect.CloseConnection();
-            }
-            catch (Exception)
-            {
+        //public DataTable tableProducts()
+        //{
+        //    DataTable dt = new DataTable();
+        //    try
+        //    {
+        //        SqlCommand cmd = new SqlCommand();
+        //        cmd.Connection = connect.BeginConnection();
+        //        cmd.CommandText = "EXEC GETPRODUCTS";
+        //        read = cmd.ExecuteReader();
+        //        dt.Load(read);
+        //        read.Close();
+        //        connect.CloseConnection();
+        //    }
+        //    catch (Exception)
+        //    {
 
-                util.showError("Imposible to connect to the database", "Connection");
-            }
-            return dt;
-        }
+        //        util.showError("Imposible to connect to the database", "Connection");
+        //    }
+        //    return dt;
+        //}
 
-        public bool Insert(EProduct product)
-        {
-            bool ins = false;
-            try
-            {
-                string query = "EXEC SETPRODUCT @Product_Name, @Category, @Product_Description, @Price, @Units";
-                SqlCommand cmd = new SqlCommand(query);
-                cmd.Connection = connect.BeginConnection();
-                cmd.Parameters.AddWithValue("@Product_Name", product.Name);
-                cmd.Parameters.AddWithValue("@Category", product.Category);
-                cmd.Parameters.AddWithValue("@Product_Description", product.Description);
-                cmd.Parameters.AddWithValue("@Price", product.Price);
-                cmd.Parameters.AddWithValue("@Units", product.Units);
-                ins = cmd.ExecuteNonQuery() > 0;
-                cmd.Parameters.Clear();
-                cmd.Connection = connect.CloseConnection();
+        //public bool Insert(EProduct product)
+        //{
+        //    bool ins = false;
+        //    try
+        //    {
+        //        string query = "EXEC SETPRODUCT @Product_Name, @Category, @Product_Description, @Price, @Units";
+        //        SqlCommand cmd = new SqlCommand(query);
+        //        cmd.Connection = connect.BeginConnection();
+        //        cmd.Parameters.AddWithValue("@Product_Name", product.Name);
+        //        cmd.Parameters.AddWithValue("@Category", product.Category);
+        //        cmd.Parameters.AddWithValue("@Product_Description", product.Description);
+        //        cmd.Parameters.AddWithValue("@Price", product.Price);
+        //        cmd.Parameters.AddWithValue("@Units", product.Units);
+        //        ins = cmd.ExecuteNonQuery() > 0;
+        //        cmd.Parameters.Clear();
+        //        cmd.Connection = connect.CloseConnection();
 
-            }
-            catch (SqlException sq)
-            {
+        //    }
+        //    catch (SqlException sq)
+        //    {
 
-                util.showError(sq.Message + " Imposible to connect to the database", "Connection");
-            }
-            return ins;
-        }
+        //        util.showError(sq.Message + " Imposible to connect to the database", "Connection");
+        //    }
+        //    return ins;
+        //}
 
-        public bool Update(EProduct product)
-        {
-            bool ins = false;
-            try
-            {
-                string query = "";
-                SqlCommand cmd = new SqlCommand(query);
-                cmd.Connection = connect.BeginConnection();
-                cmd.Parameters.AddWithValue("@Id", product.Id);
-                cmd.Parameters.AddWithValue("@Product_Name", product.Name);
-                cmd.Parameters.AddWithValue("@Category", product.Category);
-                cmd.Parameters.AddWithValue("@Product_Description", product.Description);
-                cmd.Parameters.AddWithValue("@Price", product.Price);
-                cmd.Parameters.AddWithValue("@Units", product.Units);
-                ins = cmd.ExecuteNonQuery() > 0;
-                cmd.Parameters.Clear();
-                cmd.Connection = connect.CloseConnection();
+        //public bool Update(EProduct product)
+        //{
+        //    bool ins = false;
+        //    try
+        //    {
+        //        string query = "";
+        //        SqlCommand cmd = new SqlCommand(query);
+        //        cmd.Connection = connect.BeginConnection();
+        //        cmd.Parameters.AddWithValue("@Id", product.Id);
+        //        cmd.Parameters.AddWithValue("@Product_Name", product.Name);
+        //        cmd.Parameters.AddWithValue("@Category", product.Category);
+        //        cmd.Parameters.AddWithValue("@Product_Description", product.Description);
+        //        cmd.Parameters.AddWithValue("@Price", product.Price);
+        //        cmd.Parameters.AddWithValue("@Units", product.Units);
+        //        ins = cmd.ExecuteNonQuery() > 0;
+        //        cmd.Parameters.Clear();
+        //        cmd.Connection = connect.CloseConnection();
 
-            }
-            catch (SqlException sq)
-            {
+        //    }
+        //    catch (SqlException sq)
+        //    {
 
-                util.showError(sq.Message + " Imposible to connect to the database", "Connection");
-            }
-            return ins;
-        }
+        //        util.showError(sq.Message + " Imposible to connect to the database", "Connection");
+        //    }
+        //    return ins;
+        //}
 
-        public bool Delete(EProduct product)
-        {
-            bool ins = false;
-            try
-            {
-                string query = "";
-                SqlCommand cmd = new SqlCommand(query);
-                cmd.Connection = connect.BeginConnection();
-                cmd.Parameters.AddWithValue("@Id", product.Id);
-                ins = cmd.ExecuteNonQuery() > 0;
-                cmd.Parameters.Clear();
-                cmd.Connection = connect.CloseConnection();
+        //public bool Delete(EProduct product)
+        //{
+        //    bool ins = false;
+        //    try
+        //    {
+        //        string query = "";
+        //        SqlCommand cmd = new SqlCommand(query);
+        //        cmd.Connection = connect.BeginConnection();
+        //        cmd.Parameters.AddWithValue("@Id", product.Id);
+        //        ins = cmd.ExecuteNonQuery() > 0;
+        //        cmd.Parameters.Clear();
+        //        cmd.Connection = connect.CloseConnection();
 
-            }
-            catch (SqlException sq)
-            {
+        //    }
+        //    catch (SqlException sq)
+        //    {
 
-                util.showError(sq.Message + " Imposible to connect to the database", "Connection");
-            }
-            return ins;
-        }
+        //        util.showError(sq.Message + " Imposible to connect to the database", "Connection");
+        //    }
+        //    return ins;
+        //}
 
-        private EProduct Load(SqlDataReader rd)
-        {
-            EProduct product = new EProduct();
-            try
-            {
-                product.Id = rd.GetInt32(1);
-                product.Name = rd.GetString(2);
-                product.Category = rd.GetString(3);
-                product.Description = rd.GetString(4);
-                product.Price = rd.GetDouble(5);
-                product.Units = rd.GetInt32(6);
-            }
-            catch (SqlException)
-            {
+        //private EProduct Load(SqlDataReader rd)
+        //{
+        //    EProduct product = new EProduct();
+        //    try
+        //    {
+        //        product.Id = rd.GetInt32(1);
+        //        product.Name = rd.GetString(2);
+        //        product.Category = rd.GetString(3);
+        //        product.Description = rd.GetString(4);
+        //        product.Price = rd.GetDouble(5);
+        //        product.Units = rd.GetInt32(6);
+        //    }
+        //    catch (SqlException)
+        //    {
 
-                util.showError("Imposible to connect to the database", "Connection");
-            }
-            return product;
-        }
+        //        util.showError("Imposible to connect to the database", "Connection");
+        //    }
+        //    return product;
+        //}
 
     }
 }
