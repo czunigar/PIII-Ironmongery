@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeliveryBO.cs" />
+    <Compile Include="InvoiceBO.cs" />
     <Compile Include="LogisticBO.cs" />
     <Compile Include="NoticeBO.cs" />
     <Compile Include="OrderBO.cs" />
