@@ -28,161 +28,143 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtgvProducts = new System.Windows.Forms.DataGridView();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Units = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.spProduct = new System.Windows.Forms.SplitContainer();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.btnAdd = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvProducts)).BeginInit();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dgvProducts = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.spProduct)).BeginInit();
+            this.spProduct.Panel1.SuspendLayout();
+            this.spProduct.Panel2.SuspendLayout();
+            this.spProduct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
             // 
-            // dtgvProducts
+            // spProduct
             // 
-            this.dtgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.Name,
-            this.Category,
-            this.Description,
-            this.Price,
-            this.Units});
-            this.dtgvProducts.Location = new System.Drawing.Point(63, 182);
-            this.dtgvProducts.Name = "dtgvProducts";
-            this.dtgvProducts.RowHeadersWidth = 51;
-            this.dtgvProducts.RowTemplate.Height = 24;
-            this.dtgvProducts.Size = new System.Drawing.Size(853, 251);
-            this.dtgvProducts.TabIndex = 0;
+            this.spProduct.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.spProduct.Location = new System.Drawing.Point(0, 0);
+            this.spProduct.Name = "spProduct";
+            this.spProduct.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // id
+            // spProduct.Panel1
             // 
-            this.id.HeaderText = "id";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.Visible = false;
-            this.id.Width = 125;
+            this.spProduct.Panel1.Controls.Add(this.btnSearch);
+            this.spProduct.Panel1.Controls.Add(this.txtSearch);
+            this.spProduct.Panel1.Controls.Add(this.btnEdit);
+            this.spProduct.Panel1.Controls.Add(this.btnRemove);
+            this.spProduct.Panel1.Controls.Add(this.button1);
             // 
-            // Name
+            // spProduct.Panel2
             // 
-            this.Name.HeaderText = "Name";
-            this.Name.MinimumWidth = 6;
-            this.Name.Name = "Name";
-            this.Name.Width = 125;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
-            this.Category.Width = 125;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            this.Description.Width = 300;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.Width = 125;
-            // 
-            // Units
-            // 
-            this.Units.HeaderText = "Units";
-            this.Units.MinimumWidth = 6;
-            this.Units.Name = "Units";
-            this.Units.Width = 125;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(63, 100);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(203, 22);
-            this.txtSearch.TabIndex = 1;
+            this.spProduct.Panel2.Controls.Add(this.dgvProducts);
+            this.spProduct.Size = new System.Drawing.Size(812, 523);
+            this.spProduct.SplitterDistance = 56;
+            this.spProduct.TabIndex = 0;
             // 
             // btnSearch
             // 
-            this.btnSearch.Location = new System.Drawing.Point(307, 91);
+            this.btnSearch.ForeColor = System.Drawing.Color.DimGray;
+            this.btnSearch.Image = global::Ironmongery.Properties.Resources.icons8_search_25px_9;
+            this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearch.Location = new System.Drawing.Point(300, 12);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(66, 31);
-            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Size = new System.Drawing.Size(95, 30);
+            this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Search";
+            this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // btnDelete
+            // txtSearch
             // 
-            this.btnDelete.Location = new System.Drawing.Point(788, 91);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(72, 31);
-            this.btnDelete.TabIndex = 4;
-            this.btnDelete.Text = "Remove";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.txtSearch.Font = new System.Drawing.Font("Lucida Sans Typewriter", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(21, 12);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(273, 30);
+            this.txtSearch.TabIndex = 8;
             // 
             // btnEdit
             // 
-            this.btnEdit.Location = new System.Drawing.Point(704, 91);
+            this.btnEdit.ForeColor = System.Drawing.Color.DimGray;
+            this.btnEdit.Image = global::Ironmongery.Properties.Resources.icons8_edit_25px;
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.Location = new System.Drawing.Point(619, 11);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(66, 31);
-            this.btnEdit.TabIndex = 5;
+            this.btnEdit.Size = new System.Drawing.Size(87, 30);
+            this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "Edit";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // btnAdd
+            // btnRemove
             // 
-            this.btnAdd.Location = new System.Drawing.Point(614, 91);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(66, 31);
-            this.btnAdd.TabIndex = 6;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            this.btnRemove.ForeColor = System.Drawing.Color.DimGray;
+            this.btnRemove.Image = global::Ironmongery.Properties.Resources.icons8_remove_25px;
+            this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemove.Location = new System.Drawing.Point(712, 11);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(87, 30);
+            this.btnRemove.TabIndex = 5;
+            this.btnRemove.Text = "Delete";
+            this.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.Color.DimGray;
+            this.button1.Image = global::Ironmongery.Properties.Resources.icons8_add_25px_4;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(526, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(87, 30);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Add";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dgvProducts
+            // 
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProducts.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProducts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvProducts.Location = new System.Drawing.Point(0, 0);
+            this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.RowHeadersVisible = false;
+            this.dgvProducts.Size = new System.Drawing.Size(812, 463);
+            this.dgvProducts.TabIndex = 0;
             // 
             // FrmProducts
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1005, 574);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnEdit);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnSearch);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.dtgvProducts);
+            this.ClientSize = new System.Drawing.Size(812, 523);
+            this.Controls.Add(this.spProduct);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmProducts";
             this.Text = "FrmProducts";
+            this.Load += new System.EventHandler(this.FrmProducts_Load);
             this.VisibleChanged += new System.EventHandler(this.FrmProducts_VisibleChanged);
-            ((System.ComponentModel.ISupportInitialize)(this.dtgvProducts)).EndInit();
+            this.spProduct.Panel1.ResumeLayout(false);
+            this.spProduct.Panel1.PerformLayout();
+            this.spProduct.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.spProduct)).EndInit();
+            this.spProduct.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dtgvProducts;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Units;
-        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.SplitContainer spProduct;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnEdit;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dgvProducts;
     }
 }

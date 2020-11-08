@@ -26,16 +26,16 @@ namespace Ironmongery
         /*Method to get the select the product*/
         private EProduct selected()
         {
-            int row = dtgvProducts.CurrentCell.RowIndex;
+            int row = dgvProducts.CurrentCell.RowIndex;
             if (row < 0)
             {
                 return null;
             }
-            return (EProduct)dtgvProducts.Rows[row].Cells[0].Value;
+            return (EProduct)dgvProducts.Rows[row].Cells[0].Value;
         }
         private void loadData()
         {
-            dtgvProducts.Rows.Clear();
+            dgvProducts.Rows.Clear();
             string filter = txtSearch.Text.ToUpper().Trim();
             try
             {
@@ -46,7 +46,7 @@ namespace Ironmongery
 
                         object[] row = {product.Id, product.Name, product.Category, product.Description,
                         product.Price, product.Units};
-                        dtgvProducts.Rows.Add(row);
+                        dgvProducts.Rows.Add(row);
                     }
                 }
             }
@@ -56,11 +56,78 @@ namespace Ironmongery
             }
         }
 
+        private void AddProduct()
+        {
+            try
+            {
+                if (dgvProducts.CurrentCell.Value != null)
+                {
+                    FrmAddProduct newProduct = new FrmAddProduct(this);
+                    newProduct.Visible = true;
+                    Visible = false;
+                    loadData();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace + "There was an issue trying to open the new view, please try again", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Edit()
+        {
+            try
+            {
+                if (dgvProducts.CurrentCell.Value != null)
+                {
+                    FrmAddProduct newProduct = new FrmAddProduct(this, selected());
+                    newProduct.Visible = true;
+                    Visible = false;
+                    loadData();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace + "There was an issue trying to edit the product", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Delete()
+        {
+            try
+            {
+                if (dgvProducts.CurrentCell.Value != null)
+                {
+                    DialogResult result = MessageBox.Show($"Are you sure to remove the product \"{selected().Name}\"",
+                                "Removing User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        productbo.Delete(selected().Id);
+                        loadData();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please choose a product", "Deliting product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("There was an issue trying to delete the product", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-                if (dtgvProducts.CurrentCell.Value != null)
+                if (dgvProducts.CurrentCell.Value != null)
                 {
                     FrmAddProduct newProduct = new FrmAddProduct(this);
                     newProduct.Visible = true;
@@ -80,7 +147,7 @@ namespace Ironmongery
         {
             try
             {
-                if (dtgvProducts.CurrentCell.Value != null)
+                if (dgvProducts.CurrentCell.Value != null)
                 {
                     FrmAddProduct newProduct = new FrmAddProduct(this, selected());
                     newProduct.Visible = true;
@@ -100,7 +167,7 @@ namespace Ironmongery
         {
             try
             {
-                if (dtgvProducts.CurrentCell.Value != null)
+                if (dgvProducts.CurrentCell.Value != null)
                 {
                     DialogResult result = MessageBox.Show($"Are you sure to remove the product \"{selected().Name}\"",
                                 "Removing User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -131,6 +198,21 @@ namespace Ironmongery
         private void FrmProducts_VisibleChanged(object sender, EventArgs e)
         {
             loadData();
+        }
+
+        private void dtgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmProducts_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
