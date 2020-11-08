@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -64,7 +65,9 @@
     <Compile Include="ServiceBO.cs" />
     <Compile Include="ServiceOrderBO.cs" />
     <Compile Include="ShipmentBO.cs" />
+    <Compile Include="TruckBO.cs" />
     <Compile Include="UserBO.cs" />
+    <Compile Include="WarehouseBO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataLayer\DataLayer.csproj">

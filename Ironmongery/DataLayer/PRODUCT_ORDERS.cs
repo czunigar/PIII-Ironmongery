@@ -26,7 +26,7 @@ namespace DataLayer
         public int Id { get; set; }
         public Nullable<int> OrderID { get; set; }
         public Nullable<int> ProductID { get; set; }
-        public Nullable<short> Units { get; set; }
+        public Nullable<int> Units { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INVOICE> INVOICES { get; set; }

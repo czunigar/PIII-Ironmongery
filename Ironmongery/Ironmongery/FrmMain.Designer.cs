@@ -42,15 +42,15 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lstProductInfo = new System.Windows.Forms.ListBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lstProducts = new System.Windows.Forms.ListBox();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.lstProducts = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.lstProductInfo = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -86,6 +86,7 @@
             this.loginToolStripMenuItem.Size = new System.Drawing.Size(52, 21);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // tabControl1
             // 
@@ -206,6 +207,59 @@
             this.tabPage2.Text = "Shopping Cart";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lstProductInfo
+            // 
+            this.lstProductInfo.FormattingEnabled = true;
+            this.lstProductInfo.ItemHeight = 18;
+            this.lstProductInfo.Location = new System.Drawing.Point(621, 249);
+            this.lstProductInfo.Name = "lstProductInfo";
+            this.lstProductInfo.Size = new System.Drawing.Size(177, 94);
+            this.lstProductInfo.TabIndex = 5;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Location = new System.Drawing.Point(621, 79);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(177, 128);
+            this.pictureBox10.TabIndex = 4;
+            this.pictureBox10.TabStop = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(633, 401);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(165, 30);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Remove";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(633, 447);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(165, 35);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Complete";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 18);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Products:";
+            // 
+            // lstProducts
+            // 
+            this.lstProducts.FormattingEnabled = true;
+            this.lstProducts.ItemHeight = 18;
+            this.lstProducts.Location = new System.Drawing.Point(43, 65);
+            this.lstProducts.Name = "lstProducts";
+            this.lstProducts.Size = new System.Drawing.Size(518, 436);
+            this.lstProducts.TabIndex = 0;
+            // 
             // lblSearch
             // 
             this.lblSearch.AutoSize = true;
@@ -233,59 +287,6 @@
             this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // lstProducts
-            // 
-            this.lstProducts.FormattingEnabled = true;
-            this.lstProducts.ItemHeight = 18;
-            this.lstProducts.Location = new System.Drawing.Point(43, 65);
-            this.lstProducts.Name = "lstProducts";
-            this.lstProducts.Size = new System.Drawing.Size(518, 436);
-            this.lstProducts.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 18);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Products:";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(633, 447);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(165, 35);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Complete";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(633, 401);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(165, 30);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Remove";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Location = new System.Drawing.Point(621, 79);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(177, 128);
-            this.pictureBox10.TabIndex = 4;
-            this.pictureBox10.TabStop = false;
-            // 
-            // lstProductInfo
-            // 
-            this.lstProductInfo.FormattingEnabled = true;
-            this.lstProductInfo.ItemHeight = 18;
-            this.lstProductInfo.Location = new System.Drawing.Point(621, 249);
-            this.lstProductInfo.Name = "lstProductInfo";
-            this.lstProductInfo.Size = new System.Drawing.Size(177, 94);
-            this.lstProductInfo.TabIndex = 5;
-            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,6 +299,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

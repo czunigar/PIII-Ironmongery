@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace EntityLayer
 {
-    public class EUser
+    public class EUser : EPerson
     {
-        public int Id { get; set; }
         public string Code { get; set; }
-        public string Username { get; set; }
         public string Password { get; set; }
         public string Type { get; set; }
         public bool? Admin { get; set; }
@@ -19,11 +17,13 @@ namespace EntityLayer
         {
         }
 
-        public EUser(int id, string code, string username, string password, string type, bool? admin)
+        public EUser(int id, string cid, string name, string code, string password, string type, bool? admin) 
+            : base(id, cid, name)
         {
             Id = id;
+            Cid = cid;
+            Person_Name = name;
             Code = code;
-            Username = username;
             Password = password;
             Type = type;
             Admin = admin;
@@ -31,7 +31,7 @@ namespace EntityLayer
 
         public override string ToString()
         {
-            return $"{Code} - {Username}";
+            return $"{Code} - {Person_Name}";
         }
     }
 }

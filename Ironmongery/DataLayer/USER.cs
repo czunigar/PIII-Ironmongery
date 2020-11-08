@@ -23,6 +23,7 @@ namespace DataLayer
     
         public int Id { get; set; }
         public string Code { get; set; }
+        public string Cid { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public string Type { get; set; }

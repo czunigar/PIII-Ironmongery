@@ -9,7 +9,7 @@ namespace EntityLayer
     public class ELogistic
     {
         public int Id { get; set; }
-        public short? VehicleNumber { get; set; }
+        public int? VehicleNumber { get; set; }
         public int DriverId { get; set; }
         public EUser driver;
         public bool? Active { get; set; }
@@ -18,7 +18,7 @@ namespace EntityLayer
         {
         }
 
-        public ELogistic(int id, short? vehicle_Number, int driverId, EUser driver, bool? active)
+        public ELogistic(int id, int? vehicle_Number, int driverId, EUser driver, bool? active)
         {
             Id = id;
             VehicleNumber = vehicle_Number;

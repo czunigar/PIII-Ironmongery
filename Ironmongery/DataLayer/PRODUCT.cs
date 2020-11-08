@@ -26,6 +26,7 @@ namespace DataLayer
         public string Product_Description { get; set; }
         public Nullable<decimal> Price { get; set; }
         public Nullable<decimal> Units { get; set; }
+        public string Image_path { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCT_ORDERS> PRODUCT_ORDERS { get; set; }

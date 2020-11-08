@@ -10,17 +10,11 @@ using System.Windows.Forms;
 
 namespace Ironmongery
 {
-    public partial class FrmMain : Form
+    public partial class AddUser : Form
     {
-        public FrmMain()
+        public AddUser()
         {
             InitializeComponent();
-        }
-
-        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            LogIn login = new LogIn();
-            login.ShowDialog();
         }
     }
 }

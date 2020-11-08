@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BoLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,42 @@ namespace Ironmongery
 {
     public partial class FrmUsers : Form
     {
+        private UserBO ubo;
         public FrmUsers()
         {
             InitializeComponent();
+            ubo = new UserBO();
+        }
+
+        public void LoadUsers()
+        {
+            dgvUsers.DataSource = null;
+            dgvUsers.DataSource = ubo.LoadUsers(txtSearch.Text.ToUpper());
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadUsers();
+        }
+
+        private void FrmUsers_Load(object sender, EventArgs e)
+        {
+            LoadUsers();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

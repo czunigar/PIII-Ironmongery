@@ -11,8 +11,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShipmentID" Type="int" />
-          <Property Name="Address" Type="nvarchar" MaxLength="60" />
-          <Property Name="Contact" Type="nvarchar" MaxLength="30" />
+          <Property Name="Address" Type="varchar" MaxLength="60" />
+          <Property Name="Contact" Type="varchar" MaxLength="30" />
           <Property Name="Time_Pickup" Type="time" Precision="7" />
         </EntityType>
         <EntityType Name="INVOICES">
@@ -35,7 +35,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Vehicle_Number" Type="smallint" />
+          <Property Name="Vehicle_Number" Type="int" />
           <Property Name="DriverID" Type="int" />
           <Property Name="Active" Type="bit" />
         </EntityType>
@@ -53,10 +53,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cid" Type="nvarchar" MaxLength="9" />
-          <Property Name="Client_Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Cid" Type="varchar" MaxLength="9" />
+          <Property Name="Client_Name" Type="varchar" MaxLength="30" />
           <Property Name="Date" Type="date" />
-          <Property Name="Status" Type="nvarchar" MaxLength="9" />
+          <Property Name="Status" Type="varchar" MaxLength="9" />
         </EntityType>
         <EntityType Name="PRODUCT_ORDERS">
           <Key>
@@ -65,18 +65,19 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderID" Type="int" />
           <Property Name="ProductID" Type="int" />
-          <Property Name="Units" Type="smallint" />
+          <Property Name="Units" Type="int" />
         </EntityType>
         <EntityType Name="PRODUCTS">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Product_Name" Type="nvarchar" MaxLength="30" />
-          <Property Name="Category" Type="nvarchar" MaxLength="20" />
-          <Property Name="Product_Description" Type="nvarchar" MaxLength="80" />
+          <Property Name="Product_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Category" Type="varchar" MaxLength="20" />
+          <Property Name="Product_Description" Type="varchar" MaxLength="80" />
           <Property Name="Price" Type="numeric" Precision="10" Scale="2" />
           <Property Name="Units" Type="numeric" Precision="10" Scale="2" />
+          <Property Name="Image_path" Type="varchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="SERVICE_ORDERS">
           <Key>
@@ -92,8 +93,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Service_Name" Type="varchar" MaxLength="30" />
-          <Property Name="Category" Type="nvarchar" MaxLength="20" />
-          <Property Name="Service_Description" Type="nvarchar" MaxLength="80" />
+          <Property Name="Category" Type="varchar" MaxLength="20" />
+          <Property Name="Service_Description" Type="varchar" MaxLength="80" />
           <Property Name="Price" Type="numeric" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="SHIPMENTS">
@@ -106,28 +107,29 @@
           <Property Name="Service_Order" Type="int" />
           <Property Name="TruckID" Type="int" />
           <Property Name="Order_Time" Type="time" Precision="7" />
-          <Property Name="Status" Type="nvarchar" MaxLength="8" />
+          <Property Name="Status" Type="varchar" MaxLength="8" />
         </EntityType>
         <EntityType Name="TRUCK">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="nvarchar" MaxLength="6" />
-          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Code" Type="varchar" MaxLength="6" />
+          <Property Name="Name" Type="varchar" MaxLength="30" />
           <Property Name="TruckID" Type="int" />
           <Property Name="OrderId" Type="int" />
-          <Property Name="Observations" Type="nvarchar" MaxLength="30" />
+          <Property Name="Observations" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="USERS">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Code" Type="nvarchar" MaxLength="6" />
-          <Property Name="Username" Type="nvarchar" MaxLength="30" />
-          <Property Name="Password" Type="nvarchar" MaxLength="35" />
-          <Property Name="Type" Type="nvarchar" MaxLength="15" />
+          <Property Name="Code" Type="varchar" MaxLength="6" />
+          <Property Name="Cid" Type="varchar" MaxLength="9" />
+          <Property Name="Username" Type="varchar" MaxLength="30" />
+          <Property Name="Password" Type="varchar" MaxLength="35" />
+          <Property Name="Type" Type="varchar" MaxLength="15" />
           <Property Name="Admin" Type="bit" />
         </EntityType>
         <EntityType Name="WAREHOUSE">
@@ -421,8 +423,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShipmentID" Type="Int32" />
-          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
-          <Property Name="Contact" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Contact" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Time_Pickup" Type="Time" Precision="7" />
           <NavigationProperty Name="SHIPMENT" Relationship="Self.fk_shipm_id" FromRole="DELIVERY" ToRole="SHIPMENTS" />
         </EntityType>
@@ -448,7 +450,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Vehicle_Number" Type="Int16" />
+          <Property Name="Vehicle_Number" Type="Int32" />
           <Property Name="DriverID" Type="Int32" />
           <Property Name="Active" Type="Boolean" />
           <NavigationProperty Name="USER" Relationship="Self.fk_driver_id" FromRole="LOGISTICS" ToRole="USERS" />
@@ -471,10 +473,10 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cid" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
-          <Property Name="Client_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Cid" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Client_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="0" />
-          <Property Name="Status" Type="String" MaxLength="9" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_pdorder_id" FromRole="ORDERS" ToRole="PRODUCT_ORDERS" />
           <NavigationProperty Name="SERVICE_ORDERS" Relationship="Self.fk_svorder_id" FromRole="ORDERS" ToRole="SERVICE_ORDERS" />
         </EntityType>
@@ -485,7 +487,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderID" Type="Int32" />
           <Property Name="ProductID" Type="Int32" />
-          <Property Name="Units" Type="Int16" />
+          <Property Name="Units" Type="Int32" />
           <NavigationProperty Name="INVOICES" Relationship="Self.fk_inv_prod" FromRole="PRODUCT_ORDERS" ToRole="INVOICES" />
           <NavigationProperty Name="NOTICES" Relationship="Self.fk_nprod_id" FromRole="PRODUCT_ORDERS" ToRole="NOTICES" />
           <NavigationProperty Name="ORDER" Relationship="Self.fk_pdorder_id" FromRole="PRODUCT_ORDERS" ToRole="ORDERS" />
@@ -498,11 +500,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Product_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Product_Description" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Product_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Product_Description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
           <Property Name="Units" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="Image_path" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_prod_id" FromRole="PRODUCTS" ToRole="PRODUCT_ORDERS" />
         </EntityType>
         <EntityType Name="SERVICE_ORDERS">
@@ -522,8 +525,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Service_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="Service_Description" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Category" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Service_Description" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
           <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
           <NavigationProperty Name="SERVICE_ORDERS" Relationship="Self.fk_serv_id" FromRole="SERVICES" ToRole="SERVICE_ORDERS" />
         </EntityType>
@@ -537,7 +540,7 @@
           <Property Name="Service_Order" Type="Int32" />
           <Property Name="TruckID" Type="Int32" />
           <Property Name="Order_Time" Type="Time" Precision="7" />
-          <Property Name="Status" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DELIVERies" Relationship="Self.fk_shipm_id" FromRole="SHIPMENTS" ToRole="DELIVERY" />
           <NavigationProperty Name="INVOICES" Relationship="Self.fk_inv_shipm" FromRole="SHIPMENTS" ToRole="INVOICES" />
           <NavigationProperty Name="NOTICES" Relationship="Self.fk_nshipm_id" FromRole="SHIPMENTS" ToRole="NOTICES" />
@@ -550,11 +553,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="TruckID" Type="Int32" />
           <Property Name="OrderId" Type="Int32" />
-          <Property Name="Observations" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Observations" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="LOGISTIC" Relationship="Self.fk_truck_number" FromRole="TRUCK" ToRole="LOGISTICS" />
           <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_order_number" FromRole="TRUCK" ToRole="PRODUCT_ORDERS" />
         </EntityType>
@@ -563,10 +566,11 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="true" />
-          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" MaxLength="35" FixedLength="false" Unicode="true" />
-          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="Cid" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Admin" Type="Boolean" />
           <NavigationProperty Name="LOGISTICS" Relationship="Self.fk_driver_id" FromRole="USERS" ToRole="LOGISTICS" />
           <NavigationProperty Name="SHIPMENTS" Relationship="Self.fk_seller_id" FromRole="USERS" ToRole="SHIPMENTS" />
@@ -935,6 +939,7 @@
                 <ScalarProperty Name="Product_Description" ColumnName="Product_Description" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Units" ColumnName="Units" />
+                <ScalarProperty Name="Image_path" ColumnName="Image_path" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -988,6 +993,7 @@
               <MappingFragment StoreEntitySet="USERS">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Cid" ColumnName="Cid" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
