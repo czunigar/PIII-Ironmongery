@@ -28,6 +28,7 @@ namespace BoLayer
                 product.Description = p.Product_Description;
                 product.Price = p.Price;
                 product.Units = p.Units;
+                product.Image = p.Image_path;
 
                 return product;
             }
@@ -47,7 +48,8 @@ namespace BoLayer
                                  Category = p.Category,
                                  Description = p.Product_Description,
                                  Price = p.Price,
-                                 Units = p.Units
+                                 Units = p.Units,
+                                 Image = p.Image_path
                              };
 
                 if (!string.IsNullOrEmpty(filter))
@@ -57,7 +59,7 @@ namespace BoLayer
                 foreach (var pd in myList)
                 {
                     products.Add(new EProduct(pd.Id, pd.Name, pd.Category, pd.Description,
-                        pd.Price, pd.Units));
+                        pd.Price, pd.Units, pd.Image));
                 }
 
                 return products;
@@ -86,6 +88,7 @@ namespace BoLayer
                 prod.Product_Description = product.Description;
                 prod.Price = product.Price;
                 prod.Units = product.Units;
+                prod.Image_path = product.Image;
 
                 if (pid == 0)
                 {

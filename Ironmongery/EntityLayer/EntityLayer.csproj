@@ -54,11 +54,14 @@
     <Compile Include="EDelivery.cs" />
     <Compile Include="EInvoice.cs" />
     <Compile Include="ENotice.cs" />
+    <Compile Include="EPerson.cs" />
     <Compile Include="EProduct.cs" />
     <Compile Include="ELogistic.cs" />
     <Compile Include="EOrder.cs" />
     <Compile Include="EProductOrder.cs" />
     <Compile Include="EServiceOrder.cs" />
+    <Compile Include="ETruck.cs" />
+    <Compile Include="EWarehouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EUser.cs" />
     <Compile Include="EService.cs" />

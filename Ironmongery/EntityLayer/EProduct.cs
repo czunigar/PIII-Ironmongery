@@ -14,19 +14,21 @@ namespace EntityLayer
         public string Description { get; set; }
         public decimal? Price { get; set; }
         public decimal? Units { get; set; }
+        public string Image { get; set; }
 
         public EProduct()
         {
         }
 
-        public EProduct(int id, string name, string categoty, string description, decimal? price, decimal? units)
+        public EProduct(int id, string name, string category, string description, decimal? price, decimal? units, string image)
         {
             Id = id;
             Name = name;
-            Category = categoty;
+            Category = category;
             Description = description;
             Price = price;
             Units = units;
+            this.Image = image;
         }
 
         public override string ToString()

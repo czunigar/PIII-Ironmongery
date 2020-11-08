@@ -22,7 +22,7 @@ namespace DataLayer
         }
     
         public int Id { get; set; }
-        public Nullable<short> Vehicle_Number { get; set; }
+        public Nullable<int> Vehicle_Number { get; set; }
         public Nullable<int> DriverID { get; set; }
         public Nullable<bool> Active { get; set; }
     

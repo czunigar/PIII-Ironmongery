@@ -12,13 +12,13 @@ namespace EntityLayer
         public int? OrderID { get; set; }
         public EOrder order;
         public int? ProductID { get; set; }
-        public short? Units { get; set; }
+        public int? Units { get; set; }
 
         public EProductOrder()
         {
         }
 
-        public EProductOrder(int id, int? orderID, EOrder order, int? productID, short? units)
+        public EProductOrder(int id, int? orderID, EOrder order, int? productID, int? units)
         {
             Id = id;
             OrderID = orderID;
