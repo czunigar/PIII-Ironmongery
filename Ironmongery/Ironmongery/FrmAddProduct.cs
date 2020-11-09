@@ -17,6 +17,7 @@ namespace Ironmongery
         private ProductBO productbo;
         private EProduct eproduct;
         private Form parent;
+        string path = "";
 
         public FrmAddProduct(Form parent)
         {
@@ -36,6 +37,19 @@ namespace Ironmongery
         #region METHODS
         /*METHODS*/
         /*
+         Save path image
+         */
+        private string saveImage()
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
+            {
+                path = fbd.SelectedPath;
+                return path;
+            }
+            return path;
+        }
+        /*
          Add new product
          */
         private void addProduct()
@@ -48,7 +62,11 @@ namespace Ironmongery
                 newProduct.Description = txtDescription.Text.Trim();
                 newProduct.Price = decimal.Parse(txtPrice.Text.Trim());
                 newProduct.Units = decimal.Parse(txtUnits.Text.Trim());
-                productbo.Save(newProduct);
+                if (!(path.Equals("")))
+                {
+                    newProduct.Image = path;
+                    productbo.Save(newProduct);
+                }
             }
             catch (Exception exception)
             {
@@ -92,5 +110,10 @@ namespace Ironmongery
             }
         }
         #endregion
+
+        private void btnImage_Click(object sender, EventArgs e)
+        {
+            saveImage();
+        }
     }
 }

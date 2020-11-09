@@ -21,7 +21,13 @@ namespace Ironmongery
             InitializeComponent();
             this.parent = parent;
             this.productbo = new ProductBO();
-            loadData();
+            //loadData();
+        }
+        public FrmProducts()
+        {
+            InitializeComponent();
+            this.productbo = new ProductBO();
+            //loadData();
         }
         /*Method to get the select the product*/
         private EProduct selected()
@@ -33,7 +39,7 @@ namespace Ironmongery
             }
             return (EProduct)dgvProducts.Rows[row].Cells[0].Value;
         }
-        private void loadData()
+        /*private void loadData()
         {
             dgvProducts.Rows.Clear();
             string filter = txtSearch.Text.ToUpper().Trim();
@@ -54,7 +60,7 @@ namespace Ironmongery
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }*/
 
         private void AddProduct()
         {
@@ -65,7 +71,7 @@ namespace Ironmongery
                     FrmAddProduct newProduct = new FrmAddProduct(this);
                     newProduct.Visible = true;
                     Visible = false;
-                    loadData();
+                   // loadData();
                 }
             }
             catch (Exception ex)
@@ -85,7 +91,7 @@ namespace Ironmongery
                     FrmAddProduct newProduct = new FrmAddProduct(this, selected());
                     newProduct.Visible = true;
                     Visible = false;
-                    loadData();
+                  //  loadData();
                 }
             }
             catch (Exception ex)
@@ -107,7 +113,7 @@ namespace Ironmongery
                     if (result == DialogResult.Yes)
                     {
                         productbo.Delete(selected().Id);
-                        loadData();
+                      //  loadData();
                     }
                 }
                 else
@@ -132,7 +138,7 @@ namespace Ironmongery
                     FrmAddProduct newProduct = new FrmAddProduct(this);
                     newProduct.Visible = true;
                     Visible = false;
-                    loadData();
+                  //  loadData();
                 }
             }
             catch (Exception ex)
@@ -152,7 +158,7 @@ namespace Ironmongery
                     FrmAddProduct newProduct = new FrmAddProduct(this, selected());
                     newProduct.Visible = true;
                     Visible = false;
-                    loadData();
+                  //  loadData();
                 }
             }
             catch (Exception ex)
@@ -174,7 +180,7 @@ namespace Ironmongery
                     if (result == DialogResult.Yes)
                     {
                         productbo.Delete(selected().Id);
-                        loadData();
+                      //  loadData();
                     }
                 }
                 else
@@ -192,12 +198,12 @@ namespace Ironmongery
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            loadData();
+            //loadData();
         }
 
         private void FrmProducts_VisibleChanged(object sender, EventArgs e)
         {
-            loadData();
+           // loadData();
         }
 
         private void dtgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -213,6 +219,28 @@ namespace Ironmongery
         private void FrmProducts_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNewProduct_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FrmAddProduct newProduct = new FrmAddProduct(this);
+                newProduct.Visible = true;
+                Visible = false;
+                //  loadData();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.StackTrace + "There was an issue trying to open the new view, please try again", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

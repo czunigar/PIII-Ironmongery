@@ -40,6 +40,10 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnImage = new System.Windows.Forms.Button();
+            this.pcImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pcImage)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -140,7 +144,7 @@
             // btnSave
             // 
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnSave.Location = new System.Drawing.Point(307, 369);
+            this.btnSave.Location = new System.Drawing.Point(174, 591);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(106, 40);
             this.btnSave.TabIndex = 10;
@@ -158,11 +162,44 @@
             this.lblTitle.TabIndex = 11;
             this.lblTitle.Text = "ADD PRODUCT";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label6.Location = new System.Drawing.Point(93, 359);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 25);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Image:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnImage
+            // 
+            this.btnImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnImage.Location = new System.Drawing.Point(174, 359);
+            this.btnImage.Name = "btnImage";
+            this.btnImage.Size = new System.Drawing.Size(239, 37);
+            this.btnImage.TabIndex = 13;
+            this.btnImage.Text = "Select image";
+            this.btnImage.UseVisualStyleBackColor = true;
+            this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
+            // 
+            // pcImage
+            // 
+            this.pcImage.Location = new System.Drawing.Point(202, 420);
+            this.pcImage.Name = "pcImage";
+            this.pcImage.Size = new System.Drawing.Size(167, 129);
+            this.pcImage.TabIndex = 14;
+            this.pcImage.TabStop = false;
+            // 
             // FrmAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(485, 450);
+            this.ClientSize = new System.Drawing.Size(468, 653);
+            this.Controls.Add(this.pcImage);
+            this.Controls.Add(this.btnImage);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.txtPrice);
@@ -177,6 +214,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmAddProduct";
             this.Text = "FrmAddProduct";
+            ((System.ComponentModel.ISupportInitialize)(this.pcImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,5 +234,8 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnImage;
+        private System.Windows.Forms.PictureBox pcImage;
     }
 }
