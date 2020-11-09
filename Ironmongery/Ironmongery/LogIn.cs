@@ -23,7 +23,7 @@ namespace Ironmongery
             InitializeComponent();
             ubo = new UserBO();
             messages = new Messages();
-            txtUser.Text = "adm728";
+            txtUser.Text = "adm269";
             txtPass.Text = "anitacr12345";
         }
 
