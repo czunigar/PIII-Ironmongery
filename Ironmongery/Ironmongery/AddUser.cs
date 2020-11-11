@@ -24,6 +24,7 @@ namespace Ironmongery
             InitializeComponent();
             this.ubo = new UserBO();
             this.user = user;
+            message = new Messages();
             txtPass.Visible = false;
             lblPass.Visible = false;
             lblTitle.Text = "EDIT USER";
@@ -35,6 +36,7 @@ namespace Ironmongery
             InitializeComponent();
             this.ubo = new UserBO();
             this.user = new EUser();
+            message = new Messages();
             lblTitle.Text = "NEW USER";
             lblId.Visible = false;
             txtId.Visible = false;
@@ -49,6 +51,7 @@ namespace Ironmongery
                 txtCid.Text = user.Cid;
                 txtCode.Text = user.Code;
                 txtName.Text = user.Name;
+                txtPass.Text = user.Password;
                 cboType.SelectedItem = user.Type;
                 ckAdmin.Checked = Convert.ToBoolean(user.Admin);
             }
@@ -90,7 +93,6 @@ namespace Ironmongery
         {
             try
             {
-                user.Id = int.Parse(txtId.Text);
                 user.Cid = txtCid.Text;
                 user.Name = txtName.Text;
                 user.Code = txtCode.Text;
@@ -113,22 +115,32 @@ namespace Ironmongery
             txtCid.Text = "";
             txtCode.Text = "";
             txtName.Text = "";
+            txtPass.Text = "";
             cboType.SelectedItem = "";
             ckAdmin.Checked = false;
         }
 
         private void getCode()
         {
-            string code = "";
-            if (!string.IsNullOrEmpty(txtCid.Text) && cboType.SelectedItem != null)
+            try
             {
-                string id = txtCid.Text.Substring(6, 3);
-                string role = cboType.SelectedItem.ToString();
-                string rol = role.Substring(0, 3);
-                code = rol.ToUpper() + id;
+                string code = "";
+                if (!string.IsNullOrEmpty(txtCid.Text) && cboType.SelectedItem != null)
+                {
+                    string id = txtCid.Text.Substring(6, 3);
+                    string role = cboType.SelectedItem.ToString();
+                    string rol = role.Substring(0, 3);
+                    code = rol.ToUpper() + id;
+                }
+                txtCode.Text = code;
             }
-            txtCode.Text = code;
+            catch (Exception)
+            {
+
+                message.notification("Couldn't retrieve the information");
+            }
         }
+
         public static void AddUserDispose(object sender, EventArgs e)
         {
             Instance = null;
@@ -152,16 +164,21 @@ namespace Ironmongery
             {
                 ePass.SetError(txtPass, "Password is missing");
             }
+            if (txtPass.Text.Length < 12)
+            {
+                ePass.SetError(txtPass, "Password most have more than 12 characters");
+            }
             if (cboType.SelectedItem == null)
             {
                 eRole.SetError(txtPass, "Role is missing");
             }
             if (!string.IsNullOrEmpty(txtCode.Text) && !string.IsNullOrEmpty(txtCid.Text) &&
                 !string.IsNullOrEmpty(txtName.Text) && !string.IsNullOrEmpty(txtPass.Text) &&
-                cboType.SelectedItem != null)
+                cboType.SelectedItem != null && txtPass.Text.Length >= 12)
             {
                 Save();
                 Clean();
+                message.notification("User save successfully");
             }
         }
 

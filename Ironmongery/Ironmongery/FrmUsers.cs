@@ -18,10 +18,13 @@ namespace Ironmongery
         private UserBO ubo;
         private Messages message;
         private AddUser editUser;
+        private Question question;
         public FrmUsers()
         {
             InitializeComponent();
             ubo = new UserBO();
+            message = new Messages();
+            question = new Question();
             btnCancel.Visible = false;
         }
 
@@ -82,7 +85,27 @@ namespace Ironmongery
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
+            try
+            {
+                if (dgvUsers.CurrentCell.Value != null)
+                {
+                    question.notification($"Do you want to delete the user: {selected().Code}?");
+                    if(question.Answer == 1)
+                    {
+                        ubo.Delete(selected().Id);
+                        message.notification("User deleted");
+                    }
+                }
+                else
+                {
+                    message.notification("Please choose a user");
+                }
+            }
+            catch (Exception)
+            {
 
+                message.notification("Imposible to proceed");
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
