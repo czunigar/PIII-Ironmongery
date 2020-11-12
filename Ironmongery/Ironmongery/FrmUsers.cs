@@ -18,13 +18,11 @@ namespace Ironmongery
         private UserBO ubo;
         private Messages message;
         private AddUser editUser;
-        private Question question;
         public FrmUsers()
         {
             InitializeComponent();
             ubo = new UserBO();
             message = new Messages();
-            question = new Question();
             btnCancel.Visible = false;
         }
 
@@ -89,11 +87,12 @@ namespace Ironmongery
             {
                 if (dgvUsers.CurrentCell.Value != null)
                 {
-                    question.notification($"Do you want to delete the user: {selected().Code}?");
-                    if(question.Answer == 1)
+                    Question.notification($"Do you want to delete the user: {selected().Code}?");
+                    if(Question.Answer == 1)
                     {
                         ubo.Delete(selected().Id);
                         message.notification("User deleted");
+                        LoadUsers();
                     }
                 }
                 else

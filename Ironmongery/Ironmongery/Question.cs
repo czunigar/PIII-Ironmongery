@@ -8,15 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ServiceLayer
+namespace Ironmongery
 {
     public partial class Question : Form
     {
-        public int Answer { get; set; }
+        public static int Answer { get; set; }
         public Question(string message)
         {
             InitializeComponent();
             lblText.Text = message;
+            Answer = 0;
         }
         public Question()
         {
@@ -24,9 +25,9 @@ namespace ServiceLayer
         }
 
 
-        public void notification(string message)
+        public static void notification(string message)
         {
-            Messages frm = new Messages(message);
+            Question frm = new Question(message);
             frm.ShowDialog();
         }
 
@@ -38,6 +39,7 @@ namespace ServiceLayer
         private void btnYes_Click(object sender, EventArgs e)
         {
             Answer = 1;
+            this.Close();
         }
     }
 }
