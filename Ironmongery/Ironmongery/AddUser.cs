@@ -116,7 +116,7 @@ namespace Ironmongery
             txtCode.Text = "";
             txtName.Text = "";
             txtPass.Text = "";
-            cboType.SelectedItem = "";
+            cboType.SelectedItem = null;
             ckAdmin.Checked = false;
         }
 
