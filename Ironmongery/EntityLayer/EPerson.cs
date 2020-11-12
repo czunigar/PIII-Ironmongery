@@ -10,7 +10,7 @@ namespace EntityLayer
     {
         public int Id { get; set; }
         public string Cid { get; set; }
-        public string Person_Name { get; set; }
+        public string Name { get; set; }
 
         protected EPerson()
         {
@@ -20,12 +20,12 @@ namespace EntityLayer
         {
             Id = id;
             Cid = cid;
-            Person_Name = person_Name;
+            Name = person_Name;
         }
 
         public override string ToString()
         {
-            return $"{Cid} - {Person_Name}";
+            return $"{Cid} - {Name}";
         }
     }
 }

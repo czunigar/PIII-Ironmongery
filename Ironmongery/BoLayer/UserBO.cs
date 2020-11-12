@@ -31,7 +31,7 @@ namespace BoLayer
                 user.Id = u.Id;
                 user.Code = u.Code;
                 user.Cid = u.Cid;
-                user.Person_Name = u.Username;
+                user.Name = u.Username;
                 user.Password = u.Password;
                 user.Type = u.Type;
                 user.Admin = u.Admin;                
@@ -51,7 +51,7 @@ namespace BoLayer
                              {
                                  Id = u.Id,
                                  Cid = u.Cid,
-                                 Person_Name = u.Username,
+                                 Name = u.Username,
                                  Code = u.Code,
                                  Password = u.Password,
                                  Type = u.Type,
@@ -65,7 +65,7 @@ namespace BoLayer
 
                 foreach (var usr in myList)
                 {
-                    users.Add(new EUser(usr.Id, usr.Cid, usr.Person_Name, usr.Code, usr.Password,
+                    users.Add(new EUser(usr.Id, usr.Cid, usr.Name, usr.Code, usr.Password,
                         usr.Type, usr.Admin));
                 }
 
@@ -86,7 +86,7 @@ namespace BoLayer
                              {
                                  Id = u.Id,
                                  Cid = u.Cid,
-                                 Person_Name = u.Username,
+                                 Name = u.Username,
                                  Code = u.Code,
                                  Password = u.Password,
                                  Type = u.Type,
@@ -100,7 +100,7 @@ namespace BoLayer
 
                 foreach (var user in logged)
                 {
-                    usr = new EUser(usr.Id, usr.Cid, usr.Person_Name, usr.Code, usr.Password,
+                    usr = new EUser(usr.Id, usr.Cid, usr.Name, usr.Code, usr.Password,
                         usr.Type, usr.Admin);
                     return usr;
                 }
@@ -144,28 +144,28 @@ namespace BoLayer
         }
 
         /*Method to save a user in the database*/
-        public void Save(EUser user, int pid = 0)
+        public void Save(EUser user)
         {
             using(IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 USER newUser = null;
-                if (pid == 0)
+                if (user.Id == 0)
                 {
                     newUser = new USER();
                 }
                 else
                 {
-                    newUser = db.USERS.Find(pid);
+                    newUser = db.USERS.Find(user.Id);
                 }
                 newUser.Code = user.Code;
                 newUser.Cid = user.Cid;
-                newUser.Username = user.Person_Name;
+                newUser.Username = user.Name;
                 newUser.Password = user.Password;
                 newUser.Type = user.Type;
                 newUser.Admin = user.Admin;
 
-                if (pid == 0)
+                if (user.Id == 0)
                 {
                     db.USERS.Add(newUser);
                 }
