@@ -29,16 +29,19 @@
         private void InitializeComponent()
         {
             this.spProduct = new System.Windows.Forms.SplitContainer();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnNewProduct = new System.Windows.Forms.Button();
+            this.dvgProduct = new System.Windows.Forms.DataGridView();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.spProduct)).BeginInit();
             this.spProduct.Panel1.SuspendLayout();
             this.spProduct.Panel2.SuspendLayout();
             this.spProduct.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dvgProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,6 +55,8 @@
             // 
             // spProduct.Panel1
             // 
+            this.spProduct.Panel1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.spProduct.Panel1.Controls.Add(this.btnCancel);
             this.spProduct.Panel1.Controls.Add(this.btnSearch);
             this.spProduct.Panel1.Controls.Add(this.txtSearch);
             this.spProduct.Panel1.Controls.Add(this.btnEdit);
@@ -60,14 +65,31 @@
             // 
             // spProduct.Panel2
             // 
+            this.spProduct.Panel2.Controls.Add(this.dvgProduct);
             this.spProduct.Panel2.Controls.Add(this.dgvProducts);
-            this.spProduct.Size = new System.Drawing.Size(1083, 644);
-            this.spProduct.SplitterDistance = 68;
+            this.spProduct.Size = new System.Drawing.Size(1084, 629);
+            this.spProduct.SplitterDistance = 66;
             this.spProduct.SplitterWidth = 5;
             this.spProduct.TabIndex = 0;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnCancel.ForeColor = System.Drawing.Color.DimGray;
+            this.btnCancel.Image = global::Ironmongery.Properties.Resources.icons8_undo_20px;
+            this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancel.Location = new System.Drawing.Point(594, 12);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(99, 41);
+            this.btnCancel.TabIndex = 14;
+            this.btnCancel.Text = "Return";
+            this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
             // btnSearch
             // 
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSearch.ForeColor = System.Drawing.Color.DimGray;
             this.btnSearch.Image = global::Ironmongery.Properties.Resources.icons8_search_25px_9;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -79,6 +101,7 @@
             this.btnSearch.Text = "Search";
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearch
             // 
@@ -91,6 +114,7 @@
             // 
             // btnEdit
             // 
+            this.btnEdit.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnEdit.ForeColor = System.Drawing.Color.DimGray;
             this.btnEdit.Image = global::Ironmongery.Properties.Resources.icons8_edit_25px;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,9 +126,11 @@
             this.btnEdit.Text = "Edit";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click_1);
             // 
             // btnRemove
             // 
+            this.btnRemove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnRemove.ForeColor = System.Drawing.Color.DimGray;
             this.btnRemove.Image = global::Ironmongery.Properties.Resources.icons8_remove_25px;
             this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -116,9 +142,11 @@
             this.btnRemove.Text = "Delete";
             this.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnNewProduct
             // 
+            this.btnNewProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnNewProduct.ForeColor = System.Drawing.Color.DimGray;
             this.btnNewProduct.Image = global::Ironmongery.Properties.Resources.icons8_add_25px_4;
             this.btnNewProduct.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -132,6 +160,16 @@
             this.btnNewProduct.UseVisualStyleBackColor = true;
             this.btnNewProduct.Click += new System.EventHandler(this.btnNewProduct_Click);
             // 
+            // dvgProduct
+            // 
+            this.dvgProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dvgProduct.Location = new System.Drawing.Point(12, 14);
+            this.dvgProduct.Name = "dvgProduct";
+            this.dvgProduct.RowHeadersWidth = 51;
+            this.dvgProduct.RowTemplate.Height = 24;
+            this.dvgProduct.Size = new System.Drawing.Size(1053, 530);
+            this.dvgProduct.TabIndex = 1;
+            // 
             // dgvProducts
             // 
             this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -143,16 +181,18 @@
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowHeadersWidth = 51;
-            this.dgvProducts.Size = new System.Drawing.Size(1083, 571);
+            this.dgvProducts.Size = new System.Drawing.Size(1084, 558);
             this.dgvProducts.TabIndex = 0;
             // 
             // FrmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1083, 644);
+            this.ClientSize = new System.Drawing.Size(1084, 629);
             this.Controls.Add(this.spProduct);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmProducts";
             this.Text = "FrmProducts";
             this.Load += new System.EventHandler(this.FrmProducts_Load);
@@ -162,6 +202,7 @@
             this.spProduct.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.spProduct)).EndInit();
             this.spProduct.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dvgProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             this.ResumeLayout(false);
 
@@ -176,5 +217,7 @@
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnNewProduct;
         private System.Windows.Forms.DataGridView dgvProducts;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.DataGridView dvgProduct;
     }
 }

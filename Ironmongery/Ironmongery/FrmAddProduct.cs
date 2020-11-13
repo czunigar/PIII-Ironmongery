@@ -17,7 +17,6 @@ namespace Ironmongery
         private ProductBO productbo;
         private EProduct eproduct;
         private Form parent;
-        string path = "";
 
         public FrmAddProduct(Form parent)
         {

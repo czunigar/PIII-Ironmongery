@@ -21,13 +21,13 @@ namespace Ironmongery
             InitializeComponent();
             this.parent = parent;
             this.productbo = new ProductBO();
-            //loadData();
+            loadData();
         }
         public FrmProducts()
         {
             InitializeComponent();
             this.productbo = new ProductBO();
-            //loadData();
+            loadData();
         }
         /*Method to get the select the product*/
         private EProduct selected()
@@ -39,7 +39,7 @@ namespace Ironmongery
             }
             return (EProduct)dgvProducts.Rows[row].Cells[0].Value;
         }
-        /*private void loadData()
+        private void loadData()
         {
             dgvProducts.Rows.Clear();
             string filter = txtSearch.Text.ToUpper().Trim();
@@ -60,7 +60,7 @@ namespace Ironmongery
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }*/
+        }
 
         private void AddProduct()
         {
@@ -71,7 +71,6 @@ namespace Ironmongery
                     FrmAddProduct newProduct = new FrmAddProduct(this);
                     newProduct.Visible = true;
                     Visible = false;
-                   // loadData();
                 }
             }
             catch (Exception ex)
@@ -91,7 +90,6 @@ namespace Ironmongery
                     FrmAddProduct newProduct = new FrmAddProduct(this, selected());
                     newProduct.Visible = true;
                     Visible = false;
-                  //  loadData();
                 }
             }
             catch (Exception ex)
@@ -113,7 +111,7 @@ namespace Ironmongery
                     if (result == DialogResult.Yes)
                     {
                         productbo.Delete(selected().Id);
-                      //  loadData();
+                        loadData();
                     }
                 }
                 else
@@ -129,81 +127,10 @@ namespace Ironmongery
             }
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvProducts.CurrentCell.Value != null)
-                {
-                    FrmAddProduct newProduct = new FrmAddProduct(this);
-                    newProduct.Visible = true;
-                    Visible = false;
-                  //  loadData();
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.StackTrace + "There was an issue trying to open the new view, please try again", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvProducts.CurrentCell.Value != null)
-                {
-                    FrmAddProduct newProduct = new FrmAddProduct(this, selected());
-                    newProduct.Visible = true;
-                    Visible = false;
-                  //  loadData();
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.StackTrace + "There was an issue trying to edit the product", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnDelete_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvProducts.CurrentCell.Value != null)
-                {
-                    DialogResult result = MessageBox.Show($"Are you sure to remove the product \"{selected().Name}\"",
-                                "Removing User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == DialogResult.Yes)
-                    {
-                        productbo.Delete(selected().Id);
-                      //  loadData();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please choose a product", "Deliting product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("There was an issue trying to delete the product", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            //loadData();
-        }
 
         private void FrmProducts_VisibleChanged(object sender, EventArgs e)
         {
-           // loadData();
+           
         }
 
         private void dtgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -228,19 +155,22 @@ namespace Ironmongery
 
         private void btnNewProduct_Click(object sender, EventArgs e)
         {
-            try
-            {
-                FrmAddProduct newProduct = new FrmAddProduct(this);
-                newProduct.Visible = true;
-                Visible = false;
-                //  loadData();
-            }
-            catch (Exception ex)
-            {
+            AddProduct();
+        }
 
-                MessageBox.Show(ex.StackTrace + "There was an issue trying to open the new view, please try again", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        private void btnEdit_Click_1(object sender, EventArgs e)
+        {
+            Edit();
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            Delete();
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            loadData();
         }
     }
 }
