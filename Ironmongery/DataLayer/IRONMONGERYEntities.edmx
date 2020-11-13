@@ -53,8 +53,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Cid" Type="varchar" MaxLength="9" />
-          <Property Name="Client_Name" Type="varchar" MaxLength="30" />
+          <Property Name="Client_id" Type="int" />
           <Property Name="Date" Type="date" />
           <Property Name="Status" Type="varchar" MaxLength="9" />
         </EntityType>
@@ -127,10 +126,10 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Code" Type="varchar" MaxLength="6" />
           <Property Name="Cid" Type="varchar" MaxLength="9" />
-          <Property Name="Username" Type="varchar" MaxLength="30" />
           <Property Name="Password" Type="varchar" MaxLength="35" />
           <Property Name="Type" Type="varchar" MaxLength="15" />
           <Property Name="Admin" Type="bit" />
+          <Property Name="Person_id" Type="int" />
         </EntityType>
         <EntityType Name="WAREHOUSE">
           <Key>
@@ -473,8 +472,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Cid" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
-          <Property Name="Client_Name" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Client_id" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="PRODUCT_ORDERS" Relationship="Self.fk_pdorder_id" FromRole="ORDERS" ToRole="PRODUCT_ORDERS" />
@@ -568,10 +566,10 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Code" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
           <Property Name="Cid" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
-          <Property Name="Username" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="35" FixedLength="false" Unicode="false" />
           <Property Name="Type" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Admin" Type="Boolean" />
+          <Property Name="Person_id" Type="Int32" />
           <NavigationProperty Name="LOGISTICS" Relationship="Self.fk_driver_id" FromRole="USERS" ToRole="LOGISTICS" />
           <NavigationProperty Name="SHIPMENTS" Relationship="Self.fk_seller_id" FromRole="USERS" ToRole="SHIPMENTS" />
         </EntityType>
@@ -913,8 +911,7 @@
             <EntityTypeMapping TypeName="IRONMONGERYModel.ORDER">
               <MappingFragment StoreEntitySet="ORDERS">
                 <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Cid" ColumnName="Cid" />
-                <ScalarProperty Name="Client_Name" ColumnName="Client_Name" />
+                <ScalarProperty Name="Client_id" ColumnName="Client_id" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
@@ -994,10 +991,10 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Cid" ColumnName="Cid" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Admin" ColumnName="Admin" />
+                <ScalarProperty Name="Person_id" ColumnName="Person_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
