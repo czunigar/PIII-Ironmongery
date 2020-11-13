@@ -41,7 +41,6 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btnImage = new System.Windows.Forms.Button();
             this.pcImage = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcImage)).BeginInit();
             this.SuspendLayout();
@@ -173,24 +172,16 @@
             this.label6.Text = "Image:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnImage
-            // 
-            this.btnImage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnImage.Location = new System.Drawing.Point(174, 359);
-            this.btnImage.Name = "btnImage";
-            this.btnImage.Size = new System.Drawing.Size(239, 37);
-            this.btnImage.TabIndex = 13;
-            this.btnImage.Text = "Select image";
-            this.btnImage.UseVisualStyleBackColor = true;
-            this.btnImage.Click += new System.EventHandler(this.btnImage_Click);
-            // 
             // pcImage
             // 
-            this.pcImage.Location = new System.Drawing.Point(202, 420);
+            this.pcImage.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.pcImage.Location = new System.Drawing.Point(174, 359);
             this.pcImage.Name = "pcImage";
-            this.pcImage.Size = new System.Drawing.Size(167, 129);
+            this.pcImage.Size = new System.Drawing.Size(239, 192);
+            this.pcImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pcImage.TabIndex = 14;
             this.pcImage.TabStop = false;
+            this.pcImage.Click += new System.EventHandler(this.pcImage_Click);
             // 
             // FrmAddProduct
             // 
@@ -198,7 +189,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 653);
             this.Controls.Add(this.pcImage);
-            this.Controls.Add(this.btnImage);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnSave);
@@ -235,7 +225,6 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btnImage;
         private System.Windows.Forms.PictureBox pcImage;
     }
 }

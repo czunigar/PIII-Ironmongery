@@ -35,20 +35,7 @@ namespace Ironmongery
             lblTitle.Text = "EDIT PRODUCT";
         }
         #region METHODS
-        /*METHODS*/
-        /*
-         Save path image
-         */
-        private string saveImage()
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.Yes)
-            {
-                path = fbd.SelectedPath;
-                return path;
-            }
-            return path;
-        }
+        /*METHODS*/    
         /*
          Add new product
          */
@@ -57,15 +44,24 @@ namespace Ironmongery
             EProduct newProduct = new EProduct();
             try
             {
-                newProduct.Name = txtName.Text.Trim();
-                newProduct.Category = txtCategory.Text.Trim();
-                newProduct.Description = txtDescription.Text.Trim();
-                newProduct.Price = decimal.Parse(txtPrice.Text.Trim());
-                newProduct.Units = decimal.Parse(txtUnits.Text.Trim());
-                if (!(path.Equals("")))
+                if (pcImage.Image != null)
                 {
-                    newProduct.Image = path;
+                    string filename = txtName.Text + ".jpg";
+                    string folder = "C:\\DBImages";
+                    string pathstring = System.IO.Path.Combine(folder, filename);
+                    Image image = pcImage.Image;
+                    image.Save(pathstring);
+                    newProduct.Name = txtName.Text.Trim();
+                    newProduct.Category = txtCategory.Text.Trim();
+                    newProduct.Description = txtDescription.Text.Trim();
+                    newProduct.Price = decimal.Parse(txtPrice.Text.Trim());
+                    newProduct.Units = decimal.Parse(txtUnits.Text.Trim());
+                    newProduct.Image = pathstring;
                     productbo.Save(newProduct);
+                }
+                else
+                {
+                    MessageBox.Show("Please select an image");
                 }
             }
             catch (Exception exception)
@@ -113,7 +109,21 @@ namespace Ironmongery
 
         private void btnImage_Click(object sender, EventArgs e)
         {
-            saveImage();
+           
+        }
+
+        private void pcImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            PictureBox picture = sender as PictureBox;
+            if (picture != null)
+            {
+                openFile.Filter = "(*.jpg; *.jpeg; *.bmp; *.png) | *.jpg; *.jpeg; *.bmp; *.png";
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+                    picture.Image = Image.FromFile(openFile.FileName);
+                }
+            }
         }
     }
 }
