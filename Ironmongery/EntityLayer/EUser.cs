@@ -22,7 +22,7 @@ namespace EntityLayer
         {
             Id = id;
             Cid = cid;
-            Person_Name = name;
+            Name = name;
             Code = code;
             Password = password;
             Type = type;
@@ -31,7 +31,7 @@ namespace EntityLayer
 
         public override string ToString()
         {
-            return $"{Code} - {Person_Name}";
+            return $"{Code} - {Name}";
         }
     }
 }

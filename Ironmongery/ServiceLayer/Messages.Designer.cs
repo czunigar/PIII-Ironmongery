@@ -69,11 +69,10 @@
             // 
             // lblText
             // 
-            this.lblText.AutoSize = true;
             this.lblText.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblText.Location = new System.Drawing.Point(34, 57);
+            this.lblText.Location = new System.Drawing.Point(12, 45);
             this.lblText.Name = "lblText";
-            this.lblText.Size = new System.Drawing.Size(0, 24);
+            this.lblText.Size = new System.Drawing.Size(326, 116);
             this.lblText.TabIndex = 4;
             this.lblText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -92,7 +91,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
