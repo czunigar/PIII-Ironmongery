@@ -24,7 +24,7 @@ namespace DataLayer
         public int Id { get; set; }
         public Nullable<int> Vehicle_Number { get; set; }
         public Nullable<int> DriverID { get; set; }
-        public Nullable<bool> Active { get; set; }
+        public string Status { get; set; }
     
         public virtual USER USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

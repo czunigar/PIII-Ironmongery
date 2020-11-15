@@ -70,28 +70,27 @@ namespace BoLayer
         }
 
         /*Method to save a notice in the database*/
-        public void Save(ENotice note, int pid = 0)
+        public void Save(ENotice note)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 NOTICE nt = null;
-                if (pid == 0)
+                if (note.Id == 0)
                 {
                     nt = new NOTICE();
                 }
                 else
                 {
-                    nt = db.NOTICES.Find(pid);
+                    nt = db.NOTICES.Find(note.Id);
                 }
 
-                nt.Id = note.Id;
                 nt.ShipmentID = note.ShipmentID;
                 nt.Local_Time = note.LocalTime;
                 nt.ProductId = note.ProductId;
 
 
-                if (pid == 0)
+                if (note.Id == 0)
                 {
                     db.NOTICES.Add(nt);
                 }

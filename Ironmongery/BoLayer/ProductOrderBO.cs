@@ -67,27 +67,26 @@ namespace BoLayer
         }
 
         /*Method to save a product order in the database*/
-        public void Save(EProductOrder ord, int pid = 0)
+        public void Save(EProductOrder ord)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 PRODUCT_ORDERS orden = null;
-                if (pid == 0)
+                if (ord.Id == 0)
                 {
                     orden = new PRODUCT_ORDERS();
                 }
                 else
                 {
-                    orden = db.PRODUCT_ORDERS.Find(pid);
+                    orden = db.PRODUCT_ORDERS.Find(ord.Id);
                 }
 
-                orden.Id = ord.Id;
                 orden.OrderID = ord.OrderID;
                 orden.ProductID = ord.ProductID;
                 orden.Units = ord.Units;
 
-                if (pid == 0)
+                if (ord.Id == 0)
                 {
                     db.PRODUCT_ORDERS.Add(orden);
                 }

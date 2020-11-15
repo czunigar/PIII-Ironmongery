@@ -81,22 +81,21 @@ namespace BoLayer
         }
 
         /*Method to save an order in the database*/
-        public void Save(EInvoice invo, int pid = 0)
+        public void Save(EInvoice invo)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 INVOICE inv = null;
-                if (pid == 0)
+                if (invo.Id == 0)
                 {
                     inv = new INVOICE();
                 }
                 else
                 {
-                    inv = db.INVOICES.Find(pid);
+                    inv = db.INVOICES.Find(invo.Id);
                 }
 
-                inv.Id = invo.Id;
                 inv.Local_Date = invo.LocalDate;
                 inv.ShipmentId = invo.ShipmentId;                  
                 inv.ProductId = invo.ProductId;                          
@@ -107,7 +106,7 @@ namespace BoLayer
                 inv.Taxes = invo.Taxes;
                 inv.Paid = invo.Paid;
 
-                if (pid == 0)
+                if (invo.Id == 0)
                 {
                     db.INVOICES.Add(inv);
                 }

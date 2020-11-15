@@ -37,7 +37,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Vehicle_Number" Type="int" />
           <Property Name="DriverID" Type="int" />
-          <Property Name="Active" Type="bit" />
+          <Property Name="Status" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="NOTICES">
           <Key>
@@ -452,7 +452,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Vehicle_Number" Type="Int32" />
           <Property Name="DriverID" Type="Int32" />
-          <Property Name="Active" Type="Boolean" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="USER" Relationship="Self.fk_driver_id" FromRole="LOGISTICS" ToRole="USERS" />
           <NavigationProperty Name="TRUCKs" Relationship="Self.fk_truck_number" FromRole="LOGISTICS" ToRole="TRUCK" />
           <NavigationProperty Name="WAREHOUSEs" Relationship="Self.fk_war_truck" FromRole="LOGISTICS" ToRole="WAREHOUSE" />
@@ -895,7 +895,7 @@
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Vehicle_Number" ColumnName="Vehicle_Number" />
                 <ScalarProperty Name="DriverID" ColumnName="DriverID" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

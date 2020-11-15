@@ -89,22 +89,21 @@ namespace BoLayer
         }
 
         /*Method to save a shipment in the database*/
-        public void Save(EShipment shipment, int pid = 0)
+        public void Save(EShipment shipment)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 SHIPMENT ship = null;
-                if (pid == 0)
+                if (shipment.Id == 0)
                 {
                     ship = new SHIPMENT();
                 }
                 else
                 {
-                    ship = db.SHIPMENTS.Find(pid);
+                    ship = db.SHIPMENTS.Find(shipment.Id);
                 }
 
-                ship.Id = shipment.Id;
                 ship.SellerID = shipment.SellerID;
                 ship.Product_Order = shipment.ProductOrder;
                 ship.Service_Order = shipment.ServiceOrder;
@@ -112,7 +111,7 @@ namespace BoLayer
                 ship.Order_Time = shipment.OrderTime;
                 ship.Status = shipment.Status;
 
-                if (pid == 0)
+                if (shipment.Id == 0)
                 {
                     db.SHIPMENTS.Add(ship);
                 }
