@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\anaul\OneDrive\Documentos\ISW-411\PII_IRONMONGERY\PIII-Ironmongery\Ironmongery\DataLayer\IRONMONGERY.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Documentos de Universidad\Software\Projects\C#\Proyecto 2\PIII-Ironmongery\Ironmongery\DataLayer\IRONMONGERY.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

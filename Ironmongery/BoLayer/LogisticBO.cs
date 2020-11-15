@@ -27,7 +27,7 @@ namespace BoLayer
                                  VehicleNumber = t.Vehicle_Number,
                                  DriverId = t.DriverID.Value,
                                  Driver = ubo.GetUserById(t.DriverID.Value),
-                                 Active = t.Active
+                                 Status = t.Status
                              };
                 if (!string.IsNullOrEmpty(filter))
                 {
@@ -37,7 +37,7 @@ namespace BoLayer
                 foreach (var trav in myList)
                 {
                     travels.Add(new ELogistic(trav.Id, trav.VehicleNumber, trav.DriverId,
-                        trav.Driver, trav.Active));
+                        trav.Driver, trav.Status));
                 }
 
                 return travels;
@@ -61,34 +61,33 @@ namespace BoLayer
                 travel.VehicleNumber = lg.Vehicle_Number;
                 travel.DriverId = lg.DriverID.Value;
                 travel.Driver = ubo.GetUserById(lg.DriverID.Value);
-                travel.Active = lg.Active;
+                travel.Status = lg.Status;
                 
                 return travel;
             }
         }
 
         /*Method to save a truck in the database*/
-        public void Save(ELogistic travel, int pid = 0)
+        public void Save(ELogistic travel)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 LOGISTIC truck = null;
-                if (pid == 0)
+                if (travel.Id == 0)
                 {
                     truck = new LOGISTIC();
                 }
                 else
                 {
-                    truck = db.LOGISTICS.Find(pid);
+                    truck = db.LOGISTICS.Find(travel.Id);
                 }
 
-                truck.Id = travel.Id;
                 truck.Vehicle_Number = travel.VehicleNumber;
                 truck.DriverID = travel.DriverId;
-                truck.Active = travel.Active;
+                truck.Status = travel.Status;
 
-                if (pid == 0)
+                if (travel.Id == 0)
                 {
                     db.LOGISTICS.Add(truck);
                 }

@@ -64,26 +64,25 @@ namespace BoLayer
         }
 
         /*Method to save a service order in the database*/
-        public void Save(EServiceOrder ord, int pid = 0)
+        public void Save(EServiceOrder ord)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 SERVICE_ORDERS orden = null;
-                if (pid == 0)
+                if (ord.Id == 0)
                 {
                     orden = new SERVICE_ORDERS();
                 }
                 else
                 {
-                    orden = db.SERVICE_ORDERS.Find(pid);
+                    orden = db.SERVICE_ORDERS.Find(ord.Id);
                 }
 
-                orden.Id = ord.Id;
                 orden.OrderID = ord.OrderID;
                 orden.ServiceID = ord.ServiceID;
 
-                if (pid == 0)
+                if (ord.Id == 0)
                 {
                     db.SERVICE_ORDERS.Add(orden);
                 }

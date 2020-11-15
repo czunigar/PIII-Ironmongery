@@ -69,29 +69,28 @@ namespace BoLayer
         }
 
         /*Method to save a delivery in the database*/
-        public void Save(EDelivery delivery, int pid = 0)
+        public void Save(EDelivery delivery)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 DELIVERY delv = null;
-                if (pid == 0)
+                if (delivery.Id == 0)
                 {
                     delv = new DELIVERY();
                 }
                 else
                 {
-                    delv = db.DELIVERies.Find(pid);
+                    delv = db.DELIVERies.Find(delivery.Id);
                 }
 
-                delv.Id = delivery.Id;
                 delv.ShipmentID = delivery.ShipmentID;
                 delv.Address = delivery.Address;
                 delv.Contact = delivery.Contact;
                 delv.Time_Pickup = delivery.TimePickup;
 
 
-                if (pid == 0)
+                if (delivery.Id == 0)
                 {
                     db.DELIVERies.Add(delv);
                 }

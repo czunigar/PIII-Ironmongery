@@ -46,6 +46,10 @@ namespace Ironmongery
             try
             {
                 txtId.Text = service.Id.ToString();
+                txtName.Text = service.Name;
+                txtDesc.Text = service.Description;
+                txtPrice.Text = service.Price.ToString();
+                cboCat.SelectedValue = service.Category;
 
             }
             catch (Exception)
@@ -91,7 +95,6 @@ namespace Ironmongery
         {
             try
             {
-                service.Id = int.Parse(txtId.Text);
                 service.Name = txtName.Text;
                 service.Category = (string)cboCat.SelectedValue;
                 service.Description = txtDesc.Text;

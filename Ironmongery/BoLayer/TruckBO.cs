@@ -72,29 +72,28 @@ namespace BoLayer
         }
 
         /*Method to save a truck in the database*/
-        public void Save(ETruck tr, int pid = 0)
+        public void Save(ETruck tr)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 TRUCK truck = null;
-                if (pid == 0)
+                if (tr.Id == 0)
                 {
                     truck = new TRUCK();
                 }
                 else
                 {
-                    truck = db.TRUCKs.Find(pid);
+                    truck = db.TRUCKs.Find(tr.Id);
                 }
 
-                truck.Id = tr.Id;
                 truck.Code = tr.Code;
                 truck.Name = tr.Name;
                 truck.TruckID = tr.TruckID;
                 truck.OrderId = tr.OrderId;
                 truck.Observations = tr.Observations;
 
-                if (pid == 0)
+                if (tr.Id == 0)
                 {
                     db.TRUCKs.Add(truck);
                 }

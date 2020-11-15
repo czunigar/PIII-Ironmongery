@@ -64,27 +64,26 @@ namespace BoLayer
         }
 
         /*Method to save a stock in the database*/
-        public void Save(EWarehouse store, int pid = 0)
+        public void Save(EWarehouse store)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 WAREHOUSE ware = null;
-                if (pid == 0)
+                if (store.Id == 0)
                 {
                     ware = new WAREHOUSE();
                 }
                 else
                 {
-                    ware = db.WAREHOUSEs.Find(pid);
+                    ware = db.WAREHOUSEs.Find(store.Id);
                 }
 
-                ware.Id = store.Id;
                 ware.EntryTime = store.EntryTime;
                 ware.TruckId = store.TruckId;
                 ware.ExitTime = store.ExitTime;
 
-                if (pid == 0)
+                if (store.Id == 0)
                 {
                     db.WAREHOUSEs.Add(ware);
                 }
