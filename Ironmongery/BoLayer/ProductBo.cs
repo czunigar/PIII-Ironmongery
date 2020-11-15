@@ -67,22 +67,20 @@ namespace BoLayer
         }
 
         /*Method to save a product in the database*/
-        public void Save(EProduct product, int pid = 0)
+        public void Save(EProduct product)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 PRODUCT prod = null;
-                if (pid == 0)
+                if (product.Id == 0)
                 {
                     prod = new PRODUCT();
                 }
                 else
                 {
-                    prod = db.PRODUCTS.Find(pid);
+                    prod = db.PRODUCTS.Find(product.Id);
                 }
-
-                prod.Id = product.Id;
                 prod.Product_Name = product.Name;
                 prod.Category = product.Category;
                 prod.Product_Description = product.Description;
@@ -90,7 +88,7 @@ namespace BoLayer
                 prod.Units = product.Units;
                 prod.Image_path = product.Image;
 
-                if (pid == 0)
+                if (product.Id == 0)
                 {
                     db.PRODUCTS.Add(prod);
                 }

@@ -19,10 +19,11 @@ namespace Ironmongery
         {
             InitializeComponent();
             this.pbo = new ProductBO();
-            LoadProducts();
+           // LoadProducts();
         }
+
         /*Method to load all the subjects registered to the list*/
-        private void LoadProducts()
+       /* private void LoadProducts()
         {
             lstProduct.Items.Clear();
             string filter = txtSearch.Text.ToUpper().Trim();
@@ -33,7 +34,7 @@ namespace Ironmongery
                     lstProduct.Items.Add(products);
                 }
             }
-        }
+        }*/
 
         private void addProductOrder() 
         {
