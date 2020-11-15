@@ -63,28 +63,27 @@ namespace BoLayer
         }
 
         /*Method to save a service in the database*/
-        public void Save(EService service, int pid = 0)
+        public void Save(EService service)
         {
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
 
                 SERVICE serv = null;
-                if (pid == 0)
+                if (service.Id == 0)
                 {
                     serv = new SERVICE();
                 }
                 else
                 {
-                    serv = db.SERVICES.Find(pid);
+                    serv = db.SERVICES.Find(service.Id);
                 }
 
-                serv.Id = service.Id;
                 serv.Service_Name = service.Name;
                 serv.Category = service.Category;
                 serv.Service_Description = service.Description;
                 serv.Price = service.Price;
 
-                if (pid == 0)
+                if (service.Id == 0)
                 {
                     db.SERVICES.Add(serv);
                 }

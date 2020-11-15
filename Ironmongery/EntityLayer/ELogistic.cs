@@ -12,19 +12,19 @@ namespace EntityLayer
         public int? VehicleNumber { get; set; }
         public int DriverId { get; set; }
         public EUser driver;
-        public bool? Active { get; set; }
+        public string Status { get; set; }
 
         public ELogistic()
         {
         }
 
-        public ELogistic(int id, int? vehicle_Number, int driverId, EUser driver, bool? active)
+        public ELogistic(int id, int? vehicle_Number, int driverId, EUser driver, string active)
         {
             Id = id;
             VehicleNumber = vehicle_Number;
             DriverId = driverId;
             this.driver = driver;
-            Active = active;
+            Status = active;
         }
 
         public EUser Driver
