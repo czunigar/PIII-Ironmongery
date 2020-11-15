@@ -32,6 +32,9 @@
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.pcbxImageProdct = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lstPackageProducts = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lstShoppingProductInfo = new System.Windows.Forms.ListBox();
@@ -43,16 +46,13 @@
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.lstPackProducDetails = new System.Windows.Forms.ListBox();
-            this.pcbxImageProdct = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lstPackageProducts = new System.Windows.Forms.ListBox();
+            this.lstPackProducDetails = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbxImageProdct)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbxImageProdct)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -84,7 +84,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(16, 80);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(932, 612);
@@ -99,143 +99,17 @@
             this.tabPage1.Controls.Add(this.btnAdd);
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 33);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(924, 575);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Package Store";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.Location = new System.Drawing.Point(631, 475);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(174, 44);
-            this.btnAdd.TabIndex = 2;
-            this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.lstShoppingProductInfo);
-            this.tabPage2.Controls.Add(this.pictureBox10);
-            this.tabPage2.Controls.Add(this.button3);
-            this.tabPage2.Controls.Add(this.button2);
-            this.tabPage2.Controls.Add(this.label1);
-            this.tabPage2.Controls.Add(this.lstShoppingProducts);
-            this.tabPage2.Location = new System.Drawing.Point(4, 33);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Size = new System.Drawing.Size(924, 575);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Shopping Cart";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // lstShoppingProductInfo
-            // 
-            this.lstShoppingProductInfo.FormattingEnabled = true;
-            this.lstShoppingProductInfo.ItemHeight = 24;
-            this.lstShoppingProductInfo.Location = new System.Drawing.Point(542, 225);
-            this.lstShoppingProductInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lstShoppingProductInfo.Name = "lstShoppingProductInfo";
-            this.lstShoppingProductInfo.Size = new System.Drawing.Size(346, 148);
-            this.lstShoppingProductInfo.TabIndex = 5;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Location = new System.Drawing.Point(621, 79);
-            this.pictureBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(177, 128);
-            this.pictureBox10.TabIndex = 4;
-            this.pictureBox10.TabStop = false;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(633, 401);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(165, 30);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Remove";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(633, 447);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(165, 34);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Complete";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 37);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Products:";
-            // 
-            // lstShoppingProducts
-            // 
-            this.lstShoppingProducts.FormattingEnabled = true;
-            this.lstShoppingProducts.ItemHeight = 24;
-            this.lstShoppingProducts.Location = new System.Drawing.Point(43, 65);
-            this.lstShoppingProducts.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.lstShoppingProducts.Name = "lstShoppingProducts";
-            this.lstShoppingProducts.Size = new System.Drawing.Size(451, 412);
-            this.lstShoppingProducts.TabIndex = 0;
-            // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(12, 47);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(75, 24);
-            this.lblSearch.TabIndex = 5;
-            this.lblSearch.Text = "Search:";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(120, 43);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(264, 29);
-            this.txtSearch.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(393, 42);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(76, 31);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // lstPackProducDetails
-            // 
-            this.lstPackProducDetails.FormattingEnabled = true;
-            this.lstPackProducDetails.ItemHeight = 20;
-            this.lstPackProducDetails.Location = new System.Drawing.Point(587, 259);
-            this.lstPackProducDetails.Margin = new System.Windows.Forms.Padding(4);
-            this.lstPackProducDetails.Name = "lstPackProducDetails";
-            this.lstPackProducDetails.Size = new System.Drawing.Size(263, 124);
-            this.lstPackProducDetails.TabIndex = 9;
-            // 
             // pcbxImageProdct
             // 
+            this.pcbxImageProdct.BackColor = System.Drawing.Color.DarkGray;
             this.pcbxImageProdct.Location = new System.Drawing.Point(631, 75);
             this.pcbxImageProdct.Margin = new System.Windows.Forms.Padding(4);
             this.pcbxImageProdct.Name = "pcbxImageProdct";
@@ -262,6 +136,133 @@
             this.lstPackageProducts.Name = "lstPackageProducts";
             this.lstPackageProducts.Size = new System.Drawing.Size(507, 444);
             this.lstPackageProducts.TabIndex = 6;
+            this.lstPackageProducts.Click += new System.EventHandler(this.lstPackageProducts_click);
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(631, 475);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(174, 44);
+            this.btnAdd.TabIndex = 2;
+            this.btnAdd.Text = "Add";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.lstShoppingProductInfo);
+            this.tabPage2.Controls.Add(this.pictureBox10);
+            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.lstShoppingProducts);
+            this.tabPage2.Location = new System.Drawing.Point(4, 33);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(924, 575);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Shopping Cart";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // lstShoppingProductInfo
+            // 
+            this.lstShoppingProductInfo.FormattingEnabled = true;
+            this.lstShoppingProductInfo.ItemHeight = 24;
+            this.lstShoppingProductInfo.Location = new System.Drawing.Point(542, 225);
+            this.lstShoppingProductInfo.Margin = new System.Windows.Forms.Padding(4);
+            this.lstShoppingProductInfo.Name = "lstShoppingProductInfo";
+            this.lstShoppingProductInfo.Size = new System.Drawing.Size(346, 148);
+            this.lstShoppingProductInfo.TabIndex = 5;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Location = new System.Drawing.Point(621, 79);
+            this.pictureBox10.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(177, 128);
+            this.pictureBox10.TabIndex = 4;
+            this.pictureBox10.TabStop = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(633, 401);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(165, 30);
+            this.button3.TabIndex = 3;
+            this.button3.Text = "Remove";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(633, 447);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(165, 34);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Complete";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(40, 37);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Products:";
+            // 
+            // lstShoppingProducts
+            // 
+            this.lstShoppingProducts.FormattingEnabled = true;
+            this.lstShoppingProducts.ItemHeight = 24;
+            this.lstShoppingProducts.Location = new System.Drawing.Point(43, 65);
+            this.lstShoppingProducts.Margin = new System.Windows.Forms.Padding(4);
+            this.lstShoppingProducts.Name = "lstShoppingProducts";
+            this.lstShoppingProducts.Size = new System.Drawing.Size(451, 412);
+            this.lstShoppingProducts.TabIndex = 0;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.Location = new System.Drawing.Point(12, 47);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(75, 24);
+            this.lblSearch.TabIndex = 5;
+            this.lblSearch.Text = "Search:";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(120, 43);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(264, 29);
+            this.txtSearch.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(393, 42);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(76, 31);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // lstPackProducDetails
+            // 
+            this.lstPackProducDetails.Location = new System.Drawing.Point(592, 256);
+            this.lstPackProducDetails.Multiline = true;
+            this.lstPackProducDetails.Name = "lstPackProducDetails";
+            this.lstPackProducDetails.ReadOnly = true;
+            this.lstPackProducDetails.Size = new System.Drawing.Size(313, 150);
+            this.lstPackProducDetails.TabIndex = 10;
             // 
             // FrmMain
             // 
@@ -274,7 +275,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
@@ -283,10 +284,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbxImageProdct)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pcbxImageProdct)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,9 +310,9 @@
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.ListBox lstPackProducDetails;
         private System.Windows.Forms.PictureBox pcbxImageProdct;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox lstPackageProducts;
+        private System.Windows.Forms.TextBox lstPackProducDetails;
     }
 }

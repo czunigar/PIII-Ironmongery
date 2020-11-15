@@ -46,7 +46,6 @@ namespace Ironmongery
             txtDescription.Text = eproduct.Description;
             txtPrice.Text = eproduct.Price.ToString();
             txtUnits.Text = eproduct.Units.ToString();
-            textBox1.Text = eproduct.Image;
             pcImage.Image = Image.FromFile(eproduct.Image);
         }
 

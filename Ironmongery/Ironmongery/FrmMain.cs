@@ -15,35 +15,32 @@ namespace Ironmongery
     public partial class FrmMain : Form
     {
         private ProductBO pbo;
+        private EProduct eproduct;
         public FrmMain()
         {
             InitializeComponent();
             this.pbo = new ProductBO();
-           // LoadProducts();
+            loadData();
         }
 
         /*Method to load all the subjects registered to the list*/
-       /* private void LoadProducts()
+        private void loadData()
         {
-            lstProduct.Items.Clear();
-            string filter = txtSearch.Text.ToUpper().Trim();
-            foreach (EProduct products in pbo.LoadProducts(filter))
-            {
-                if (string.IsNullOrEmpty(filter))
-                {
-                    lstProduct.Items.Add(products);
-                }
-            }
-        }*/
+            lstPackageProducts.DataSource = null;
+            lstPackageProducts.DataSource = pbo.LoadProducts("");
+
+        }
 
         private void addProductOrder() 
         {
-        
+            eproduct = (EProduct)lstPackageProducts.SelectedItem;
+            lstShoppingProducts.Items.Add(eproduct);
         }
 
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            addProductOrder();
 
         }
 
@@ -51,6 +48,13 @@ namespace Ironmongery
         {
             LogIn login = new LogIn();
             login.ShowDialog();
+        }
+
+        private void lstPackageProducts_click(object sender, EventArgs e)
+        {
+            eproduct = (EProduct)lstPackageProducts.SelectedItem;
+            lstPackProducDetails.Text = eproduct.ProductDetails();
+            pcbxImageProdct.Image = Image.FromFile(eproduct.Image);
         }
     }
 }
