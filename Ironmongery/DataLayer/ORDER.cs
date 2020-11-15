@@ -22,7 +22,8 @@ namespace DataLayer
         }
     
         public int Id { get; set; }
-        public Nullable<int> Client_id { get; set; }
+        public string Cid { get; set; }
+        public string Client_Name { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string Status { get; set; }
     

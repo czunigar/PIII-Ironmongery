@@ -21,57 +21,39 @@ namespace Ironmongery
             InitializeComponent();
             this.parent = parent;
             this.productbo = new ProductBO();
-            loadData();
+            
         }
         public FrmProducts()
         {
             InitializeComponent();
             this.productbo = new ProductBO();
-            loadData();
+            
+        }
+        private void loadData()
+        {
+            dvgProduct.DataSource = null;
+            dvgProduct.DataSource = productbo.LoadProducts(txtSearch.Text.ToUpper());
+
         }
         /*Method to get the select the product*/
         private EProduct selected()
         {
-            int row = dgvProducts.CurrentCell.RowIndex;
+            EProduct product = new EProduct();
+            int row = dvgProduct.CurrentCell.RowIndex;
             if (row < 0)
             {
                 return null;
             }
-            return (EProduct)dgvProducts.Rows[row].Cells[0].Value;
+            product = productbo.GetProductById((int)dvgProduct.Rows[row].Cells["Id"].Value);
+            return product;
         }
-        private void loadData()
-        {
-            dgvProducts.Rows.Clear();
-            string filter = txtSearch.Text.ToUpper().Trim();
-            try
-            {
-                foreach (EProduct product in productbo.LoadProducts(filter))
-                {
-                    if (string.IsNullOrEmpty(filter) || product.Id.Equals(filter))
-                    {
-
-                        object[] row = {product.Id, product.Name, product.Category, product.Description,
-                        product.Price, product.Units};
-                        dgvProducts.Rows.Add(row);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void AddProduct()
         {
             try
             {
-                if (dgvProducts.CurrentCell.Value != null)
-                {
-                    FrmAddProduct newProduct = new FrmAddProduct(this);
-                    newProduct.Visible = true;
-                    Visible = false;
-                }
+                FrmAddProduct newProduct = new FrmAddProduct(this);
+                newProduct.Visible = true;
+                Visible = false;
             }
             catch (Exception ex)
             {
@@ -85,18 +67,29 @@ namespace Ironmongery
         {
             try
             {
-                if (dgvProducts.CurrentCell.Value != null)
-                {
+                //if (dgvProducts.CurrentRow != null)
+                //{
                     FrmAddProduct newProduct = new FrmAddProduct(this, selected());
                     newProduct.Visible = true;
                     Visible = false;
-                }
+               // }
             }
-            catch (Exception ex)
+            catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
             {
-
-                MessageBox.Show(ex.StackTrace + "There was an issue trying to edit the product", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Exception raise = dbEx;
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        string message = string.Format("{0}:{1}",
+                            validationErrors.Entry.Entity.ToString(),
+                            validationError.ErrorMessage);
+                        // raise a new exception nesting
+                        // the current instance as InnerException
+                        raise = new InvalidOperationException(message, raise);
+                    }
+                }
+                throw raise;
             }
         }
 

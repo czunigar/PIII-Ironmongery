@@ -67,8 +67,8 @@
             // 
             this.spProduct.Panel2.Controls.Add(this.dvgProduct);
             this.spProduct.Panel2.Controls.Add(this.dgvProducts);
-            this.spProduct.Size = new System.Drawing.Size(1084, 629);
-            this.spProduct.SplitterDistance = 66;
+            this.spProduct.Size = new System.Drawing.Size(1079, 685);
+            this.spProduct.SplitterDistance = 71;
             this.spProduct.SplitterWidth = 5;
             this.spProduct.TabIndex = 0;
             // 
@@ -162,12 +162,13 @@
             // 
             // dvgProduct
             // 
+            this.dvgProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dvgProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dvgProduct.Location = new System.Drawing.Point(12, 14);
+            this.dvgProduct.Location = new System.Drawing.Point(56, 32);
             this.dvgProduct.Name = "dvgProduct";
             this.dvgProduct.RowHeadersWidth = 51;
             this.dvgProduct.RowTemplate.Height = 24;
-            this.dvgProduct.Size = new System.Drawing.Size(1053, 530);
+            this.dvgProduct.Size = new System.Drawing.Size(955, 533);
             this.dvgProduct.TabIndex = 1;
             // 
             // dgvProducts
@@ -181,14 +182,14 @@
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowHeadersWidth = 51;
-            this.dgvProducts.Size = new System.Drawing.Size(1084, 558);
+            this.dgvProducts.Size = new System.Drawing.Size(1079, 609);
             this.dgvProducts.TabIndex = 0;
             // 
             // FrmProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1084, 629);
+            this.ClientSize = new System.Drawing.Size(1079, 685);
             this.Controls.Add(this.spProduct);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MaximizeBox = false;

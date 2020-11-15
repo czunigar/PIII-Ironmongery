@@ -57,61 +57,61 @@
   <ItemGroup>
     <Compile Include="Connection.cs" />
     <Compile Include="DELIVERY.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="INVOICE.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
-    <Compile Include="IRONMONGERYEntities.Context.cs">
+    <Compile Include="IRONMONGERY.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IRONMONGERYEntities.Context.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="IRONMONGERYEntities.cs">
+    <Compile Include="IRONMONGERY.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
-    <Compile Include="IRONMONGERYEntities.Designer.cs">
+    <Compile Include="IRONMONGERY.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>IRONMONGERYEntities.edmx</DependentUpon>
+      <DependentUpon>IRONMONGERY.edmx</DependentUpon>
     </Compile>
     <Compile Include="LOGISTIC.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="NOTICE.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="ORDER.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="PRODUCT.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductDAO.cs" />
     <Compile Include="PRODUCT_ORDERS.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SERVICE.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="SERVICE_ORDERS.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="SHIPMENT.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="TRUCK.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="USER.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
     <Compile Include="UserDAO.cs" />
     <Compile Include="WAREHOUSE.cs">
-      <DependentUpon>IRONMONGERYEntities.tt</DependentUpon>
+      <DependentUpon>IRONMONGERY.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -126,12 +126,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="IRONMONGERYEntities.edmx">
+    <EntityDeploy Include="IRONMONGERY.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>IRONMONGERYEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>IRONMONGERY.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="IRONMONGERYEntities.edmx.diagram">
-      <DependentUpon>IRONMONGERYEntities.edmx</DependentUpon>
+    <None Include="IRONMONGERY.edmx.diagram">
+      <DependentUpon>IRONMONGERY.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -139,15 +139,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IRONMONGERYEntities.Context.tt">
+    <Content Include="IRONMONGERY.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>IRONMONGERYEntities.edmx</DependentUpon>
-      <LastGenOutput>IRONMONGERYEntities.Context.cs</LastGenOutput>
+      <DependentUpon>IRONMONGERY.edmx</DependentUpon>
+      <LastGenOutput>IRONMONGERY.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="IRONMONGERYEntities.tt">
+    <Content Include="IRONMONGERY.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>IRONMONGERYEntities.edmx</DependentUpon>
-      <LastGenOutput>IRONMONGERYEntities.cs</LastGenOutput>
+      <DependentUpon>IRONMONGERY.edmx</DependentUpon>
+      <LastGenOutput>IRONMONGERY.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

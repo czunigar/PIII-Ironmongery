@@ -42,6 +42,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pcImage = new System.Windows.Forms.PictureBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcImage)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,11 +184,19 @@
             this.pcImage.TabStop = false;
             this.pcImage.Click += new System.EventHandler(this.pcImage_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(21, 529);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 15;
+            // 
             // FrmAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 653);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.pcImage);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.lblTitle);
@@ -226,5 +235,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pcImage;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
