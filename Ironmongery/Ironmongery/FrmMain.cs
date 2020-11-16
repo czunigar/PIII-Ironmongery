@@ -16,20 +16,30 @@ namespace Ironmongery
     {
         private ProductBO pbo;
         private ServiceBO sbo;
+        private ServiceOrderBO sobo;
+        private OrderBO obo;
+        private ProductOrderBO pobo;
+        private EProductOrder eproductorder;
         private EProduct eproduct;
-        private EService eservice;
+        private EServiceOrder eserviceorder;
+        private EOrder eorder;
         private List<EProduct> productList;
-        private List<EProduct> productOrder;
-        private List<EProduct> newList;
-        private List<EService> serviceList;
+        private List<EProduct> eproductOrder;
+        private List<EService> serviceSelectedList;
+        private List<EOrder> orderList;
+        private List<EProductOrder> productorderList;
         public FrmMain()
         {
             InitializeComponent();
             this.sbo = new ServiceBO();
+            this.sobo = new ServiceOrderBO();
+            this.pobo = new ProductOrderBO();
             this.pbo = new ProductBO();
+            this.obo = new OrderBO();
             productList = new List<EProduct>();
-            newList = new List<EProduct>();
-            productOrder = new List<EProduct>();
+            serviceSelectedList = new List<EService>();
+            eproductOrder = new List<EProduct>();
+            productorderList = new List<EProductOrder>();
             ((Control)this.tabPage3).Enabled = false;
             pnService.Visible = false;
             loadData();
@@ -82,7 +92,7 @@ namespace Ironmongery
             txtDescription.Text = product.Description;
             txtUnits.Text = product.Units.ToString();
             product.Price *= product.Units;
-            txtPrince.Text = product.Price.ToString();
+            txtPrice.Text = product.Price.ToString();
             pcImageProductPurch.Image = Image.FromFile(product.Image);
         }
         private void changePrice()
@@ -92,34 +102,35 @@ namespace Ironmongery
             {
                 product.Units = int.Parse(txtUnits.Text);
                 product.Price *= product.Units;
-                txtPrince.Text = product.Price.ToString();
+                txtPrice.Text = product.Price.ToString();
             }
         }
 
         private void confirmPurchase()
         {
             EProduct product = (EProduct)lstConfirmPurchase.SelectedItem;
+            ((Control)this.tabPage3).Enabled = true;
             if (txtUnits.Text != "")
             {
-
                 int units = int.Parse(txtUnits.Text);
                 if (product.Units > 0)
                 {
                     if (product.Units >= units && units > 0)
                     {
-                        EProduct boughtProduct = new EProduct();
+                        EProduct orderProduct = product;
                         MessageBox.Show(product.Name + " just added to the order" );
-                        boughtProduct.Units = units;
-                        foreach (EProduct prod in productList)
-                        {
-                            if (product.Id == prod.Id)
-                            {
-                                product.Units -= boughtProduct.Units;
-                                pbo.Save(product);
-                            }
-                        }
-                        productOrder.Add(boughtProduct);
-                        lstShoppingProducts.Items.Add(boughtProduct);
+                        orderProduct.Units = units;
+                        eproductOrder.Add(orderProduct);
+                        //pobo.Save(eproductorder);
+                        eproduct.Units -= units;
+                        pbo.Save(eproduct);
+                        lstShoppingProducts.Items.Add(orderProduct);
+                        lstConfirmPurchase.Items.Remove(orderProduct);
+                        txtCaregory.Text = "";
+                        txtDescription.Text = "";
+                        txtUnits.Text = "";
+                        txtPrice.Text = "";
+                        pcImageProductPurch.Image = null;
                     }
                     else
                     {
@@ -134,24 +145,51 @@ namespace Ironmongery
         }
         private void loadService()
         {
-            serviceList = sbo.loadServices("");
-            foreach (EService services in serviceList)
-            {
-                cbxCategory.Items.Add(services.Category);
-            }
-
+            lstServices.DataSource = null;
+            lstServices.DataSource = sbo.loadServices("");
         }
-        private void searchService(string category)
+        private void addService()
         {
-            foreach (var service in sbo.loadServices(category))
+            if (cbService.Checked)
             {
-                cbxServiceName.Items.Add(service.Name);
-                txtServicePrice.Text = service.Price.ToString();
+                EService service= (EService)lstServices.SelectedItem;
+                serviceSelectedList.Add(service);
+                lstServices.Items.Remove(service);
             }
-
         }
         #endregion
         #region TAB3
+        private void createOrder()
+        {
+            eorder = new EOrder();
+            eorder.Cid = txtUserId.Text;
+            eorder.ClientName = txtUserName.Text;
+            eorder.Date = dtpDate.Value;
+            eorder.Status = "true";
+            obo.Save(eorder);
+            orderList = obo.LoadOrders("");
+            foreach (EOrder order in orderList)
+            {
+                if (order.Cid == eorder.Cid)
+                {
+                    eproductorder = new EProductOrder();
+                    eproductorder.OrderID = order.Id;
+                    eproductorder.Order = eorder;
+                    //eproductorder.ProductID
+                    //eproductorder.Units = 
+                    pobo.Save(eproductorder);
+                    eserviceorder = new EServiceOrder();
+                    eserviceorder.OrderID = order.Id;
+                    eserviceorder.Order = eorder;
+                    foreach (EService service in serviceSelectedList)
+                    {
+                        eserviceorder.ServiceID = service.Id;
+                    }
+                    sobo.Save(eserviceorder);
+                }
+            }
+
+        }
         #endregion
         #endregion
         #region EVENTS
@@ -215,19 +253,18 @@ namespace Ironmongery
             if (cbService.Checked)
             {
                 pnService.Visible = true;
+                btnAddService.Visible = true;
                 loadService();
             }
             else
             {
                 pnService.Visible = false;
+                btnAddService.Visible = false;
             }
         }
-
-        private void cbxCategory_TextUpdate(object sender, EventArgs e)
+        private void btnAddService_Click(object sender, EventArgs e)
         {
-            string category = cbxCategory.Text;
-            searchService(category);
+            addService();
         }
-
     }
 }

@@ -32,23 +32,20 @@
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtUnitsToBuy = new System.Windows.Forms.TextBox();
+            this.lblUnitsBuy = new System.Windows.Forms.Label();
             this.lstPackProducDetails = new System.Windows.Forms.TextBox();
             this.pcbxImageProdct = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lstPackageProducts = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblUnitsBuy = new System.Windows.Forms.Label();
-            this.txtUnitsToBuy = new System.Windows.Forms.TextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lstShoppingProducts = new System.Windows.Forms.ListBox();
+            this.btnAddService = new System.Windows.Forms.Button();
+            this.cbService = new System.Windows.Forms.CheckBox();
+            this.pnService = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtUnits = new System.Windows.Forms.TextBox();
-            this.txtPrince = new System.Windows.Forms.TextBox();
+            this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtCaregory = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -60,28 +57,37 @@
             this.btnConfirmProduct = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.lstConfirmPurchase = new System.Windows.Forms.ListBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.pnService = new System.Windows.Forms.Panel();
-            this.lblServiceName = new System.Windows.Forms.Label();
-            this.cbxServiceName = new System.Windows.Forms.ComboBox();
-            this.lblServiceCategory = new System.Windows.Forms.Label();
-            this.cbxCategory = new System.Windows.Forms.ComboBox();
-            this.lblServicePrice = new System.Windows.Forms.Label();
-            this.txtServicePrice = new System.Windows.Forms.TextBox();
-            this.cbService = new System.Windows.Forms.CheckBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpDate = new System.Windows.Forms.DateTimePicker();
+            this.lblDateOrder = new System.Windows.Forms.Label();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtUserId = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnCompleteOrder = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lstShoppingProducts = new System.Windows.Forms.ListBox();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lstServices = new System.Windows.Forms.ListBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbxImageProdct)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.pnService.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcImageProductPurch)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pcImageProductPurch)).BeginInit();
-            this.pnService.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -93,7 +99,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(997, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(1010, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -138,6 +144,22 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Package Store";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtUnitsToBuy
+            // 
+            this.txtUnitsToBuy.Location = new System.Drawing.Point(455, 108);
+            this.txtUnitsToBuy.Name = "txtUnitsToBuy";
+            this.txtUnitsToBuy.Size = new System.Drawing.Size(157, 26);
+            this.txtUnitsToBuy.TabIndex = 12;
+            // 
+            // lblUnitsBuy
+            // 
+            this.lblUnitsBuy.AutoSize = true;
+            this.lblUnitsBuy.Location = new System.Drawing.Point(396, 108);
+            this.lblUnitsBuy.Name = "lblUnitsBuy";
+            this.lblUnitsBuy.Size = new System.Drawing.Size(53, 20);
+            this.lblUnitsBuy.TabIndex = 11;
+            this.lblUnitsBuy.Text = "Units:";
             // 
             // lstPackProducDetails
             // 
@@ -193,11 +215,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnAddService);
             this.tabPage2.Controls.Add(this.cbService);
             this.tabPage2.Controls.Add(this.pnService);
             this.tabPage2.Controls.Add(this.label3);
             this.tabPage2.Controls.Add(this.txtUnits);
-            this.tabPage2.Controls.Add(this.txtPrince);
+            this.tabPage2.Controls.Add(this.txtPrice);
             this.tabPage2.Controls.Add(this.txtDescription);
             this.tabPage2.Controls.Add(this.txtCaregory);
             this.tabPage2.Controls.Add(this.label8);
@@ -218,106 +241,44 @@
             this.tabPage2.Text = "Confirm Purchase";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // lblSearch
+            // btnAddService
             // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.Location = new System.Drawing.Point(40, 23);
-            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(75, 24);
-            this.lblSearch.TabIndex = 5;
-            this.lblSearch.Text = "Search:";
+            this.btnAddService.Location = new System.Drawing.Point(806, 508);
+            this.btnAddService.Name = "btnAddService";
+            this.btnAddService.Size = new System.Drawing.Size(93, 36);
+            this.btnAddService.TabIndex = 53;
+            this.btnAddService.Text = "Add";
+            this.btnAddService.UseVisualStyleBackColor = true;
+            this.btnAddService.Click += new System.EventHandler(this.btnAddService_Click);
             // 
-            // txtSearch
+            // cbService
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(123, 24);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(264, 29);
-            this.txtSearch.TabIndex = 6;
+            this.cbService.AutoSize = true;
+            this.cbService.Location = new System.Drawing.Point(717, 98);
+            this.cbService.Name = "cbService";
+            this.cbService.Size = new System.Drawing.Size(95, 28);
+            this.cbService.TabIndex = 52;
+            this.cbService.Text = "Service";
+            this.cbService.UseVisualStyleBackColor = true;
+            this.cbService.CheckedChanged += new System.EventHandler(this.cbService_CheckedChanged);
             // 
-            // button1
+            // pnService
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.button1.Location = new System.Drawing.Point(396, 23);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(97, 31);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
+            this.pnService.Controls.Add(this.lstServices);
+            this.pnService.Location = new System.Drawing.Point(612, 147);
+            this.pnService.Name = "pnService";
+            this.pnService.Size = new System.Drawing.Size(287, 329);
+            this.pnService.TabIndex = 51;
             // 
-            // lblUnitsBuy
+            // label3
             // 
-            this.lblUnitsBuy.AutoSize = true;
-            this.lblUnitsBuy.Location = new System.Drawing.Point(396, 108);
-            this.lblUnitsBuy.Name = "lblUnitsBuy";
-            this.lblUnitsBuy.Size = new System.Drawing.Size(53, 20);
-            this.lblUnitsBuy.TabIndex = 11;
-            this.lblUnitsBuy.Text = "Units:";
-            // 
-            // txtUnitsToBuy
-            // 
-            this.txtUnitsToBuy.Location = new System.Drawing.Point(455, 108);
-            this.txtUnitsToBuy.Name = "txtUnitsToBuy";
-            this.txtUnitsToBuy.Size = new System.Drawing.Size(157, 26);
-            this.txtUnitsToBuy.TabIndex = 12;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.btnCompleteOrder);
-            this.tabPage3.Controls.Add(this.label1);
-            this.tabPage3.Controls.Add(this.lstShoppingProducts);
-            this.tabPage3.Location = new System.Drawing.Point(4, 33);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(924, 575);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Shopping Cart";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Location = new System.Drawing.Point(0, 34);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.splitContainer1.Panel1.Controls.Add(this.button1);
-            this.splitContainer1.Panel1.Controls.Add(this.lblSearch);
-            this.splitContainer1.Panel1.Controls.Add(this.txtSearch);
-            this.splitContainer1.Panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(998, 780);
-            this.splitContainer1.SplitterDistance = 75;
-            this.splitContainer1.TabIndex = 8;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(64, 65);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 24);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Products:";
-            // 
-            // lstShoppingProducts
-            // 
-            this.lstShoppingProducts.FormattingEnabled = true;
-            this.lstShoppingProducts.ItemHeight = 24;
-            this.lstShoppingProducts.Location = new System.Drawing.Point(67, 93);
-            this.lstShoppingProducts.Margin = new System.Windows.Forms.Padding(4);
-            this.lstShoppingProducts.Name = "lstShoppingProducts";
-            this.lstShoppingProducts.Size = new System.Drawing.Size(285, 412);
-            this.lstShoppingProducts.TabIndex = 13;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(630, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(78, 24);
+            this.label3.TabIndex = 49;
+            this.label3.Text = "Service:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtUnits
             // 
@@ -326,13 +287,13 @@
             this.txtUnits.Size = new System.Drawing.Size(95, 29);
             this.txtUnits.TabIndex = 48;
             // 
-            // txtPrince
+            // txtPrice
             // 
-            this.txtPrince.Location = new System.Drawing.Point(394, 360);
-            this.txtPrince.Name = "txtPrince";
-            this.txtPrince.ReadOnly = true;
-            this.txtPrince.Size = new System.Drawing.Size(97, 29);
-            this.txtPrince.TabIndex = 47;
+            this.txtPrice.Location = new System.Drawing.Point(394, 360);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.ReadOnly = true;
+            this.txtPrice.Size = new System.Drawing.Size(97, 29);
+            this.txtPrice.TabIndex = 47;
             // 
             // txtDescription
             // 
@@ -440,94 +401,102 @@
             this.lstConfirmPurchase.TabIndex = 35;
             this.lstConfirmPurchase.Click += new System.EventHandler(this.lstConfirmPurchase_Click);
             // 
-            // label3
+            // tabPage3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(630, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 24);
-            this.label3.TabIndex = 49;
-            this.label3.Text = "Service:";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.panel1);
+            this.tabPage3.Controls.Add(this.textBox1);
+            this.tabPage3.Controls.Add(this.btnCompleteOrder);
+            this.tabPage3.Controls.Add(this.label1);
+            this.tabPage3.Controls.Add(this.lstShoppingProducts);
+            this.tabPage3.Location = new System.Drawing.Point(4, 33);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(924, 575);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Purchase Order";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // pnService
+            // label6
             // 
-            this.pnService.Controls.Add(this.txtServicePrice);
-            this.pnService.Controls.Add(this.lblServicePrice);
-            this.pnService.Controls.Add(this.cbxCategory);
-            this.pnService.Controls.Add(this.lblServiceCategory);
-            this.pnService.Controls.Add(this.cbxServiceName);
-            this.pnService.Controls.Add(this.lblServiceName);
-            this.pnService.Location = new System.Drawing.Point(612, 147);
-            this.pnService.Name = "pnService";
-            this.pnService.Size = new System.Drawing.Size(287, 205);
-            this.pnService.TabIndex = 51;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(532, 84);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(89, 24);
+            this.label6.TabIndex = 41;
+            this.label6.Text = "User data";
             // 
-            // lblServiceName
+            // panel1
             // 
-            this.lblServiceName.AutoSize = true;
-            this.lblServiceName.Location = new System.Drawing.Point(30, 91);
-            this.lblServiceName.Name = "lblServiceName";
-            this.lblServiceName.Size = new System.Drawing.Size(66, 24);
-            this.lblServiceName.TabIndex = 52;
-            this.lblServiceName.Text = "Name:";
-            this.lblServiceName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.panel1.Controls.Add(this.dtpDate);
+            this.panel1.Controls.Add(this.lblDateOrder);
+            this.panel1.Controls.Add(this.txtUserName);
+            this.panel1.Controls.Add(this.txtUserId);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(519, 112);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(276, 247);
+            this.panel1.TabIndex = 40;
             // 
-            // cbxServiceName
+            // dtpDate
             // 
-            this.cbxServiceName.FormattingEnabled = true;
-            this.cbxServiceName.Location = new System.Drawing.Point(105, 88);
-            this.cbxServiceName.Name = "cbxServiceName";
-            this.cbxServiceName.Size = new System.Drawing.Size(167, 32);
-            this.cbxServiceName.TabIndex = 53;
+            this.dtpDate.Enabled = false;
+            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDate.Location = new System.Drawing.Point(92, 134);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(163, 29);
+            this.dtpDate.TabIndex = 5;
             // 
-            // lblServiceCategory
+            // lblDateOrder
             // 
-            this.lblServiceCategory.AutoSize = true;
-            this.lblServiceCategory.Location = new System.Drawing.Point(6, 29);
-            this.lblServiceCategory.Name = "lblServiceCategory";
-            this.lblServiceCategory.Size = new System.Drawing.Size(90, 24);
-            this.lblServiceCategory.TabIndex = 54;
-            this.lblServiceCategory.Text = "Category:";
-            this.lblServiceCategory.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDateOrder.AutoSize = true;
+            this.lblDateOrder.Location = new System.Drawing.Point(26, 139);
+            this.lblDateOrder.Name = "lblDateOrder";
+            this.lblDateOrder.Size = new System.Drawing.Size(53, 24);
+            this.lblDateOrder.TabIndex = 4;
+            this.lblDateOrder.Text = "Date:";
             // 
-            // cbxCategory
+            // txtUserName
             // 
-            this.cbxCategory.FormattingEnabled = true;
-            this.cbxCategory.Location = new System.Drawing.Point(105, 29);
-            this.cbxCategory.Name = "cbxCategory";
-            this.cbxCategory.Size = new System.Drawing.Size(164, 32);
-            this.cbxCategory.TabIndex = 55;
-            this.cbxCategory.TextUpdate += new System.EventHandler(this.cbxCategory_TextUpdate);
+            this.txtUserName.Location = new System.Drawing.Point(92, 91);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(163, 29);
+            this.txtUserName.TabIndex = 3;
             // 
-            // lblServicePrice
+            // txtUserId
             // 
-            this.lblServicePrice.AutoSize = true;
-            this.lblServicePrice.Location = new System.Drawing.Point(38, 149);
-            this.lblServicePrice.Name = "lblServicePrice";
-            this.lblServicePrice.Size = new System.Drawing.Size(58, 24);
-            this.lblServicePrice.TabIndex = 56;
-            this.lblServicePrice.Text = "Price:";
-            this.lblServicePrice.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.txtUserId.Location = new System.Drawing.Point(92, 39);
+            this.txtUserId.Name = "txtUserId";
+            this.txtUserId.Size = new System.Drawing.Size(163, 29);
+            this.txtUserId.TabIndex = 2;
             // 
-            // txtServicePrice
+            // label5
             // 
-            this.txtServicePrice.Location = new System.Drawing.Point(105, 146);
-            this.txtServicePrice.Name = "txtServicePrice";
-            this.txtServicePrice.ReadOnly = true;
-            this.txtServicePrice.Size = new System.Drawing.Size(107, 29);
-            this.txtServicePrice.TabIndex = 57;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(49, 44);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 24);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Id:";
             // 
-            // cbService
+            // label4
             // 
-            this.cbService.AutoSize = true;
-            this.cbService.Location = new System.Drawing.Point(717, 94);
-            this.cbService.Name = "cbService";
-            this.cbService.Size = new System.Drawing.Size(95, 28);
-            this.cbService.TabIndex = 52;
-            this.cbService.Text = "Service";
-            this.cbService.UseVisualStyleBackColor = true;
-            this.cbService.CheckedChanged += new System.EventHandler(this.cbService_CheckedChanged);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 91);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(66, 24);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Name:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(519, 383);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(276, 51);
+            this.textBox1.TabIndex = 39;
             // 
             // btnCompleteOrder
             // 
@@ -539,11 +508,92 @@
             this.btnCompleteOrder.Text = "Confirm";
             this.btnCompleteOrder.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(63, 59);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 24);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Order:";
+            // 
+            // lstShoppingProducts
+            // 
+            this.lstShoppingProducts.FormattingEnabled = true;
+            this.lstShoppingProducts.ItemHeight = 24;
+            this.lstShoppingProducts.Location = new System.Drawing.Point(67, 93);
+            this.lstShoppingProducts.Margin = new System.Windows.Forms.Padding(4);
+            this.lstShoppingProducts.Name = "lstShoppingProducts";
+            this.lstShoppingProducts.Size = new System.Drawing.Size(377, 412);
+            this.lstShoppingProducts.TabIndex = 13;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.Location = new System.Drawing.Point(40, 23);
+            this.lblSearch.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(75, 24);
+            this.lblSearch.TabIndex = 5;
+            this.lblSearch.Text = "Search:";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(123, 24);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(264, 29);
+            this.txtSearch.TabIndex = 6;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.button1.Location = new System.Drawing.Point(396, 23);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 31);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Location = new System.Drawing.Point(0, 34);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.splitContainer1.Panel1.Controls.Add(this.button1);
+            this.splitContainer1.Panel1.Controls.Add(this.lblSearch);
+            this.splitContainer1.Panel1.Controls.Add(this.txtSearch);
+            this.splitContainer1.Panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer1.Size = new System.Drawing.Size(998, 780);
+            this.splitContainer1.SplitterDistance = 75;
+            this.splitContainer1.TabIndex = 8;
+            // 
+            // lstServices
+            // 
+            this.lstServices.FormattingEnabled = true;
+            this.lstServices.ItemHeight = 24;
+            this.lstServices.Location = new System.Drawing.Point(32, 25);
+            this.lstServices.Name = "lstServices";
+            this.lstServices.Size = new System.Drawing.Size(234, 268);
+            this.lstServices.TabIndex = 0;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(997, 808);
+            this.ClientSize = new System.Drawing.Size(1010, 828);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -559,16 +609,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcbxImageProdct)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.pnService.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcImageProductPurch)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pcImageProductPurch)).EndInit();
-            this.pnService.ResumeLayout(false);
-            this.pnService.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,7 +647,7 @@
         private System.Windows.Forms.Panel pnService;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUnits;
-        private System.Windows.Forms.TextBox txtPrince;
+        private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtCaregory;
         private System.Windows.Forms.Label label8;
@@ -610,13 +661,18 @@
         private System.Windows.Forms.ListBox lstConfirmPurchase;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lstShoppingProducts;
-        private System.Windows.Forms.Label lblServiceName;
-        private System.Windows.Forms.Label lblServicePrice;
-        private System.Windows.Forms.ComboBox cbxCategory;
-        private System.Windows.Forms.Label lblServiceCategory;
-        private System.Windows.Forms.ComboBox cbxServiceName;
-        private System.Windows.Forms.TextBox txtServicePrice;
         private System.Windows.Forms.CheckBox cbService;
         private System.Windows.Forms.Button btnCompleteOrder;
+        private System.Windows.Forms.Button btnAddService;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblDateOrder;
+        private System.Windows.Forms.TextBox txtUserName;
+        private System.Windows.Forms.TextBox txtUserId;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DateTimePicker dtpDate;
+        private System.Windows.Forms.ListBox lstServices;
     }
 }
