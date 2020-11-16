@@ -100,8 +100,8 @@ namespace BoLayer
 
                 foreach (var user in logged)
                 {
-                    usr = new EUser(usr.Id, usr.Cid, usr.Name, usr.Code, usr.Password,
-                        usr.Type, usr.Admin);
+                    usr = new EUser(user.Id, user.Cid, user.Name, user.Code, user.Password,
+                        user.Type, user.Admin);
                     return usr;
                 }
             }

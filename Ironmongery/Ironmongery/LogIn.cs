@@ -18,10 +18,13 @@ namespace Ironmongery
     {
         UserBO ubo;
         Messages messages;
+        //private Form parent;
+
         public LogIn()
         {
             InitializeComponent();
             ubo = new UserBO();
+            //this.parent = parent;
             messages = new Messages();
             txtUser.Text = "adm269";
             txtPass.Text = "anitacr12345";
@@ -45,13 +48,16 @@ namespace Ironmongery
                 user.Code = txtUser.Text.Trim().ToUpper();
                 user.Password = txtPass.Text.Trim();
 
-                user = ubo.Login(user);
+                EUser usr = ubo.Login(user);
 
-                if(user != null)
+                if (usr != null)
                 {
-                    FrmUsers users = new FrmUsers();
-                    users.ShowDialog();
-                    clean();
+                    if ((bool)usr.Admin)
+                    {
+                        FrmAdmin admin = new FrmAdmin(this);
+                        admin.Show();
+                        clean();
+                    }
                 }
                 else
                 {
@@ -112,6 +118,14 @@ namespace Ironmongery
             {
                 login();
             }
+        }
+
+        private void LogIn_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //if (parent != null)
+            //{
+            //    parent.Visible = true;
+            //}
         }
     }
 }

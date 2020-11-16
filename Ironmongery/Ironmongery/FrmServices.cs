@@ -118,5 +118,24 @@ namespace Ironmongery
             btnCancel.Visible = false;
             LoadServices();
         }
+
+        private static FrmServices Instance = null;
+        public static FrmServices AddInstance
+        {
+            get
+            {
+                if (Instance == null)
+                {
+                    Instance = new FrmServices();
+                    Instance.Disposed += new EventHandler(ServiceDispose);
+                }
+                return Instance;
+            }
+        }
+
+        public static void ServiceDispose(object sender, EventArgs e)
+        {
+            Instance = null;
+        }
     }
 }

@@ -141,5 +141,24 @@ namespace Ironmongery
             btnCancel.Visible = false;
             LoadTrucks();
         }
+
+        private static FrmLogistic Instance = null;
+        public static FrmLogistic AddInstance
+        {
+            get
+            {
+                if (Instance == null)
+                {
+                    Instance = new FrmLogistic();
+                    Instance.Disposed += new EventHandler(LogisticDispose);
+                }
+                return Instance;
+            }
+        }
+
+        public static void LogisticDispose(object sender, EventArgs e)
+        {
+            Instance = null;
+        }
     }
 }
