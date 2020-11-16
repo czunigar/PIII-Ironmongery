@@ -84,6 +84,12 @@
     <Compile Include="FrmAddService.Designer.cs">
       <DependentUpon>FrmAddService.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdmin.Designer.cs">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDelivery.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,6 +175,9 @@
     <EmbeddedResource Include="FrmAddTruck.resx">
       <DependentUpon>FrmAddTruck.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAdmin.resx">
+      <DependentUpon>FrmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInvoice.resx">
       <DependentUpon>FrmInvoice.cs</DependentUpon>
     </EmbeddedResource>
@@ -239,6 +248,10 @@
     <None Include="Resources\login2.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\icons8_add_shopping_cart_125px_3.png" />
+    <Content Include="Resources\icons8_delivery_125px_1.png" />
+    <Content Include="Resources\icons8_request_service_125px.png" />
+    <Content Include="Resources\icons8_staff_125px.png" />
     <None Include="Resources\icons8_create_20px_3.png" />
     <Content Include="Resources\icons8_remove_25px.png" />
     <None Include="Resources\icons8_undo_20px.png" />
