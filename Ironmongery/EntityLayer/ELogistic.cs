@@ -12,7 +12,8 @@ namespace EntityLayer
         public int? VehicleNumber { get; set; }
         public int DriverId { get; set; }
         public EUser driver;
-        public string Status { get; set; }
+        public string Active { get; set; }
+
 
         public ELogistic()
         {
@@ -24,7 +25,7 @@ namespace EntityLayer
             VehicleNumber = vehicle_Number;
             DriverId = driverId;
             this.driver = driver;
-            Status = active;
+            Active = active;
         }
 
         public EUser Driver
