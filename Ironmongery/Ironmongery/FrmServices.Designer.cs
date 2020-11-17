@@ -175,6 +175,7 @@
             this.Controls.Add(this.scServices);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmServices";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Services Maintenance";
             this.scServices.Panel1.ResumeLayout(false);
             this.scServices.Panel1.PerformLayout();

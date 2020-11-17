@@ -18,6 +18,16 @@ namespace Ironmongery
         private ServiceBO sbo;
         private Messages message;
         private FrmAddService editService;
+        private Form parent;
+
+        public FrmServices(Form parent)
+        {
+            InitializeComponent();
+            this.parent = parent;
+            sbo = new ServiceBO();
+            message = new Messages();
+            btnCancel.Visible = false;
+        }
         public FrmServices()
         {
             InitializeComponent();

@@ -54,8 +54,23 @@ namespace Ironmongery
                 {
                     if ((bool)usr.Admin)
                     {
-                        FrmAdmin admin = new FrmAdmin(this);
-                        admin.Show();
+                        FrmAdmin admin = new FrmAdmin(this, usr);
+                        admin.Visible = true;
+                        this.Visible = false;
+                        clean();
+                    }
+                    else if (usr.Type.Equals("Driver"))
+                    {
+                        FrmDriver driver = new FrmDriver(this, usr);
+                        driver.Visible = true;
+                        this.Visible = false;
+                        clean();
+                    }
+                    else if (usr.Type.Equals("Cashier"))
+                    {
+                        FrmCashier cashier = new FrmCashier(this, usr);
+                        cashier.Visible = true;
+                        this.Visible = false;
                         clean();
                     }
                 }
