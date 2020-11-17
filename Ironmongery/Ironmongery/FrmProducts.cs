@@ -1,5 +1,6 @@
 ﻿using BoLayer;
 using EntityLayer;
+using ServiceLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,11 +16,13 @@ namespace Ironmongery
     public partial class FrmProducts : Form
     {
         private Form parent;
+        private Messages message;
         private ProductBO productbo;
         public FrmProducts(Form parent)
         {
             InitializeComponent();
             this.parent = parent;
+            message = new Messages();
             this.productbo = new ProductBO();
             
         }
@@ -57,9 +60,7 @@ namespace Ironmongery
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.StackTrace + "There was an issue trying to open the new view, please try again", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                message.notification("There was an issue trying to open the new view, please try again");
             }
         }
 
@@ -97,26 +98,18 @@ namespace Ironmongery
         {
             try
             {
-                if (dgvProducts.CurrentCell.Value != null)
+                Question.notification($"Do you want to delete the product: {selected().Name}?");
+                if (Question.Answer == 1)
                 {
-                    DialogResult result = MessageBox.Show($"Are you sure to remove the product \"{selected().Name}\"",
-                                "Removing User", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                    if (result == DialogResult.Yes)
-                    {
-                        productbo.Delete(selected().Id);
-                        loadData();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please choose a product", "Deliting product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    productbo.Delete(selected().Id);
+                    message.notification("Product deleted");
+                    loadData();
                 }
             }
             catch (Exception)
             {
 
-                MessageBox.Show("There was an issue trying to delete the product", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                message.notification("Please choose a product");
             }
         }
 
