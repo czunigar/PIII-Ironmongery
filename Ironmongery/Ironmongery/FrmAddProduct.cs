@@ -149,9 +149,10 @@ namespace Ironmongery
 
         private void FrmAddProduct_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FrmProducts frm = new FrmProducts();
-            frm.Visible = true;
-            this.Visible = false;
+            if(parent != null)
+            {
+                parent.Visible = true;
+            }
         }
     }
 }
