@@ -16,12 +16,14 @@ namespace Ironmongery
     public partial class FrmProducts : Form
     {
         private Form parent;
+        private Messages message;
         private ProductBO productbo;
         private Messages message;
         public FrmProducts(Form parent)
         {
             InitializeComponent();
             this.parent = parent;
+            message = new Messages();
             this.productbo = new ProductBO();
             this.message = new Messages();
         }
@@ -59,7 +61,6 @@ namespace Ironmongery
             }
             catch (Exception ex)
             {
-
                 message.notification("There was an issue trying to open the new view, please try again");
             }
         }
@@ -104,6 +105,7 @@ namespace Ironmongery
                     if (Question.Answer == 1)
                     {
                         productbo.Delete(selected().Id);
+                        message.notification("Product deleted");
                         loadData();
                     }
                 }

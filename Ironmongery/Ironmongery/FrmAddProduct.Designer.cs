@@ -234,6 +234,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmAddProduct";
             this.Text = "FrmAddProduct";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddProduct_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pcImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
