@@ -12,22 +12,30 @@ namespace EntityLayer
         public int? OrderID { get; set; }
         public EOrder order;
         public int? ServiceID { get; set; }
-
+        public EService service;
         public EServiceOrder()
         {
         }
 
-        public EServiceOrder(int id, int? orderID, EOrder order, int? serviceID)
+        public EServiceOrder(int id, int? orderID, int? serviceID, EOrder order, EService service)
         {
             Id = id;
             OrderID = orderID;
-            this.order = order;
             ServiceID = serviceID;
+            Order = order;
+            Service = service;
         }
+
         public EOrder Order
         {
             get { return this.order; }
             set { this.order = value; }
+        }
+
+        public EService Service
+        {
+            get { return this.service; }
+            set { this.service = value; }
         }
     }
 }

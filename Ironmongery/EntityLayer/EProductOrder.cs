@@ -13,19 +13,21 @@ namespace EntityLayer
         public int? OrderID { get; set; }
         public EOrder order;
         public int? ProductID { get; set; }
+        public EProduct product;
         public int? Units { get; set; }
 
         public EProductOrder()
         {
         }
 
-        public EProductOrder(int id, int? orderID, EOrder order, int? productID, int? units)
+        public EProductOrder(int id, int? orderID, int? productID, int? units, EOrder order, EProduct product)
         {
             Id = id;
             OrderID = orderID;
-            this.order = order;
             ProductID = productID;
             Units = units;
+            Order = order;
+            Product = product;
         }
 
         public EOrder Order
@@ -34,9 +36,15 @@ namespace EntityLayer
             set { this.order = value; }
         }
 
+        public EProduct Product
+        {
+            get { return this.product; }
+            set { this.product = value; }
+        }
+
         public override string ToString()
         {
-            return $"{ProductID}" + $"{Units}";
+            return $"{Product.Name} - {Units}";
         }
     }
 }

@@ -33,11 +33,11 @@ namespace EntityLayer
 
         public string ProductDetails()
         { 
-            return "Category: " + $" {Category}."+ " Description: " + $"{ Description}."+ " Price: $" + $"{ Price}.";
+            return $"Category: {Category} {Environment.NewLine}Description: {Description}{Environment.NewLine}Price: {Price}";
         }
         public override string ToString()
         {
-            return $"{Id}." + $"{Name}, " + $"{Units}, " + $"{Price}, " + $"{ Description}, " + $"{Category}." + $"{Image}." ;
+            return Name;
         }
     }
 }

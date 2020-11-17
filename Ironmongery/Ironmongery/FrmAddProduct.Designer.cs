@@ -34,7 +34,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtCategory = new System.Windows.Forms.TextBox();
             this.txtUnits = new System.Windows.Forms.TextBox();
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.txtPrice = new System.Windows.Forms.TextBox();
@@ -43,6 +42,7 @@
             this.pcImage = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.cboCategory = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.pcImage)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -111,25 +111,16 @@
             // 
             this.txtName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtName.Location = new System.Drawing.Point(130, 93);
-            this.txtName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtName.Margin = new System.Windows.Forms.Padding(2);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(180, 26);
             this.txtName.TabIndex = 5;
-            // 
-            // txtCategory
-            // 
-            this.txtCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.txtCategory.Location = new System.Drawing.Point(130, 135);
-            this.txtCategory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtCategory.Name = "txtCategory";
-            this.txtCategory.Size = new System.Drawing.Size(180, 26);
-            this.txtCategory.TabIndex = 6;
             // 
             // txtUnits
             // 
             this.txtUnits.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtUnits.Location = new System.Drawing.Point(130, 250);
-            this.txtUnits.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUnits.Margin = new System.Windows.Forms.Padding(2);
             this.txtUnits.Name = "txtUnits";
             this.txtUnits.Size = new System.Drawing.Size(180, 26);
             this.txtUnits.TabIndex = 7;
@@ -138,7 +129,7 @@
             // 
             this.txtDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtDescription.Location = new System.Drawing.Point(130, 174);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(180, 26);
             this.txtDescription.TabIndex = 8;
@@ -147,7 +138,7 @@
             // 
             this.txtPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.txtPrice.Location = new System.Drawing.Point(130, 211);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.Size = new System.Drawing.Size(180, 26);
             this.txtPrice.TabIndex = 9;
@@ -159,7 +150,7 @@
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.btnSave.ForeColor = System.Drawing.Color.White;
             this.btnSave.Location = new System.Drawing.Point(130, 480);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(80, 32);
             this.btnSave.TabIndex = 10;
@@ -183,7 +174,7 @@
             // 
             this.pcImage.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pcImage.Location = new System.Drawing.Point(130, 292);
-            this.pcImage.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pcImage.Margin = new System.Windows.Forms.Padding(2);
             this.pcImage.Name = "pcImage";
             this.pcImage.Size = new System.Drawing.Size(179, 156);
             this.pcImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -212,11 +203,24 @@
             this.lblTitle.Text = "ADD PRODUCT";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // cboCategory
+            // 
+            this.cboCategory.FormattingEnabled = true;
+            this.cboCategory.Items.AddRange(new object[] {
+            "Building",
+            "Tools",
+            "Electrical"});
+            this.cboCategory.Location = new System.Drawing.Point(130, 135);
+            this.cboCategory.Name = "cboCategory";
+            this.cboCategory.Size = new System.Drawing.Size(180, 21);
+            this.cboCategory.TabIndex = 16;
+            // 
             // FrmAddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(351, 531);
+            this.Controls.Add(this.cboCategory);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pcImage);
             this.Controls.Add(this.label6);
@@ -224,17 +228,16 @@
             this.Controls.Add(this.txtPrice);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtUnits);
-            this.Controls.Add(this.txtCategory);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmAddProduct";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmAddProduct";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddProduct_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pcImage)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -250,7 +253,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtCategory;
         private System.Windows.Forms.TextBox txtUnits;
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.TextBox txtPrice;
@@ -259,5 +261,6 @@
         private System.Windows.Forms.PictureBox pcImage;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.ComboBox cboCategory;
     }
 }

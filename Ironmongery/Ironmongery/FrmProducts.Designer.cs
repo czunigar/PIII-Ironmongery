@@ -65,7 +65,7 @@
             this.spProduct.Panel2.Controls.Add(this.dgvProduct);
             this.spProduct.Panel2.Controls.Add(this.dgvProducts);
             this.spProduct.Size = new System.Drawing.Size(809, 557);
-            this.spProduct.SplitterDistance = 57;
+            this.spProduct.SplitterDistance = 56;
             this.spProduct.TabIndex = 0;
             // 
             // btnSearch
@@ -144,11 +144,12 @@
             this.dgvProduct.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvProduct.GridColor = System.Drawing.Color.White;
             this.dgvProduct.Location = new System.Drawing.Point(0, 0);
-            this.dgvProduct.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvProduct.Margin = new System.Windows.Forms.Padding(2);
             this.dgvProduct.Name = "dgvProduct";
+            this.dgvProduct.RowHeadersVisible = false;
             this.dgvProduct.RowHeadersWidth = 51;
             this.dgvProduct.RowTemplate.Height = 24;
-            this.dgvProduct.Size = new System.Drawing.Size(809, 496);
+            this.dgvProduct.Size = new System.Drawing.Size(809, 497);
             this.dgvProduct.TabIndex = 1;
             // 
             // dgvProducts
@@ -161,7 +162,7 @@
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowHeadersWidth = 51;
-            this.dgvProducts.Size = new System.Drawing.Size(809, 496);
+            this.dgvProducts.Size = new System.Drawing.Size(809, 497);
             this.dgvProducts.TabIndex = 0;
             // 
             // FrmProducts
@@ -170,11 +171,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(809, 557);
             this.Controls.Add(this.spProduct);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmProducts";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmProducts";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmProducts_FormClosing);
             this.Load += new System.EventHandler(this.FrmProducts_Load);
             this.spProduct.Panel1.ResumeLayout(false);
             this.spProduct.Panel1.PerformLayout();

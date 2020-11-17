@@ -26,5 +26,10 @@ namespace EntityLayer
             Date = date;
             Status = status;
         }
+
+        public override string ToString()
+        {
+            return ClientName;
+        }
     }
 }

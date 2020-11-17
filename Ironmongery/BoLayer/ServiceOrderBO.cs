@@ -11,11 +11,13 @@ namespace BoLayer
     public class ServiceOrderBO
     {
         OrderBO obo;
+        ServiceBO sbo;
 
         /*Method to search a service order in the database*/
         public EServiceOrder GetServOrderById(int id)
         {
             obo = new OrderBO();
+            sbo = new ServiceBO();
             EServiceOrder svOrder = new EServiceOrder();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
@@ -29,13 +31,14 @@ namespace BoLayer
                 svOrder.OrderID = sor.OrderID;
                 svOrder.Order = obo.GetOrderById(sor.OrderID.Value);
                 svOrder.ServiceID = sor.ServiceID;
+                svOrder.Service = sbo.GetServiceById(sor.ServiceID.Value);
 
                 return svOrder;
             }
         }
 
         /*Method to add to a list all the service orders in the database*/
-        public List<EServiceOrder> LoadServiceOrders(string filter)
+        public List<EServiceOrder> LoadServiceOrders(int filter)
         {
             obo = new OrderBO();
             List<EServiceOrder> products = new List<EServiceOrder>();
@@ -47,16 +50,17 @@ namespace BoLayer
                                  Id = o.Id,
                                  OrderID = o.OrderID,
                                  Order = obo.GetOrderById(o.OrderID.Value),
-                                 ServiceID = o.ServiceID
-                             };
+                                 ServiceID = o.ServiceID,
+                                 Service = sbo.GetServiceById(o.ServiceID.Value)
+            };
 
-                if (!string.IsNullOrEmpty(filter))
+                if (filter > 0)
                 {
-                    myList = myList.Where(p => p.Order.Cid.Equals(filter));
+                    myList = myList.Where(p => p.Order.Id == filter);
                 }
                 foreach (var ord in myList)
                 {
-                    products.Add(new EServiceOrder(ord.Id, ord.OrderID, ord.Order, ord.ServiceID));
+                    products.Add(new EServiceOrder(ord.Id, ord.OrderID, ord.ServiceID, ord.Order, ord.Service));
                 }
 
                 return products;

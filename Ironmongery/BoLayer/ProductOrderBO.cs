@@ -11,11 +11,13 @@ namespace BoLayer
     public class ProductOrderBO
     {
         OrderBO obo;
-
+        ProductBO pbo;
+        
         /*Method to search a product order in the database*/
         public EProductOrder GetProdOrderById(int id)
         {
             obo = new OrderBO();
+            pbo = new ProductBO();
             EProductOrder pdOrder = new EProductOrder();
             using (IRONMONGERYEntities db = new IRONMONGERYEntities())
             {
@@ -29,6 +31,7 @@ namespace BoLayer
                 pdOrder.OrderID = u.OrderID;
                 pdOrder.Order = obo.GetOrderById(u.OrderID.Value);
                 pdOrder.ProductID = u.ProductID;
+                pdOrder.Product = pbo.GetProductById(u.ProductID.Value);
                 pdOrder.Units = u.Units;
 
                 return pdOrder;
@@ -36,7 +39,7 @@ namespace BoLayer
         }
 
         /*Method to add to a list all the product orders in the database*/
-        public List<EProductOrder> LoadProductOrders(string filter)
+        public List<EProductOrder> LoadProductOrders(int filter)
         {
             obo = new OrderBO();
             List<EProductOrder> products = new List<EProductOrder>();
@@ -49,17 +52,18 @@ namespace BoLayer
                                  OrderID = o.OrderID,
                                  Order = obo.GetOrderById(o.OrderID.Value),
                                  ProductID = o.ProductID,
+                                 Product = pbo.GetProductById(o.ProductID.Value),
                                  Units = o.Units
                              };
 
-                if (!string.IsNullOrEmpty(filter))
+                if (filter > 0)
                 {
-                    myList = myList.Where(p => p.Order.Cid.Equals(filter));
+                    myList = myList.Where(p => p.OrderID == filter);
                 }
                 foreach (var ord in myList)
                 {
-                    products.Add(new EProductOrder(ord.Id, ord.OrderID, ord.Order, ord.ProductID,
-                        ord.Units));
+                    products.Add(new EProductOrder(ord.Id, ord.OrderID, ord.ProductID,
+                        ord.Units, ord.Order, ord.Product));
                 }
 
                 return products;

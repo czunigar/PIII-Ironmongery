@@ -18,6 +18,7 @@ namespace Ironmongery
         private Form parent;
         private Messages message;
         private ProductBO productbo;
+
         public FrmProducts(Form parent)
         {
             InitializeComponent();
@@ -25,13 +26,8 @@ namespace Ironmongery
             message = new Messages();
             this.productbo = new ProductBO();
         }
-        public FrmProducts()
-        {
-            InitializeComponent();
-            this.productbo = new ProductBO();
-            
-        }
-        private void loadData()
+
+        private void LoadProducts()
         {
             dgvProduct.DataSource = null;
             dgvProduct.DataSource = productbo.LoadProducts(txtSearch.Text.ToUpper());
@@ -57,7 +53,7 @@ namespace Ironmongery
                 newProduct.Visible = true;
                 Visible = false;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 message.notification("There was an issue trying to open the new view, please try again");
             }
@@ -104,7 +100,7 @@ namespace Ironmongery
                     {
                         productbo.Delete(selected().Id);
                         message.notification("Product deleted");
-                        loadData();
+                        LoadProducts();
                     }
                 }
                 else
@@ -120,7 +116,7 @@ namespace Ironmongery
 
         private void FrmProducts_Load(object sender, EventArgs e)
         {
-
+            LoadProducts();
         }
 
         private void btnNewProduct_Click(object sender, EventArgs e)
@@ -140,7 +136,15 @@ namespace Ironmongery
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            loadData();
+            LoadProducts();
+        }
+
+        private void FrmProducts_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (parent != null)
+            {
+                parent.Visible = true;
+            }
         }
     }
 }
