@@ -18,6 +18,17 @@ namespace Ironmongery
         private UserBO ubo;
         private Messages message;
         private AddUser editUser;
+        private Form parent;
+
+        public FrmUsers(Form parent)
+        {
+            InitializeComponent();
+            this.parent = parent;
+            ubo = new UserBO();
+            message = new Messages();
+            btnCancel.Visible = false;
+        }
+
         public FrmUsers()
         {
             InitializeComponent();
@@ -122,6 +133,33 @@ namespace Ironmongery
             dgvUsers.Visible = true;
             btnCancel.Visible = false;
             LoadUsers();
+        }
+
+        private static FrmUsers Instance = null;
+        public static FrmUsers AddInstance
+        {
+            get
+            {
+                if (Instance == null)
+                {
+                    Instance = new FrmUsers();
+                    Instance.Disposed += new EventHandler(UserDispose);
+                }
+                return Instance;
+            }
+        }
+
+        public static void UserDispose(object sender, EventArgs e)
+        {
+            Instance = null;
+        }
+
+        private void FrmUsers_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if(parent != null)
+            {
+                parent.Visible = true;
+            }
         }
     }
 }

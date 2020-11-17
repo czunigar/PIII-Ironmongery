@@ -73,9 +73,29 @@ namespace Ironmongery.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_add_shopping_cart_125px_3 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_add_shopping_cart_125px_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_create_20px_3 {
             get {
                 object obj = ResourceManager.GetObject("icons8_create_20px_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_delivery_125px_1 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_delivery_125px_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,6 +133,16 @@ namespace Ironmongery.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_request_service_125px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_request_service_125px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_search_16 {
             get {
                 object obj = ResourceManager.GetObject("icons8_search_16", resourceCulture);
@@ -136,6 +166,16 @@ namespace Ironmongery.Properties {
         internal static System.Drawing.Bitmap icons8_search_25px_9 {
             get {
                 object obj = ResourceManager.GetObject("icons8_search_25px_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_staff_125px {
+            get {
+                object obj = ResourceManager.GetObject("icons8_staff_125px", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
