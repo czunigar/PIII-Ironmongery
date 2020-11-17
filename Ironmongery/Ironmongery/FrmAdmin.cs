@@ -47,6 +47,14 @@ namespace Ironmongery
             this.Visible = false;
         }
 
+        /*Method to create a window for the products crud*/
+        private void Product()
+        {
+            FrmProducts product = new FrmProducts(this);
+            product.Visible = true;
+            this.Visible = false;
+        }
+
 
         private void mnUsers_Click(object sender, EventArgs e)
         {
@@ -55,7 +63,7 @@ namespace Ironmongery
 
         private void mnProducts_Click(object sender, EventArgs e)
         {
-            
+            Product();
         }
 
         private void mnTruck_Click(object sender, EventArgs e)
@@ -83,7 +91,7 @@ namespace Ironmongery
 
         private void btnProducts_Click(object sender, EventArgs e)
         {
-
+            Product();
         }
 
         private void BtnServices_Click(object sender, EventArgs e)

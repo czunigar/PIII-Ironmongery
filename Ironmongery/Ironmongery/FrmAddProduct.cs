@@ -42,7 +42,7 @@ namespace Ironmongery
         private void loadProduct()
         {
             txtName.Text = eproduct.Name;
-            txtCategory.Text = eproduct.Category;
+            cboCategory.SelectedItem = eproduct.Category;
             txtDescription.Text = eproduct.Description;
             txtPrice.Text = eproduct.Price.ToString();
             txtUnits.Text = eproduct.Units.ToString();
@@ -65,7 +65,7 @@ namespace Ironmongery
                     Image image = pcImage.Image;
                     image.Save(pathstring);
                     newProduct.Name = txtName.Text.Trim();
-                    newProduct.Category = txtCategory.Text.Trim();
+                    newProduct.Category = cboCategory.SelectedItem.ToString();
                     newProduct.Description = txtDescription.Text.Trim();
                     newProduct.Price = decimal.Parse(txtPrice.Text.Trim());
                     newProduct.Units = decimal.Parse(txtUnits.Text.Trim());
@@ -97,7 +97,7 @@ namespace Ironmongery
                 string pathstring = System.IO.Path.Combine(folder, filename);
                 newProduct.Id = id;
                 newProduct.Name = txtName.Text.Trim();
-                newProduct.Category = txtCategory.Text.Trim();
+                newProduct.Category = cboCategory.SelectedItem.ToString();
                 newProduct.Description = txtDescription.Text.Trim();
                 newProduct.Price = decimal.Parse(txtPrice.Text.Trim());
                 newProduct.Units = decimal.Parse(txtUnits.Text.Trim());
@@ -145,13 +145,6 @@ namespace Ironmongery
                     picture.Image = Image.FromFile(openFile.FileName);
                 }
             }
-        }
-
-        private void FrmAddProduct_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            FrmProducts frm = new FrmProducts();
-            frm.Visible = true;
-            this.Visible = false;
         }
     }
 }

@@ -137,10 +137,10 @@ namespace Ironmongery
 
         private void LogIn_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //if (parent != null)
-            //{
-            //    parent.Visible = true;
-            //}
+            if (parent != null)
+            {
+                parent.Visible = true;
+            }
         }
     }
 }

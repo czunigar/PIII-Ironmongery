@@ -32,6 +32,13 @@
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblClient = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtUserName = new System.Windows.Forms.TextBox();
+            this.txtUserId = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblUnits = new System.Windows.Forms.Label();
             this.txtUnitsToBuy = new System.Windows.Forms.TextBox();
             this.lblUnitsBuy = new System.Windows.Forms.Label();
             this.lstPackProducDetails = new System.Windows.Forms.TextBox();
@@ -56,34 +63,25 @@
             this.pcImageProductPurch = new System.Windows.Forms.PictureBox();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnConfirmProduct = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.lstConfirmPurchase = new System.Windows.Forms.ListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
-            this.lblDateOrder = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.TextBox();
-            this.txtUserId = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnCompleteOrder = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lstShoppingProducts = new System.Windows.Forms.ListBox();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
             this.lblSearch = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbxImageProdct)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.pnService.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcImageProductPurch)).BeginInit();
             this.tabPage3.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -99,7 +97,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(746, 25);
+            this.menuStrip1.Size = new System.Drawing.Size(755, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -123,11 +121,14 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(748, 571);
+            this.tabControl1.Size = new System.Drawing.Size(755, 457);
             this.tabControl1.TabIndex = 4;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lblClient);
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.lblUnits);
             this.tabPage1.Controls.Add(this.txtUnitsToBuy);
             this.tabPage1.Controls.Add(this.lblUnitsBuy);
             this.tabPage1.Controls.Add(this.lstPackProducDetails);
@@ -138,16 +139,84 @@
             this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 27);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage1.Size = new System.Drawing.Size(740, 540);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(747, 426);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Package Store";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // lblClient
+            // 
+            this.lblClient.AutoSize = true;
+            this.lblClient.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClient.Location = new System.Drawing.Point(319, 245);
+            this.lblClient.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblClient.Name = "lblClient";
+            this.lblClient.Size = new System.Drawing.Size(209, 18);
+            this.lblClient.TabIndex = 43;
+            this.lblClient.Text = "Client Personal Information";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.txtUserName);
+            this.panel1.Controls.Add(this.txtUserId);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Location = new System.Drawing.Point(322, 270);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(206, 132);
+            this.panel1.TabIndex = 42;
+            // 
+            // txtUserName
+            // 
+            this.txtUserName.Location = new System.Drawing.Point(69, 74);
+            this.txtUserName.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(123, 22);
+            this.txtUserName.TabIndex = 3;
+            // 
+            // txtUserId
+            // 
+            this.txtUserId.Location = new System.Drawing.Point(69, 32);
+            this.txtUserId.Margin = new System.Windows.Forms.Padding(2);
+            this.txtUserId.Name = "txtUserId";
+            this.txtUserId.Size = new System.Drawing.Size(123, 22);
+            this.txtUserId.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(37, 36);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(22, 16);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Id:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(10, 74);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 16);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Name:";
+            // 
+            // lblUnits
+            // 
+            this.lblUnits.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUnits.Location = new System.Drawing.Point(319, 203);
+            this.lblUnits.Name = "lblUnits";
+            this.lblUnits.Size = new System.Drawing.Size(160, 22);
+            this.lblUnits.TabIndex = 13;
+            this.lblUnits.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // txtUnitsToBuy
             // 
-            this.txtUnitsToBuy.Location = new System.Drawing.Point(341, 88);
-            this.txtUnitsToBuy.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUnitsToBuy.Location = new System.Drawing.Point(360, 30);
+            this.txtUnitsToBuy.Margin = new System.Windows.Forms.Padding(2);
             this.txtUnitsToBuy.Name = "txtUnitsToBuy";
             this.txtUnitsToBuy.Size = new System.Drawing.Size(119, 22);
             this.txtUnitsToBuy.TabIndex = 12;
@@ -155,7 +224,7 @@
             // lblUnitsBuy
             // 
             this.lblUnitsBuy.AutoSize = true;
-            this.lblUnitsBuy.Location = new System.Drawing.Point(297, 88);
+            this.lblUnitsBuy.Location = new System.Drawing.Point(316, 30);
             this.lblUnitsBuy.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUnitsBuy.Name = "lblUnitsBuy";
             this.lblUnitsBuy.Size = new System.Drawing.Size(41, 16);
@@ -164,18 +233,19 @@
             // 
             // lstPackProducDetails
             // 
-            this.lstPackProducDetails.Location = new System.Drawing.Point(322, 219);
-            this.lstPackProducDetails.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstPackProducDetails.Font = new System.Drawing.Font("Lucida Sans Unicode", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstPackProducDetails.Location = new System.Drawing.Point(543, 30);
+            this.lstPackProducDetails.Margin = new System.Windows.Forms.Padding(2);
             this.lstPackProducDetails.Multiline = true;
             this.lstPackProducDetails.Name = "lstPackProducDetails";
             this.lstPackProducDetails.ReadOnly = true;
-            this.lstPackProducDetails.Size = new System.Drawing.Size(210, 154);
+            this.lstPackProducDetails.Size = new System.Drawing.Size(160, 161);
             this.lstPackProducDetails.TabIndex = 10;
             // 
             // pcbxImageProdct
             // 
             this.pcbxImageProdct.BackColor = System.Drawing.Color.DarkGray;
-            this.pcbxImageProdct.Location = new System.Drawing.Point(492, 61);
+            this.pcbxImageProdct.Location = new System.Drawing.Point(319, 62);
             this.pcbxImageProdct.Name = "pcbxImageProdct";
             this.pcbxImageProdct.Size = new System.Drawing.Size(160, 129);
             this.pcbxImageProdct.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -203,13 +273,17 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(538, 396);
-            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAdd.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btnAdd.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnAdd.FlatAppearance.BorderSize = 0;
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(621, 365);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(82, 37);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // tabPage2
@@ -229,20 +303,19 @@
             this.tabPage2.Controls.Add(this.pcImageProductPurch);
             this.tabPage2.Controls.Add(this.btnRemove);
             this.tabPage2.Controls.Add(this.btnConfirmProduct);
-            this.tabPage2.Controls.Add(this.label12);
             this.tabPage2.Controls.Add(this.lstConfirmPurchase);
             this.tabPage2.Location = new System.Drawing.Point(4, 27);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage2.Size = new System.Drawing.Size(740, 540);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(747, 426);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Confirm Purchase";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnAddService
             // 
-            this.btnAddService.Location = new System.Drawing.Point(604, 413);
-            this.btnAddService.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAddService.Location = new System.Drawing.Point(627, 390);
+            this.btnAddService.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddService.Name = "btnAddService";
             this.btnAddService.Size = new System.Drawing.Size(70, 29);
             this.btnAddService.TabIndex = 53;
@@ -253,8 +326,8 @@
             // cbService
             // 
             this.cbService.AutoSize = true;
-            this.cbService.Location = new System.Drawing.Point(538, 80);
-            this.cbService.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbService.Location = new System.Drawing.Point(561, 48);
+            this.cbService.Margin = new System.Windows.Forms.Padding(2);
             this.cbService.Name = "cbService";
             this.cbService.Size = new System.Drawing.Size(76, 22);
             this.cbService.TabIndex = 52;
@@ -265,8 +338,8 @@
             // pnService
             // 
             this.pnService.Controls.Add(this.lstServices);
-            this.pnService.Location = new System.Drawing.Point(459, 119);
-            this.pnService.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnService.Location = new System.Drawing.Point(482, 87);
+            this.pnService.Margin = new System.Windows.Forms.Padding(2);
             this.pnService.Name = "pnService";
             this.pnService.Size = new System.Drawing.Size(215, 267);
             this.pnService.TabIndex = 51;
@@ -275,8 +348,8 @@
             // 
             this.lstServices.FormattingEnabled = true;
             this.lstServices.ItemHeight = 18;
-            this.lstServices.Location = new System.Drawing.Point(24, 20);
-            this.lstServices.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstServices.Location = new System.Drawing.Point(16, 25);
+            this.lstServices.Margin = new System.Windows.Forms.Padding(2);
             this.lstServices.Name = "lstServices";
             this.lstServices.Size = new System.Drawing.Size(176, 202);
             this.lstServices.TabIndex = 0;
@@ -284,7 +357,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(472, 80);
+            this.label3.Location = new System.Drawing.Point(495, 48);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 18);
@@ -294,41 +367,44 @@
             // 
             // txtUnits
             // 
-            this.txtUnits.Location = new System.Drawing.Point(297, 323);
-            this.txtUnits.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUnits.Location = new System.Drawing.Point(296, 292);
+            this.txtUnits.Margin = new System.Windows.Forms.Padding(2);
             this.txtUnits.Name = "txtUnits";
-            this.txtUnits.Size = new System.Drawing.Size(72, 24);
+            this.txtUnits.Size = new System.Drawing.Size(140, 24);
             this.txtUnits.TabIndex = 48;
+            this.txtUnits.TextChanged += new System.EventHandler(this.txtUnits_TextChanged);
             // 
             // txtPrice
             // 
-            this.txtPrice.Location = new System.Drawing.Point(296, 292);
-            this.txtPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtPrice.Location = new System.Drawing.Point(297, 259);
+            this.txtPrice.Margin = new System.Windows.Forms.Padding(2);
             this.txtPrice.Name = "txtPrice";
             this.txtPrice.ReadOnly = true;
-            this.txtPrice.Size = new System.Drawing.Size(74, 24);
+            this.txtPrice.Size = new System.Drawing.Size(139, 24);
             this.txtPrice.TabIndex = 47;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(296, 259);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDescription.Enabled = false;
+            this.txtDescription.Location = new System.Drawing.Point(296, 220);
+            this.txtDescription.Margin = new System.Windows.Forms.Padding(2);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(140, 24);
             this.txtDescription.TabIndex = 46;
             // 
             // txtCaregory
             // 
-            this.txtCaregory.Location = new System.Drawing.Point(293, 223);
-            this.txtCaregory.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCaregory.Enabled = false;
+            this.txtCaregory.Location = new System.Drawing.Point(296, 185);
+            this.txtCaregory.Margin = new System.Windows.Forms.Padding(2);
             this.txtCaregory.Name = "txtCaregory";
-            this.txtCaregory.Size = new System.Drawing.Size(143, 24);
+            this.txtCaregory.Size = new System.Drawing.Size(140, 24);
             this.txtCaregory.TabIndex = 45;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(248, 323);
+            this.label8.Location = new System.Drawing.Point(199, 292);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 18);
@@ -339,7 +415,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(247, 292);
+            this.label9.Location = new System.Drawing.Point(199, 259);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(46, 18);
@@ -350,7 +426,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(208, 260);
+            this.label10.Location = new System.Drawing.Point(199, 220);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(87, 18);
@@ -361,7 +437,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(223, 224);
+            this.label11.Location = new System.Drawing.Point(199, 185);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(72, 18);
@@ -371,7 +447,7 @@
             // 
             // pcImageProductPurch
             // 
-            this.pcImageProductPurch.Location = new System.Drawing.Point(251, 80);
+            this.pcImageProductPurch.Location = new System.Drawing.Point(304, 48);
             this.pcImageProductPurch.Name = "pcImageProductPurch";
             this.pcImageProductPurch.Size = new System.Drawing.Size(132, 108);
             this.pcImageProductPurch.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -380,7 +456,7 @@
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(212, 388);
+            this.btnRemove.Location = new System.Drawing.Point(256, 349);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(86, 27);
             this.btnRemove.TabIndex = 38;
@@ -389,7 +465,7 @@
             // 
             // btnConfirmProduct
             // 
-            this.btnConfirmProduct.Location = new System.Drawing.Point(323, 388);
+            this.btnConfirmProduct.Location = new System.Drawing.Point(348, 349);
             this.btnConfirmProduct.Name = "btnConfirmProduct";
             this.btnConfirmProduct.Size = new System.Drawing.Size(88, 27);
             this.btnConfirmProduct.TabIndex = 37;
@@ -397,126 +473,35 @@
             this.btnConfirmProduct.UseVisualStyleBackColor = true;
             this.btnConfirmProduct.Click += new System.EventHandler(this.confirmProduct_Click);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(30, 53);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(105, 18);
-            this.label12.TabIndex = 36;
-            this.label12.Text = "Product name:";
-            // 
             // lstConfirmPurchase
             // 
             this.lstConfirmPurchase.FormattingEnabled = true;
             this.lstConfirmPurchase.ItemHeight = 18;
-            this.lstConfirmPurchase.Location = new System.Drawing.Point(33, 80);
+            this.lstConfirmPurchase.Location = new System.Drawing.Point(8, 48);
             this.lstConfirmPurchase.Name = "lstConfirmPurchase";
-            this.lstConfirmPurchase.Size = new System.Drawing.Size(165, 328);
+            this.lstConfirmPurchase.Size = new System.Drawing.Size(182, 328);
             this.lstConfirmPurchase.TabIndex = 35;
             this.lstConfirmPurchase.Click += new System.EventHandler(this.lstConfirmPurchase_Click);
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.label6);
-            this.tabPage3.Controls.Add(this.panel1);
             this.tabPage3.Controls.Add(this.textBox1);
             this.tabPage3.Controls.Add(this.btnCompleteOrder);
             this.tabPage3.Controls.Add(this.label1);
             this.tabPage3.Controls.Add(this.lstShoppingProducts);
             this.tabPage3.Location = new System.Drawing.Point(4, 27);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.tabPage3.Size = new System.Drawing.Size(740, 540);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(2);
+            this.tabPage3.Size = new System.Drawing.Size(747, 426);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Purchase Order";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(399, 68);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 18);
-            this.label6.TabIndex = 41;
-            this.label6.Text = "User data";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dtpDate);
-            this.panel1.Controls.Add(this.lblDateOrder);
-            this.panel1.Controls.Add(this.txtUserName);
-            this.panel1.Controls.Add(this.txtUserId);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Location = new System.Drawing.Point(389, 91);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(207, 201);
-            this.panel1.TabIndex = 40;
-            // 
-            // dtpDate
-            // 
-            this.dtpDate.Enabled = false;
-            this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDate.Location = new System.Drawing.Point(69, 109);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(123, 24);
-            this.dtpDate.TabIndex = 5;
-            // 
-            // lblDateOrder
-            // 
-            this.lblDateOrder.AutoSize = true;
-            this.lblDateOrder.Location = new System.Drawing.Point(20, 113);
-            this.lblDateOrder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDateOrder.Name = "lblDateOrder";
-            this.lblDateOrder.Size = new System.Drawing.Size(43, 18);
-            this.lblDateOrder.TabIndex = 4;
-            this.lblDateOrder.Text = "Date:";
-            // 
-            // txtUserName
-            // 
-            this.txtUserName.Location = new System.Drawing.Point(69, 74);
-            this.txtUserName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.Size = new System.Drawing.Size(123, 24);
-            this.txtUserName.TabIndex = 3;
-            // 
-            // txtUserId
-            // 
-            this.txtUserId.Location = new System.Drawing.Point(69, 32);
-            this.txtUserId.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.txtUserId.Name = "txtUserId";
-            this.txtUserId.Size = new System.Drawing.Size(123, 24);
-            this.txtUserId.TabIndex = 2;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(37, 36);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 18);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Id:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(10, 74);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 18);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Name:";
-            // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(389, 311);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Location = new System.Drawing.Point(395, 283);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
@@ -525,7 +510,7 @@
             // 
             // btnCompleteOrder
             // 
-            this.btnCompleteOrder.Location = new System.Drawing.Point(510, 375);
+            this.btnCompleteOrder.Location = new System.Drawing.Point(516, 347);
             this.btnCompleteOrder.Name = "btnCompleteOrder";
             this.btnCompleteOrder.Size = new System.Drawing.Size(86, 35);
             this.btnCompleteOrder.TabIndex = 38;
@@ -535,7 +520,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(47, 48);
+            this.label1.Location = new System.Drawing.Point(53, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 18);
             this.label1.TabIndex = 14;
@@ -545,44 +530,16 @@
             // 
             this.lstShoppingProducts.FormattingEnabled = true;
             this.lstShoppingProducts.ItemHeight = 18;
-            this.lstShoppingProducts.Location = new System.Drawing.Point(50, 76);
+            this.lstShoppingProducts.Location = new System.Drawing.Point(56, 48);
             this.lstShoppingProducts.Name = "lstShoppingProducts";
             this.lstShoppingProducts.Size = new System.Drawing.Size(284, 328);
             this.lstShoppingProducts.TabIndex = 13;
             // 
-            // lblSearch
-            // 
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.ForeColor = System.Drawing.Color.White;
-            this.lblSearch.Location = new System.Drawing.Point(27, 23);
-            this.lblSearch.Name = "lblSearch";
-            this.lblSearch.Size = new System.Drawing.Size(59, 18);
-            this.lblSearch.TabIndex = 5;
-            this.lblSearch.Text = "Search:";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(92, 20);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(199, 24);
-            this.txtSearch.TabIndex = 6;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
-            this.button1.Location = new System.Drawing.Point(297, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(73, 25);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // splitContainer1
             // 
-            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -597,27 +554,59 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
-            this.splitContainer1.Size = new System.Drawing.Size(748, 634);
-            this.splitContainer1.SplitterDistance = 60;
+            this.splitContainer1.Size = new System.Drawing.Size(755, 507);
+            this.splitContainer1.SplitterDistance = 47;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.button1.Location = new System.Drawing.Point(296, 11);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(73, 25);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Search";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearch.ForeColor = System.Drawing.Color.White;
+            this.lblSearch.Location = new System.Drawing.Point(26, 15);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(59, 18);
+            this.lblSearch.TabIndex = 5;
+            this.lblSearch.Text = "Search:";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(91, 12);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(199, 24);
+            this.txtSearch.TabIndex = 6;
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(746, 658);
+            this.ClientSize = new System.Drawing.Size(755, 532);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbxImageProdct)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -625,8 +614,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pcImageProductPurch)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -643,20 +630,18 @@
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Label lblSearch;
-        private System.Windows.Forms.TextBox txtSearch;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox lstPackageProducts;
-        private System.Windows.Forms.TextBox lstPackProducDetails;
-        private System.Windows.Forms.PictureBox pcbxImageProdct;
         private System.Windows.Forms.TextBox txtUnitsToBuy;
         private System.Windows.Forms.Label lblUnitsBuy;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.TextBox lstPackProducDetails;
+        private System.Windows.Forms.PictureBox pcbxImageProdct;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox lstPackageProducts;
+        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnAddService;
+        private System.Windows.Forms.CheckBox cbService;
         private System.Windows.Forms.Panel pnService;
+        private System.Windows.Forms.ListBox lstServices;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUnits;
         private System.Windows.Forms.TextBox txtPrice;
@@ -669,22 +654,22 @@
         private System.Windows.Forms.PictureBox pcImageProductPurch;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Button btnConfirmProduct;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ListBox lstConfirmPurchase;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnCompleteOrder;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lstShoppingProducts;
-        private System.Windows.Forms.CheckBox cbService;
-        private System.Windows.Forms.Button btnCompleteOrder;
-        private System.Windows.Forms.Button btnAddService;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Label lblUnits;
+        private System.Windows.Forms.Label lblClient;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblDateOrder;
         private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.TextBox txtUserId;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtpDate;
-        private System.Windows.Forms.ListBox lstServices;
     }
 }

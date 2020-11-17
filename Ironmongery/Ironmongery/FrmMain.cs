@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BoLayer;
 using EntityLayer;
+using ServiceLayer;
 
 namespace Ironmongery
 {
@@ -19,15 +20,12 @@ namespace Ironmongery
         private ServiceOrderBO sobo;
         private OrderBO obo;
         private ProductOrderBO pobo;
-        private EProductOrder eproductorder;
-        private EProduct eproduct;
-        private EServiceOrder eserviceorder;
-        private EOrder eorder;
         private List<EProduct> productList;
         private List<EProduct> eproductOrder;
         private List<EService> serviceSelectedList;
-        private List<EOrder> orderList;
         private List<EProductOrder> productorderList;
+        private Messages message;
+        private int id = 0;
         public FrmMain()
         {
             InitializeComponent();
@@ -36,6 +34,7 @@ namespace Ironmongery
             this.pobo = new ProductOrderBO();
             this.pbo = new ProductBO();
             this.obo = new OrderBO();
+            this.message = new Messages();
             productList = new List<EProduct>();
             serviceSelectedList = new List<EService>();
             eproductOrder = new List<EProduct>();
@@ -57,59 +56,104 @@ namespace Ironmongery
         /*Method to add the product to the whislist*/
         private void addProductOrder() 
         {
-            eproduct = (EProduct)lstPackageProducts.SelectedItem;
-            decimal oldunits = decimal.Parse(eproduct.Units.ToString());
-            if (txtUnitsToBuy.Text != "")
+            try
             {
-                int units = int.Parse(txtUnitsToBuy.Text);
-                btnAdd.Enabled = true;
-                if (eproduct.Units > 0)
+                if (!string.IsNullOrEmpty(txtUnitsToBuy.Text))
                 {
-                    if (eproduct.Units >= units && units > 0)
+                    int units = int.Parse(txtUnitsToBuy.Text);
+                    btnAdd.Enabled = true;
+                    if (SelectedProduct().Units > 0)
                     {
-                        EProduct currectproduct = eproduct;
-                        MessageBox.Show("You just added: " + eproduct.Name + " to your shopping cart");
-                        currectproduct.Units = units;
-                        productList.Add(currectproduct);
-                        pbo.UpdateUnits(eproduct, oldunits);
-                        lstConfirmPurchase.Items.Add(currectproduct);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Units value invalid, please enter a valid value. Thanks");
+                        if (SelectedProduct().Units >= units && units > 0)
+                        {
+                            EProduct newP = new EProduct();
+                            newP = SelectedProduct();
+                            message.notification($"You just added: {newP.Name} to your shopping cart");
+                            productList.Add(newP);
+                            newP.Units = newP.Units - units;
+                            pbo.Save(newP);
+                            lstConfirmPurchase.Items.Add(CreatePrOrder(Order(), newP, units));
+                        }
+                        else
+                        {
+                            message.notification("Units value invalid, please enter a valid value. Thanks");
+                        }
                     }
                 }
+                else
+                {
+                    message.notification("Units value invalid, please enter a valid value. Thanks");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Units value invalid, please enter a valid value. Thanks");
+
+                message.notification("Cannot do that action");
             }
             
         }
+
+        /*Method to create the order to confirm the invoice*/
+        private EOrder Order()
+        {
+            EOrder ord = new EOrder();
+            ord.Cid = txtUserId.Text;
+            ord.ClientName = txtUserName.Text;
+            ord.Date = DateTime.Now;
+            ord.Status = "Pending";
+            obo.Save(ord);
+            return ord;
+        }
+
+        /*Method to add the product to each order*/
+        private EProductOrder CreatePrOrder(EOrder ord,EProduct product, int units)
+        {
+            EProductOrder pOrder = new EProductOrder();
+            foreach (EOrder order in obo.LoadOrders(""))
+            {
+                if (order.Cid.Equals(ord.Cid))
+                {    
+                    pOrder.OrderID = order.Id;
+                    this.id = order.Id;
+                    pOrder.Order = ord;
+                    pOrder.ProductID = product.Id;
+                    pOrder.Product = product;
+                    pOrder.Units = units;
+                    pobo.Save(pOrder);
+                }
+            }
+            return pOrder;
+        }
+
+        /*Method to grab the selected product*/
+        private EProduct SelectedProduct()
+        {
+            return (EProduct)lstPackageProducts.SelectedItem;
+        }
         #endregion
         #region TAB2
+
         /*Method to load the products to confirm order*/
-        private void loadDataConfirmPurchase()
+        private void LoadPurchase()
         {
-            EProduct product = (EProduct)lstConfirmPurchase.SelectedItem;
-            txtCaregory.Text = product.Category;
-            txtDescription.Text = product.Description;
-            txtUnits.Text = product.Units.ToString();
-            product.Price *= product.Units;
-            txtPrice.Text = product.Price.ToString();
-            pcImageProductPurch.Image = Image.FromFile(product.Image);
+            lstConfirmPurchase.DataSource = pobo.LoadProductOrders(this.id);
         }
+
+        /*Method to grab the selected order for a product*/
+        private EProductOrder SelectedPrOrder()
+        {
+            return (EProductOrder)lstConfirmPurchase.SelectedItem;
+        }
+
         /*method to change the price of the product*/
-        private void changePrice()
+        private void getPrice()
         {
-            EProduct product = (EProduct)lstConfirmPurchase.SelectedItem;
-            if (txtUnits.Text != product.Units.ToString() )
-            {
-                product.Units = int.Parse(txtUnits.Text);
-                product.Price *= product.Units;
-                txtPrice.Text = product.Price.ToString();
-            }
+            int units = int.Parse(txtUnits.Text);
+            decimal price = (decimal)(SelectedPrOrder().Product.Price);
+            decimal newPrice = price * units;
+            txtPrice.Text = newPrice.ToString();
         }
+
         /*Method to confirm the purchase*/
         private void confirmPurchase()
         {
@@ -164,40 +208,6 @@ namespace Ironmongery
             }
         }
         #endregion
-        #region TAB3
-        /*Methid to create the order to confirm the invoice*/
-        private void createOrder()
-        {
-            eorder = new EOrder();
-            eorder.Cid = txtUserId.Text;
-            eorder.ClientName = txtUserName.Text;
-            eorder.Date = dtpDate.Value;
-            eorder.Status = "true";
-            obo.Save(eorder);
-            orderList = obo.LoadOrders("");
-            foreach (EOrder order in orderList)
-            {
-                if (order.Cid == eorder.Cid)
-                {
-                    eproductorder = new EProductOrder();
-                    eproductorder.OrderID = order.Id;
-                    eproductorder.Order = eorder;
-                    //eproductorder.ProductID
-                    //eproductorder.Units = 
-                    pobo.Save(eproductorder);
-                    eserviceorder = new EServiceOrder();
-                    eserviceorder.OrderID = order.Id;
-                    eserviceorder.Order = eorder;
-                    foreach (EService service in serviceSelectedList)
-                    {
-                        eserviceorder.ServiceID = service.Id;
-                    }
-                    sobo.Save(eserviceorder);
-                }
-            }
-
-        }
-        #endregion
         #endregion
         #region EVENTS
         #region TAB1
@@ -217,29 +227,28 @@ namespace Ironmongery
 
         private void lstPackageProducts_click(object sender, EventArgs e)
         {
-            eproduct = (EProduct)lstPackageProducts.SelectedItem;
-            if (eproduct.Units > 0)
+            if (SelectedProduct().Units > 0)
             {
-                lstPackProducDetails.Text = eproduct.ProductDetails();
+                lstPackProducDetails.Text = SelectedProduct().ProductDetails();
+                lblUnits.Text = $"Units: {(int)SelectedProduct().Units}";
                 txtUnitsToBuy.Text = "";
-                txtSearch.Text = eproduct.Units.ToString();
                 btnAdd.Enabled = true;
-                pcbxImageProdct.Image = Image.FromFile(eproduct.Image);
+                pcbxImageProdct.Image = Image.FromFile(SelectedProduct().Image);
             }
             else
             {
-                lstPackProducDetails.Text = eproduct.ProductDetails() + " \n SOLD OUT! \n";
+                lstPackProducDetails.Text = SelectedProduct().ProductDetails() + " \n SOLD OUT! \n";
                 txtUnitsToBuy.Text = "Sold out";
+                lblUnits.Text = $"Units: 0";
                 btnAdd.Enabled = false;
-                pcbxImageProdct.Image = Image.FromFile(eproduct.Image);
+                pcbxImageProdct.Image = Image.FromFile(SelectedProduct().Image);
             }
             
         }
 
         private void lstShoppingProducts_Click(object sender, EventArgs e)
         {
-            eproduct = (EProduct)lstShoppingProducts.SelectedItem;
-            lstPackProducDetails.Text = eproduct.ProductDetails();
+            lstPackProducDetails.Text = SelectedProduct().ProductDetails();
         }
         #endregion
         #endregion
@@ -248,13 +257,6 @@ namespace Ironmongery
         {
             confirmPurchase();
         }
-
-        private void lstConfirmPurchase_Click(object sender, EventArgs e)
-        {
-            loadDataConfirmPurchase();
-        }
-
-
 
         private void cbService_CheckedChanged(object sender, EventArgs e)
         {
@@ -273,6 +275,36 @@ namespace Ironmongery
         private void btnAddService_Click(object sender, EventArgs e)
         {
             addService();
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void cboClient_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            LoadPurchase();
+        }
+
+        private void txtUnits_Validated(object sender, EventArgs e)
+        {
+            getPrice();
+        }
+
+        private void lstConfirmPurchase_Click(object sender, EventArgs e)
+        {
+            int units = (int)SelectedPrOrder().Units;
+            txtCaregory.Text = SelectedPrOrder().Product.Category;
+            txtDescription.Text = SelectedPrOrder().Product.Description;
+            txtUnits.Text = units.ToString();     
+        }
+
+        private void txtUnits_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtUnits.Text))
+            {
+                getPrice();
+            }
         }
     }
 }
