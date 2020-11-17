@@ -26,5 +26,10 @@ namespace EntityLayer
             Description = serviceDescription;
             Price = price;
         }
+
+        public override string ToString()
+        {
+            return $"{Category }";
+        }
     }
 }

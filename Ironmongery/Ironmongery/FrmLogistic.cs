@@ -52,7 +52,7 @@ namespace Ironmongery
             List<ELogistic> drivers = new List<ELogistic>();
             foreach (var driver in lbo.loadTravels(""))
             {
-                if (driver.Status.Equals("Busy"))
+                if (driver.Active.Equals("Busy"))
                 {
                     drivers.Add(driver);
                 }

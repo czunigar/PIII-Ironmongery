@@ -27,7 +27,7 @@ namespace BoLayer
                                  VehicleNumber = t.Vehicle_Number,
                                  DriverId = t.DriverID.Value,
                                  Driver = ubo.GetUserById(t.DriverID.Value),
-                                 Status = t.Status
+                                 Active = t.Status
                              };
                 if (!string.IsNullOrEmpty(filter))
                 {
@@ -37,7 +37,7 @@ namespace BoLayer
                 foreach (var trav in myList)
                 {
                     travels.Add(new ELogistic(trav.Id, trav.VehicleNumber, trav.DriverId,
-                        trav.Driver, trav.Status));
+                        trav.Driver, trav.Active));
                 }
 
                 return travels;
@@ -61,7 +61,7 @@ namespace BoLayer
                 travel.VehicleNumber = lg.Vehicle_Number;
                 travel.DriverId = lg.DriverID.Value;
                 travel.Driver = ubo.GetUserById(lg.DriverID.Value);
-                travel.Status = lg.Status;
+                travel.Active = lg.Status;
                 
                 return travel;
             }
@@ -85,7 +85,7 @@ namespace BoLayer
 
                 truck.Vehicle_Number = travel.VehicleNumber;
                 truck.DriverID = travel.DriverId;
-                truck.Status = travel.Status;
+                truck.Status = travel.Active;
 
                 if (travel.Id == 0)
                 {

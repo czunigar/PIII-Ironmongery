@@ -55,7 +55,7 @@ namespace Ironmongery
 
             foreach (var truck in lbo.loadTravels(""))
             {
-                if (truck.Status.Equals("Busy"))
+                if (truck.Active.Equals("Busy"))
                 {
                     trucks.Remove(Convert.ToInt32(truck.VehicleNumber));
                 }
@@ -78,7 +78,7 @@ namespace Ironmongery
 
             foreach (var driver in lbo.loadTravels(""))
             {
-                if (driver.Status.Equals("Busy"))
+                if (driver.Active.Equals("Busy"))
                 {
                     drivers.Remove(driver.Driver);
                 }
@@ -94,7 +94,7 @@ namespace Ironmongery
                 txtId.Text = logistic.Id.ToString();
                 cboTruck.SelectedValue = logistic.VehicleNumber;
                 cboDriver.SelectedItem = logistic.Driver;
-                cboStatus.SelectedValue = logistic.Status;
+                cboStatus.SelectedValue = logistic.Active;
             }
             catch (Exception)
             {
@@ -143,7 +143,7 @@ namespace Ironmongery
                 EUser driver = (EUser)cboDriver.SelectedItem;
                 logistic.DriverId = driver.Id;
                 logistic.Driver = driver;
-                logistic.Status = cboStatus.SelectedValue.ToString();
+                logistic.Active = cboStatus.SelectedValue.ToString();
                 lbo.Save(logistic);
             }
             catch (Exception)

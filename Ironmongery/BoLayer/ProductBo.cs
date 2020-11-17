@@ -100,6 +100,25 @@ namespace BoLayer
                 db.SaveChanges();
             }
         }
+        /*Method to update the units each time that we create a new order*/
+        public void UpdateUnits(EProduct product, decimal units)
+        {
+            EProduct eproduct = product;
+            using (IRONMONGERYEntities db = new IRONMONGERYEntities())
+            {
+                PRODUCT prod = null;
+                prod = db.PRODUCTS.Find(eproduct.Id);
+                prod.Product_Name = eproduct.Name;
+                prod.Category = eproduct.Category;
+                prod.Product_Description = eproduct.Description;
+                prod.Price = eproduct.Price;
+                prod.Image_path = product.Image;
+                prod.Units = units - eproduct.Units;
+                db.Entry(prod).State = System.Data.Entity.EntityState.Modified;
+            }
+        }
+
+        //runQuery('UPDATE products set stock = stock - $1 where id = $2',[$stock,$id]);
 
         /*Method to delete a product*/
         public void Delete(int pid)

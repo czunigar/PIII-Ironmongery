@@ -31,9 +31,13 @@ namespace EntityLayer
             this.Image = image;
         }
 
+        public string ProductDetails()
+        { 
+            return "Category: " + $" {Category}."+ " Description: " + $"{ Description}."+ " Price: $" + $"{ Price}.";
+        }
         public override string ToString()
         {
-            return $"{Id}. {Name}";
+            return $"{Id}." + $"{Name}, " + $"{Units}, " + $"{Price}, " + $"{ Description}, " + $"{Category}." + $"{Image}." ;
         }
     }
 }
