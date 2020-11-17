@@ -210,8 +210,9 @@ namespace Ironmongery
 
         private void loginToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LogIn login = new LogIn();
-            login.ShowDialog();
+            LogIn login = new LogIn(this);
+            login.Visible = true;
+            this.Visible = false;
         }
 
         private void lstPackageProducts_click(object sender, EventArgs e)
