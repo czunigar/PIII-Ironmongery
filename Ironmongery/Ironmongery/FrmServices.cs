@@ -147,5 +147,12 @@ namespace Ironmongery
         {
             Instance = null;
         }
+
+        private void FrmServices_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FrmAdmin frm = new FrmAdmin();
+            frm.Visible = true;
+            this.Visible = false;
+        }
     }
 }

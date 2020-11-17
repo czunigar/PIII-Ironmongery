@@ -22,6 +22,11 @@ namespace Ironmongery
             this.user = user;
             mnLogged.Text = user.Code;
         }
+        public FrmAdmin()
+        {
+            InitializeComponent();
+            mnLogged.Text = user.Code;
+        }
 
         /*Method to create a window for the logistics crud*/
         private void Truck()

@@ -49,6 +49,7 @@
             this.scLogic.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.scLogic.IsSplitterFixed = true;
             this.scLogic.Location = new System.Drawing.Point(0, 0);
+            this.scLogic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.scLogic.Name = "scLogic";
             this.scLogic.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -65,8 +66,9 @@
             // 
             this.scLogic.Panel2.Controls.Add(this.btnCancel);
             this.scLogic.Panel2.Controls.Add(this.dgvLogic);
-            this.scLogic.Size = new System.Drawing.Size(809, 531);
+            this.scLogic.Size = new System.Drawing.Size(1079, 654);
             this.scLogic.SplitterDistance = 63;
+            this.scLogic.SplitterWidth = 5;
             this.scLogic.TabIndex = 0;
             // 
             // btnSearch
@@ -75,9 +77,10 @@
             this.btnSearch.ForeColor = System.Drawing.Color.DimGray;
             this.btnSearch.Image = global::Ironmongery.Properties.Resources.icons8_search_25px_9;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearch.Location = new System.Drawing.Point(295, 17);
+            this.btnSearch.Location = new System.Drawing.Point(393, 21);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(95, 30);
+            this.btnSearch.Size = new System.Drawing.Size(127, 37);
             this.btnSearch.TabIndex = 9;
             this.btnSearch.Text = "Search";
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -86,10 +89,11 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Font = new System.Drawing.Font("Lucida Sans Typewriter", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(16, 17);
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(21, 21);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(273, 30);
+            this.txtSearch.Size = new System.Drawing.Size(363, 34);
             this.txtSearch.TabIndex = 8;
             // 
             // btnAdd
@@ -98,9 +102,10 @@
             this.btnAdd.ForeColor = System.Drawing.Color.DimGray;
             this.btnAdd.Image = global::Ironmongery.Properties.Resources.icons8_add_25px_4;
             this.btnAdd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdd.Location = new System.Drawing.Point(521, 16);
+            this.btnAdd.Location = new System.Drawing.Point(695, 20);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(87, 30);
+            this.btnAdd.Size = new System.Drawing.Size(116, 37);
             this.btnAdd.TabIndex = 6;
             this.btnAdd.Text = "Assign";
             this.btnAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -113,9 +118,10 @@
             this.btnEdit.ForeColor = System.Drawing.Color.DimGray;
             this.btnEdit.Image = global::Ironmongery.Properties.Resources.icons8_edit_25px;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(614, 16);
+            this.btnEdit.Location = new System.Drawing.Point(819, 20);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(87, 30);
+            this.btnEdit.Size = new System.Drawing.Size(116, 37);
             this.btnEdit.TabIndex = 7;
             this.btnEdit.Text = "Edit";
             this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -128,9 +134,10 @@
             this.btnRemove.ForeColor = System.Drawing.Color.DimGray;
             this.btnRemove.Image = global::Ironmongery.Properties.Resources.icons8_remove_25px;
             this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemove.Location = new System.Drawing.Point(707, 16);
+            this.btnRemove.Location = new System.Drawing.Point(943, 20);
+            this.btnRemove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(87, 30);
+            this.btnRemove.Size = new System.Drawing.Size(116, 37);
             this.btnRemove.TabIndex = 5;
             this.btnRemove.Text = "Delete";
             this.btnRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -141,9 +148,10 @@
             // 
             this.btnCancel.Image = global::Ironmongery.Properties.Resources.icons8_undo_20px;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(419, 320);
+            this.btnCancel.Location = new System.Drawing.Point(559, 394);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(74, 33);
+            this.btnCancel.Size = new System.Drawing.Size(99, 41);
             this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Return";
             this.btnCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -157,22 +165,26 @@
             this.dgvLogic.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLogic.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLogic.Location = new System.Drawing.Point(0, 0);
+            this.dgvLogic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvLogic.Name = "dgvLogic";
             this.dgvLogic.RowHeadersVisible = false;
-            this.dgvLogic.Size = new System.Drawing.Size(809, 464);
+            this.dgvLogic.RowHeadersWidth = 51;
+            this.dgvLogic.Size = new System.Drawing.Size(1079, 586);
             this.dgvLogic.TabIndex = 0;
             // 
             // FrmLogistic
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 531);
+            this.ClientSize = new System.Drawing.Size(1079, 654);
             this.Controls.Add(this.scLogic);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmLogistic";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLogistic";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmLogistic_FormClosing);
             this.Load += new System.EventHandler(this.FrmLogistic_Load);
             this.scLogic.Panel1.ResumeLayout(false);
             this.scLogic.Panel1.PerformLayout();
