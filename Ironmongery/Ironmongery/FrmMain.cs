@@ -54,9 +54,11 @@ namespace Ironmongery
             lstPackageProducts.DataSource = pbo.LoadProducts("");
 
         }
+        /*Method to add the product to the whislist*/
         private void addProductOrder() 
         {
             eproduct = (EProduct)lstPackageProducts.SelectedItem;
+            decimal oldunits = decimal.Parse(eproduct.Units.ToString());
             if (txtUnitsToBuy.Text != "")
             {
                 int units = int.Parse(txtUnitsToBuy.Text);
@@ -69,6 +71,7 @@ namespace Ironmongery
                         MessageBox.Show("You just added: " + eproduct.Name + " to your shopping cart");
                         currectproduct.Units = units;
                         productList.Add(currectproduct);
+                        pbo.UpdateUnits(eproduct, oldunits);
                         lstConfirmPurchase.Items.Add(currectproduct);
                     }
                     else
@@ -85,6 +88,7 @@ namespace Ironmongery
         }
         #endregion
         #region TAB2
+        /*Method to load the products to confirm order*/
         private void loadDataConfirmPurchase()
         {
             EProduct product = (EProduct)lstConfirmPurchase.SelectedItem;
@@ -95,6 +99,7 @@ namespace Ironmongery
             txtPrice.Text = product.Price.ToString();
             pcImageProductPurch.Image = Image.FromFile(product.Image);
         }
+        /*method to change the price of the product*/
         private void changePrice()
         {
             EProduct product = (EProduct)lstConfirmPurchase.SelectedItem;
@@ -105,7 +110,7 @@ namespace Ironmongery
                 txtPrice.Text = product.Price.ToString();
             }
         }
-
+        /*Method to confirm the purchase*/
         private void confirmPurchase()
         {
             EProduct product = (EProduct)lstConfirmPurchase.SelectedItem;
@@ -122,8 +127,7 @@ namespace Ironmongery
                         orderProduct.Units = units;
                         eproductOrder.Add(orderProduct);
                         //pobo.Save(eproductorder);
-                        eproduct.Units -= units;
-                        pbo.Save(eproduct);
+                        
                         lstShoppingProducts.Items.Add(orderProduct);
                         lstConfirmPurchase.Items.Remove(orderProduct);
                         txtCaregory.Text = "";
@@ -143,11 +147,13 @@ namespace Ironmongery
                 MessageBox.Show("Units value invalid, please enter a valid value. Thanks");
             }
         }
+        /*Method to load all the services that are in data base*/
         private void loadService()
         {
             lstServices.DataSource = null;
             lstServices.DataSource = sbo.loadServices("");
         }
+        /*Method to add the service selected*/
         private void addService()
         {
             if (cbService.Checked)
@@ -159,6 +165,7 @@ namespace Ironmongery
         }
         #endregion
         #region TAB3
+        /*Methid to create the order to confirm the invoice*/
         private void createOrder()
         {
             eorder = new EOrder();

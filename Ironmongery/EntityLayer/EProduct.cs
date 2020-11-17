@@ -37,7 +37,7 @@ namespace EntityLayer
         }
         public override string ToString()
         {
-            return $"{Name}.";
+            return $"{Id}." + $"{Name}, " + $"{Units}, " + $"{Price}, " + $"{ Description}, " + $"{Category}." + $"{Image}." ;
         }
     }
 }
