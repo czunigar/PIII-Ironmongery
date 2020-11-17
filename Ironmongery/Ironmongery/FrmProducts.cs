@@ -18,14 +18,12 @@ namespace Ironmongery
         private Form parent;
         private Messages message;
         private ProductBO productbo;
-        private Messages message;
         public FrmProducts(Form parent)
         {
             InitializeComponent();
             this.parent = parent;
             message = new Messages();
             this.productbo = new ProductBO();
-            this.message = new Messages();
         }
         public FrmProducts()
         {

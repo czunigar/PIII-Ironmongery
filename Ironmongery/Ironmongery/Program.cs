@@ -16,7 +16,7 @@ namespace Ironmongery
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmServices());
+            Application.Run(new FrmMain());
         }
     }
 }
