@@ -26,7 +26,12 @@ namespace Ironmongery
             message = new Messages();
             this.productbo = new ProductBO();
         }
-
+        public FrmProducts()
+        {
+            InitializeComponent();
+            message = new Messages();
+            this.productbo = new ProductBO();
+        }
         private void LoadProducts()
         {
             dgvProduct.DataSource = null;
