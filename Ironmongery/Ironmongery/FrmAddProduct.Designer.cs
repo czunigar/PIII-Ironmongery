@@ -204,6 +204,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FrmAddProduct";
             this.Text = "FrmAddProduct";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmAddProduct_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.pcImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

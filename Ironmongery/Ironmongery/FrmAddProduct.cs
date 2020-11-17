@@ -146,5 +146,12 @@ namespace Ironmongery
                 }
             }
         }
+
+        private void FrmAddProduct_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            FrmProducts frm = new FrmProducts();
+            frm.Visible = true;
+            this.Visible = false;
+        }
     }
 }
