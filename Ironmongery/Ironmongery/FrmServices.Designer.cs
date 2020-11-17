@@ -174,6 +174,7 @@
             this.ClientSize = new System.Drawing.Size(809, 531);
             this.Controls.Add(this.scServices);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.IsMdiContainer = true;
             this.Name = "FrmServices";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Services Maintenance";

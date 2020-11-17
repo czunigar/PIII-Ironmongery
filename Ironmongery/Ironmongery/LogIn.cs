@@ -18,13 +18,13 @@ namespace Ironmongery
     {
         UserBO ubo;
         Messages messages;
-        //private Form parent;
+        private Form parent;
 
-        public LogIn()
+        public LogIn(Form parent)
         {
             InitializeComponent();
             ubo = new UserBO();
-            //this.parent = parent;
+            this.parent = parent;
             messages = new Messages();
             txtUser.Text = "adm269";
             txtPass.Text = "anitacr12345";
