@@ -73,6 +73,13 @@ namespace Ironmongery
                         this.Visible = false;
                         clean();
                     }
+                    else if (usr.Type.Equals("Seller"))
+                    {
+                        FrmMain seller = new FrmMain(usr);
+                        seller.Visible = true;
+                        this.Visible = false;
+                        clean();
+                    }
                 }
                 else
                 {

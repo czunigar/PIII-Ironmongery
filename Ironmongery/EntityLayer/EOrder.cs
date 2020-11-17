@@ -27,6 +27,8 @@ namespace EntityLayer
             Status = status;
         }
 
+
+
         public override string ToString()
         {
             return ClientName;
