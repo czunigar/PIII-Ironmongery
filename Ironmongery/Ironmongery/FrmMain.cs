@@ -19,6 +19,7 @@ namespace Ironmongery
         private ServiceBO sbo;
         private ServiceOrderBO sobo;
         private OrderBO obo;
+        
         private ProductOrderBO pobo;
         private List<EProduct> productList;
         private List<EProduct> eproductOrder;
@@ -42,8 +43,63 @@ namespace Ironmongery
             ((Control)this.tabPage3).Enabled = false;
             pnService.Visible = false;
             loadData();
+            cbxClients.Visible = false;
+        }
+        public FrmMain(EUser seller)
+        {
+            InitializeComponent();
+            this.sbo = new ServiceBO();
+            this.sobo = new ServiceOrderBO();
+            this.pobo = new ProductOrderBO();
+            this.pbo = new ProductBO();
+            this.obo = new OrderBO();
+            this.message = new Messages();
+            productList = new List<EProduct>();
+            serviceSelectedList = new List<EService>();
+            eproductOrder = new List<EProduct>();
+            productorderList = new List<EProductOrder>();
+            ((Control)this.tabPage3).Enabled = false;
+            pnService.Visible = false;
+            loadData();
+            cbxClients.Visible = true;
+            addClients();
         }
         #region METHODS
+
+        #region Seller
+
+        /*Load the client list according with the list of orders*/
+        public void addClients()
+        {
+            OrderBO orderlist = new OrderBO();
+            EOrder ord = new EOrder();
+            foreach(EOrder order in orderlist.LoadOrders(""))
+            {
+                cbxClients.Items.Add(order.ToString());
+            }
+            
+        }
+
+        public void getOrder()
+        {
+            try
+            {
+                List<EOrder> orders = obo.LoadOrders("");
+                foreach (EOrder product_order in orders)
+                {
+                    if (product_order.Cid.Equals(cbxClients.SelectedItem.ToString()))
+                    {
+                        lstConfirmPurchase.DataSource = null;
+                        lstConfirmPurchase.DataSource = product_order.ToString();
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Invalid action. Thanks");
+            }
+        }
+        #endregion
 
         #region TAB1
         /*Method to load all the subjects registered to the list*/
@@ -132,7 +188,10 @@ namespace Ironmongery
         }
         #endregion
         #region TAB2
-
+        private EProduct SelectedProductPurchase()
+        {
+            return (EProduct)lstPackageProducts.SelectedItem;
+        }
         /*Method to load the products to confirm order*/
         private void LoadPurchase()
         {
@@ -144,6 +203,50 @@ namespace Ironmongery
         {
             return (EProductOrder)lstConfirmPurchase.SelectedItem;
         }
+        /*cancel order*/
+        public void cancelOrder()
+        {
+            try
+            {
+                EProductOrder editProd = SelectedPrOrder();
+                int idprodorder = editProd.Id;
+                EProductOrder order = pobo.GetProdOrderById(idprodorder);
+                editProd.Order.Status = "Cancelled";
+                editProd.Order.Cid = order.Order.Cid;
+                editProd.Order.ClientName = order.Order.ClientName;
+                editProd.Order.Date = order.Order.Date;
+                pobo.Save(editProd);
+            }
+            catch
+            {
+                MessageBox.Show("The order wasn't cancelled");
+            }
+        }
+        /*Edit product units*/
+        public void editPurchase()
+        {
+            try
+            {
+                EProductOrder editProd = SelectedPrOrder();
+                EProduct newProd = new EProduct();
+                int id = editProd.Product.Id;
+                EProduct oldUnits = pbo.GetProductById(id);
+                oldUnits.Units += int.Parse(txtUnits.Text.ToString());
+                newProd.Id = id;
+                newProd.Name = editProd.Product.Name;
+                newProd.Category = editProd.Product.Category;
+                newProd.Description = editProd.Product.Description;
+                newProd.Price = editProd.Product.Price;
+                newProd.Units = oldUnits.Units;
+                newProd.Image = editProd.Product.Image;
+                pbo.Save(newProd);
+                lstConfirmPurchase.Items.Remove(editProd);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Invalid action");
+            }
+        }
 
         /*method to change the price of the product*/
         private void getPrice()
@@ -153,42 +256,71 @@ namespace Ironmongery
             decimal newPrice = price * units;
             txtPrice.Text = newPrice.ToString();
         }
+        private EServiceOrder serviceOrder()
+        {
+            try
+            {
+                EService eservice = new EService();
+                EServiceOrder eserviceorder = new EServiceOrder();
+                int eorder;
+                int service;
+                eservice = (EService)lstServices.SelectedItem;
+                service = eservice.Id;
+                eorder = Order().Id;
+                eserviceorder.OrderID = eorder;
+                eservice.Id = service;
+                sbo.Save(eservice);
+                return eserviceorder;
+            }
+            catch
+            {
+                MessageBox.Show("Invalid action. Thanks");
+                return null;
+            }
+        }
 
         /*Method to confirm the purchase*/
         private void confirmPurchase()
         {
-            EProduct product = (EProduct)lstConfirmPurchase.SelectedItem;
-            ((Control)this.tabPage3).Enabled = true;
-            if (txtUnits.Text != "")
+            try
             {
-                int units = int.Parse(txtUnits.Text);
-                if (product.Units > 0)
+                EProduct product = SelectedProductPurchase();
+                ((Control)this.tabPage3).Enabled = true;
+                if (txtUnits.Text != "")
                 {
-                    if (product.Units >= units && units > 0)
+                    int units = int.Parse(txtUnits.Text);
+                    if (product.Units > 0)
                     {
-                        EProduct orderProduct = product;
-                        MessageBox.Show(product.Name + " just added to the order" );
-                        orderProduct.Units = units;
-                        eproductOrder.Add(orderProduct);
-                        //pobo.Save(eproductorder);
-                        
-                        lstShoppingProducts.Items.Add(orderProduct);
-                        lstConfirmPurchase.Items.Remove(orderProduct);
-                        txtCaregory.Text = "";
-                        txtDescription.Text = "";
-                        txtUnits.Text = "";
-                        txtPrice.Text = "";
-                        pcImageProductPurch.Image = null;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Units value invalid, please enter a valid value. Thanks");
+                        if (product.Units >= units && units > 0)
+                        {
+                            EProduct orderProduct = product;
+                            MessageBox.Show(product.Name + " just added to the order");
+                            orderProduct.Units = units;
+
+                            eproductOrder.Add(orderProduct);
+                            lstConfirmPurchase.Items.Remove(orderProduct);
+                            lstShoppingProducts.Items.Add(orderProduct);
+                            txtCaregory.Text = "";
+                            txtDescription.Text = "";
+                            txtUnits.Text = "";
+                            txtPrice.Text = "";
+                            pcImageProductPurch.Image = null;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Units value invalid, please enter a valid value. Thanks");
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Units value invalid, please enter a valid value. Thanks");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Units value invalid, please enter a valid value. Thanks");
+
+                MessageBox.Show("Invalid action. Thanks");
             }
         }
         /*Method to load all the services that are in data base*/
@@ -207,6 +339,9 @@ namespace Ironmongery
                 lstServices.Items.Remove(service);
             }
         }
+        #endregion
+        #region TAB3
+
         #endregion
         #endregion
         #region EVENTS
@@ -296,7 +431,8 @@ namespace Ironmongery
             int units = (int)SelectedPrOrder().Units;
             txtCaregory.Text = SelectedPrOrder().Product.Category;
             txtDescription.Text = SelectedPrOrder().Product.Description;
-            txtUnits.Text = units.ToString();     
+            txtUnits.Text = units.ToString();
+            pcImageProductPurch.Image = Image.FromFile(SelectedProduct().Image);
         }
 
         private void txtUnits_TextChanged(object sender, EventArgs e)
@@ -305,6 +441,11 @@ namespace Ironmongery
             {
                 getPrice();
             }
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            editPurchase();
         }
     }
 }
