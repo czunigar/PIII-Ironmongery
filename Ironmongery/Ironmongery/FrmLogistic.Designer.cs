@@ -171,6 +171,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.IsMdiContainer = true;
             this.Name = "FrmLogistic";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLogistic";
             this.Load += new System.EventHandler(this.FrmLogistic_Load);
             this.scLogic.Panel1.ResumeLayout(false);

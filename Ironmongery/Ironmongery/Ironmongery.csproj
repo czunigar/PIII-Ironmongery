@@ -90,11 +90,23 @@
     <Compile Include="FrmAdmin.Designer.cs">
       <DependentUpon>FrmAdmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCashier.Designer.cs">
+      <DependentUpon>FrmCashier.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDelivery.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmDelivery.Designer.cs">
       <DependentUpon>FrmDelivery.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDriver.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDriver.Designer.cs">
+      <DependentUpon>FrmDriver.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmInvoice.cs">
       <SubType>Form</SubType>
@@ -178,6 +190,12 @@
     <EmbeddedResource Include="FrmAdmin.resx">
       <DependentUpon>FrmAdmin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCashier.resx">
+      <DependentUpon>FrmCashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDriver.resx">
+      <DependentUpon>FrmDriver.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmInvoice.resx">
       <DependentUpon>FrmInvoice.cs</DependentUpon>
     </EmbeddedResource>
@@ -251,6 +269,8 @@
     <Content Include="Resources\icons8_add_shopping_cart_125px_3.png" />
     <Content Include="Resources\icons8_delivery_125px_1.png" />
     <Content Include="Resources\icons8_request_service_125px.png" />
+    <Content Include="Resources\icons8_shipped_26px.png" />
+    <Content Include="Resources\icons8_shipped_80px_1.png" />
     <Content Include="Resources\icons8_staff_125px.png" />
     <None Include="Resources\icons8_create_20px_3.png" />
     <Content Include="Resources\icons8_remove_25px.png" />
