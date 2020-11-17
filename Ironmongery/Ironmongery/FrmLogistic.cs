@@ -18,6 +18,16 @@ namespace Ironmongery
         private LogisticBO lbo;
         private Messages message;
         private FrmAddTruck editTruck;
+        private Form parent;
+
+        public FrmLogistic(Form parent)
+        {
+            InitializeComponent();
+            this.parent = parent;
+            lbo = new LogisticBO();
+            message = new Messages();
+            btnCancel.Visible = false;
+        }
 
         public FrmLogistic()
         {
